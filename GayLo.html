@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Daily</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6c63ff;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        .input-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            border: none;
+            background: #6c63ff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #574fd6;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .delete {
+            background: #ff5c5c;
+            padding: 6px 10px;
+        }
+
+        .water {
+            text-align: center;
+        }
+
+        .water-count {
+            font-size: 30px;
+            color: #4aa3df;
+            margin: 15px;
+        }
+
+        .moods {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .moods button {
+            font-size: 25px;
+            background: #f1f1f1;
+        }
+
+        #mood {
+            text-align: center;
+            margin-top: 15px;
+            color: #6c63ff;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌱 My Daily</h1>
+    <p class="subtitle">Trợ lý nhỏ cho cuộc sống hằng ngày</p>
+
+
+    <!-- VIỆC CẦN LÀM -->
+    <div class="card">
+
+        <h2>📋 Việc cần làm</h2>
+
+        <div class="input-box">
+            <input
+                id="todoInput"
+                type="text"
+                placeholder="Hôm nay bạn cần làm gì?"
+            >
+
+            <button onclick="addTodo()">
+                Thêm
+            </button>
+        </div>
+
+        <ul id="todoList"></ul>
+
+    </div>
+
+
+    <!-- UỐNG NƯỚC -->
+    <div class="card water">
+
+        <h2>💧 Uống nước</h2>
+
+        <p>Hôm nay bạn đã uống:</p>
+
+        <div class="water-count">
+            <span id="waterCount">0</span> / 8 ly
+        </div>
+
+        <button onclick="drinkWater()">
+            + Uống 1 ly
+        </button>
+
+        <button onclick="resetWater()">
+            Đặt lại
+        </button>
+
+    </div>
+
+
+    <!-- TÂM TRẠNG -->
+    <div class="card">
+
+        <h2>😊 Tâm trạng hôm nay</h2>
+
+        <div class="moods">
+
+            <button onclick="chooseMood('😍')">😍</button>
+
+            <button onclick="chooseMood('😄')">😄</button>
+
+            <button onclick="chooseMood('🙂')">🙂</button>
+
+            <button onclick="chooseMood('😐')">😐</button>
+
+            <button onclick="chooseMood('😔')">😔</button>
+
+        </div>
+
+        <p id="mood">Bạn cảm thấy thế nào?</p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    // =========================
+    // TODO LIST
+    // =========================
+
+    function addTodo() {
+
+        const input = document.getElementById("todoInput");
+
+        const text = input.value.trim();
+
+        if (text === "") {
+            alert("Bạn chưa nhập công việc!");
+            return;
+        }
+
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            <span onclick="completeTodo(this)">
+                ${text}
+            </span>
+
+            <button
+                class="delete"
+                onclick="deleteTodo(this)"
+            >
+                Xóa
+            </button>
+        `;
+
+        document
+            .getElementById("todoList")
+            .appendChild(li);
+
+        input.value = "";
+    }
+
+
+    function completeTodo(element) {
+
+        element.classList.toggle("done");
+
+    }
+
+
+    function deleteTodo(button) {
+
+        button.parentElement.remove();
+
+    }
+
+
+    // =========================
+    // UỐNG NƯỚC
+    // =========================
+
+    let water = 0;
+
+
+    function drinkWater() {
+
+        if (water < 8) {
+            water++;
+        }
+
+        document.getElementById("waterCount").textContent = water;
+
+    }
+
+
+    function resetWater() {
+
+        water = 0;
+
+        document.getElementById("waterCount").textContent = water;
+
+    }
+
+
+    // =========================
+    // TÂM TRẠNG
+    // =========================
+
+    function chooseMood(mood) {
+
+        document.getElementById("mood").textContent =
+            "Hôm nay bạn cảm thấy " + mood;
+
+    }
+
+</script>
+
+</body>
+</html>
