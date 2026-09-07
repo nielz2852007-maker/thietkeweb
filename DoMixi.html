@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio cá nhân của [Tên của bạn] - Lập trình viên Web Front-end với chuyên môn về HTML, CSS, JavaScript và Web Accessibility.">
+    <meta name="author" content="[Tên của bạn]">
+    <title>Portfolio - Web Developer | [Tên của bạn]</title>
+</head>
+<body>
+    <header>
+        <a href="#home" aria-label="Trở về trang chủ">[Logo / Tên của bạn]</a>
+        <nav aria-label="Điều hướng chính">
+            <ul>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" aria-labelledby="hero-heading">
+            <h1 id="hero-heading">Xin chào, tôi là [Tên của bạn]</h1>
+            <p>Tôi là một <strong>Lập trình viên Web Front-end</strong>. Tôi đam mê xây dựng các giao diện web tối ưu SEO và hoàn toàn tuân thủ các tiêu chuẩn <em>Web Accessibility (WCAG)</em>.</p>
+            <ul>
+                <li><a href="#projects">Xem dự án</a></li>
+                <li><a href="#contact">Liên hệ với tôi</a></li>
+            </ul>
+        </section>
+
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">Về tôi</h2>
+            <p>Với hơn [X] năm kinh nghiệm trong lĩnh vực phát triển Web, tôi luôn đặt trải nghiệm người dùng (UX) và hiệu năng lên hàng đầu. Các sản phẩm tôi làm ra không chỉ phục vụ người dùng thông thường mà còn hỗ trợ tốt cho những người khiếm khuyết thông qua việc ứng dụng triệt để Semantic HTML và WAI-ARIA.</p>
+        </section>
+
+        <section id="skills" aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Kỹ năng chuyên môn</h2>
+            <ul>
+                <li>HTML5 Semantic, CSS3</li>
+                <li>JavaScript (ES6+), TypeScript</li>
+                <li>React.js / Vue.js</li>
+                <li>Tối ưu hóa SEO On-page</li>
+                <li>Web Accessibility (WCAG 2.1 / ARIA)</li>
+                <li>Git & GitHub</li>
+            </ul>
+        </section>
+
+        <section id="projects" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Dự án tiêu biểu</h2>
+            
+            <article>
+                <h3><a href="https://link-toi-du-an.com" target="_blank" rel="noopener noreferrer">[Tên dự án 1]</a></h3>
+                <p>Một ứng dụng thương mại điện tử với trải nghiệm mua sắm mượt mà, tối ưu hóa tốc độ tải trang và đảm bảo tương phản màu sắc chuẩn WCAG.</p>
+                <h4>Công nghệ sử dụng:</h4>
+                <ul>
+                    <li>HTML5</li>
+                    <li>SASS</li>
+                    <li>JavaScript</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3><a href="https://link-toi-du-an2.com" target="_blank" rel="noopener noreferrer">[Tên dự án 2]</a></h3>
+                <p>Trang web quản lý công việc cá nhân. Ứng dụng PWA hỗ trợ sử dụng offline và tương thích hoàn toàn với bàn phím (Keyboard Navigation).</p>
+                <h4>Công nghệ sử dụng:</h4>
+                <ul>
+                    <li>React.js</li>
+                    <li>Tailwind CSS</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Liên hệ</h2>
+            <p>Tôi luôn mở cửa đón nhận những cơ hội hợp tác mới. Hãy để lại lời nhắn cho tôi nhé!</p>
+            
+            <form action="/submit-form" method="POST">
+                <fieldset>
+                    <legend>Thông tin liên hệ</legend>
+                    
+                    <label for="name">Họ và tên <span aria-hidden="true">*</span></label>
+                    <input type="text" id="name" name="name" required aria-required="true" placeholder="Ví dụ: Nguyễn Văn A">
+                    <br><br>
+                    
+                    <label for="email">Địa chỉ Email <span aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" required aria-required="true" placeholder="Ví dụ: email@domain.com">
+                    <br><br>
+                    
+                    <label for="message">Tin nhắn <span aria-hidden="true">*</span></label>
+                    <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Nhập tin nhắn của bạn..."></textarea>
+                    <br><br>
+                    
+                    <button type="submit">Gửi tin nhắn</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 [Tên của bạn]. Bảo lưu mọi quyền.</p>
+        <nav aria-label="Mạng xã hội">
+            <ul>
+                <li><a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="mailto:your-email@example.com">Email</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>
