@@ -1,0 +1,314 @@
+/* === 1. RESET & BIẾN GIAO DIỆN === */
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --radius: 8px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+/* === 2. HEADER & NAVIGATION (FLEXBOX) === */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-color);
+}
+
+header nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+header nav a {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+header nav a:hover {
+    color: var(--primary-color);
+}
+
+/* === 3. BỐ CỤC CHÍNH (MAIN & SECTIONS CÓ KHUNG MÀU) === */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* Đã thêm khung viền chung cho tất cả các section */
+section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: #ffffff;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+h1, h2, h3 {
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* === TÙY CHỈNH KHUNG MÀU RIÊNG CHO TỪNG PHẦN === */
+/* Khung Trang chủ */
+#home {
+    text-align: center;
+    border-color: #2563eb; /* Xanh dương */
+    background-color: #eff6ff;
+}
+
+#home h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+#home p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 1rem auto;
+}
+
+/* Khung Về tôi */
+#about {
+    border-color: #10b981; /* Xanh lá */
+    background-color: #ecfdf5;
+}
+
+/* Khung Kỹ năng */
+#skills {
+    border-color: #8b5cf6; /* Tím */
+    background-color: #f5f3ff;
+}
+
+/* Khung Dự án */
+#projects {
+    border-color: #f59e0b; /* Cam */
+    background-color: #fffbeb;
+}
+
+/* Khung Liên hệ */
+#contact {
+    border-color: #ec4899; /* Hồng */
+    background-color: #fdf2f8;
+}
+
+/* Nút CTA (Flexbox) */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+.cta-buttons a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: var(--radius);
+    font-weight: 500;
+}
+
+.cta-buttons li:nth-child(2) a {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.cta-buttons a:hover {
+    opacity: 0.9;
+}
+
+/* === 4. SKILLS (CSS GRID) === */
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    list-style: none;
+}
+
+.skills-list li {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* === 5. PROJECTS (CSS GRID) === */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+article {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+article h4 {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+.tech-stack li {
+    background-color: var(--bg-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    border: 1px solid var(--border-color);
+}
+
+/* === 6. FORM LIÊN HỆ (FLEXBOX) === */
+fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+    color: var(--primary-color);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: 2px solid var(--primary-color);
+    border-color: transparent;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-hover);
+}
+
+/* === 7. FOOTER (FLEXBOX) === */
+footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+footer nav ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+/* RESPONSIVE CHO DI ĐỘNG */
+@media (max-width: 600px) {
+    header, footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
