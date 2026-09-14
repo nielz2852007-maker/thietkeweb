@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Web Hoàn Chỉnh - HTML & CSS</title>
+  
+  <!-- ĐÂY LÀ DÒNG LIÊN KẾT ĐẾN FILE STYLE.CSS -->
+  <link rel="stylesheet" href="gioithieu.css">
+  
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">WebDev<span>.VN</span></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Trang chủ</a></li>
+        <li><a href="#features">Tính năng</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+    </nav>
+    <button class="btn-primary">Đăng Nhập</button>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>iu thay nhat tren doi </h1>
+      <p>Kết hợp hoàn hảo giữa Box Model, Flexbox và CSS Grid Layout.</p>
+      <a href="#features" class="btn-secondary">Khám Phá Ngay</a>
+    </div>
+  </section>
+
+  <!-- FEATURES (GRID LAYOUT) -->
+  <main id="features" class="container">
+    <h2 class="section-title">Các Thành Phần Chính</h2>
+
+    <div class="grid-layout">
+      <article class="card">
+        <div class="card-icon">📦</div>
+        <h3>Box Model</h3>
+        <p>Quản lý kích thước chuẩn xác với Content, Padding, Border và Margin.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">📐</div>
+        <h3>Flexbox</h3>
+        <p>Sắp xếp Header, Menu và Hero section linh hoạt theo 1 chiều.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">🏁</div>
+        <h3>CSS Grid</h3>
+        <p>Chia bố cục các ô thẻ bài 3 cột tự động co giãn 2 chiều.</p>
+      </article>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2026 WebDev. Tất cả quyền được bảo lưu.</p>
+  </footer>
+
+</body>
+</html>
