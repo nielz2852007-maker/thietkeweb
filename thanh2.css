@@ -1,0 +1,220 @@
+/* ==========================================
+   1. BẢNG MÀU & THIẾT LẬP CHUNG
+   ========================================== */
+   :root {
+    --primary: #2563eb;        /* Xanh chủ đạo */
+    --primary-hover: #1d4ed8;  /* Xanh đậm khi di chuột */
+    --bg-main: #f1f5f9;        /* Màu nền trang web (Xám xạn nhẹ) */
+    --bg-card: #ffffff;        /* Màu nền các khung (Trắng) */
+    --text-dark: #0f172a;      /* Màu chữ chính */
+    --text-muted: #475569;     /* Màu chữ phụ */
+    --border-color: #cbd5e1;  /* Màu khung viền */
+    --accent-bg: #e0f2fe;      /* Màu nền điểm nhấn (Xanh nhạt) */
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-main);
+  }
+  
+  main {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+  
+  /* KHUNG TỔNG CHO MỖI SECTION */
+  section {
+    background-color: var(--bg-card);
+    border: 2px solid var(--border-color); /* Khung viền rõ nét */
+    border-radius: 12px;                  /* Bo tròn góc khung */
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Bóng đổ cho khung */
+  }
+  
+  /* TIÊU ĐỀ CÁC MỤC */
+  h2 {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary); /* Đường gạch chân tiêu đề */
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+  }
+  
+  /* ==========================================
+     2. HEADER & THANH MENU (FLEXBOX + KHUNG)
+     ========================================== */
+  header {
+    background-color: #1e293b; /* Nền Header màu tối nổi bật */
+    color: #ffffff;
+    padding: 15px 40px;
+    border-bottom: 4px solid var(--primary);
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Khung nút menu */
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  nav a:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+  
+  /* ==========================================
+     3. KHUNG GIỚI THIỆU (FLEXBOX)
+     ========================================== */
+  #about {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  #about h2 {
+    width: 100%;
+  }
+  
+  #about img {
+    border-radius: 50%;
+    border: 4px solid var(--primary); /* Khung ảnh chân dung */
+    padding: 3px;
+    background-color: var(--bg-card);
+  }
+  
+  #about .bio-text {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  #about p {
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  
+  /* ==========================================
+     4. KHUNG DỰ ÁN (CSS GRID + CARD BORDER)
+     ========================================== */
+  #projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Khung từng thẻ dự án */
+  article {
+    background-color: var(--bg-card);
+    border: 2px solid var(--border-color); /* Khung viền dự án */
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.2s, border-color 0.2s;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  article:hover {
+    border-color: var(--primary); /* Đổi màu khung khi hover */
+    transform: translateY(-4px);  /* Nổi khung lên */
+  }
+  
+  article h3 {
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  
+  article p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+  
+  article img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--border-color); /* Khung hình ảnh */
+  }
+  
+  /* ==========================================
+     5. KHUNG KỸ NĂNG & LIÊN HỆ (FLEXBOX)
+     ========================================== */
+  #skills ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  /* Đóng khung từng Kỹ năng dạng Badge */
+  #skills li {
+    background-color: var(--accent-bg);
+    color: var(--primary);
+    border: 1.5px solid #93c5fd; /* Khung viền kỹ năng */
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  /* Khung thông tin liên hệ */
+  #contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  #contact p {
+    background-color: #f8fafc;
+    border-left: 4px solid var(--primary); /* Viền màu bên trái */
+    border-top: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 0 8px 8px 0;
+    font-weight: 500;
+  }
+  
+  /* ==========================================
+     6. FOOTER
+     ========================================== */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #0f172a;
+    color: #94a3b8;
+    border-top: 3px solid var(--primary);
+    margin-top: 40px;
+  }
