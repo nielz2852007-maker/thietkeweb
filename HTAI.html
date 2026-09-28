@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cá Nhân</title>
+    <!-- Liên kết đến file CSS bên ngoài -->
+    <link rel="stylesheet" href="HTAI.css">
+</head>
+<body>
+
+    <!-- Header / Banner -->
+    <header>
+        <h1>Nguyễn Lê Hữu Tài</h1>
+        <p>Front-End Developer & UI/UX Design Enthusiast</p>
+    </header>
+
+    <main>
+        <!-- 1. Giới thiệu bản thân -->
+        <section>
+            <h2>Giới thiệu bản thân</h2>
+            <p>Xin chào! Tôi là một lập trình viên Front-end đang trên con đường hoàn thiện kỹ năng xây dựng giao diện người dùng thân thiện, tối ưu trải nghiệm và đáp ứng tốt trên mọi thiết bị.</p>
+        </section>
+
+        <!-- 2. Kỹ năng (Skills) -->
+        <section>
+            <h2>Kỹ năng chuyên môn</h2>
+            <div class="skills-grid">
+                <div class="skill-item">HTML5 / CSS3</div>
+                <div class="skill-item">JavaScript (ES6)</div>
+                <div class="skill-item">Responsive Design</div>
+                <div class="skill-item">Git / GitHub</div>
+                <div class="skill-item">Chrome DevTools</div>
+                <div class="skill-item">UI/UX Basics</div>
+            </div>
+        </section>
+
+        <!-- 3. Dự án tiêu biểu (Projects) -->
+        <section>
+            <h2>Dự án tiêu biểu</h2>
+            <div class="project-card">
+                <div class="item-title">Smart Color Palette App</div>
+                <div class="item-time">Tháng 2 / 2026</div>
+                <p>Ứng dụng web giúp nhà thiết kế quản lý mã màu, tùy chỉnh biến CSS trực tiếp trên giao diện trình duyệt một cách nhanh chóng.</p>
+                <a href="#" class="btn">Xem Source Code</a>
+            </div>
+            <div class="project-card">
+                <div class="item-title">E-commerce Landing Page</div>
+                <div class="item-time">Tháng 1 / 2026</div>
+                <p>Trang thương mại điện tử mẫu tương thích đa thiết bị (Mobile, Tablet, Desktop) sử dụng CSS Grid và Flexbox.</p>
+                <a href="#" class="btn">Xem Trang Trực Tuyến</a>
+            </div>
+        </section>
+
+        <!-- 4. Kinh nghiệm & Học tập (Experience & Education) -->
+        <section>
+            <h2>Học tập & Kinh nghiệm</h2>
+            <div class="timeline-item">
+                <div class="item-title">Thực tập sinh Front-End tại TechCorp</div>
+                <div class="item-time">2025 - Hiện tại</div>
+                <p>Tham gia phát triển giao diện website thương mại điện tử, tối ưu hóa tốc độ tải trang và fix lỗi hiển thị trên thiết bị di động.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="item-title">Sinh viên chuyên ngành Công nghệ thông tin</div>
+                <div class="item-time">2023 - Nay</div>
+                <p>Đang theo học các học phần về Lập trình Web nâng cao, Thiết kế Giao diện và Quản trị cơ sở dữ liệu tại trường.</p>
+            </div>
+        </section>
+
+        <!-- 5. Thông tin liên lạc & Form liên hệ (Contact) -->
+        <section>
+            <h2>Thông tin liên lạc</h2>
+            <ul class="contact-info">
+                <li><strong>Email:</strong> tranvanbao.dev@example.com</li>
+                <li><strong>Điện thoại:</strong> (+84) 912 345 678</li>
+                <li><strong>Địa chỉ:</strong> TP. Hồ Chí Minh, Việt Nam</li>
+                <li><strong>GitHub:</strong> github.com/username-portfolio</li>
+            </ul>
+
+            <h3 class="contact-sub-title">Gửi tin nhắn cho tôi:</h3>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã gửi tin nhắn!');">
+                <div class="form-group">
+                    <label for="name">Họ và tên</label>
+                    <input type="text" id="name" placeholder="Nhập tên của bạn..." required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email của bạn</label>
+                    <input type="email" id="email" placeholder="Nhập email..." required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Nội dung tin nhắn</label>
+                    <textarea id="message" rows="4" placeholder="Nhập nội dung bạn muốn trao đổi..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit">Gửi đi</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Trần Văn Bảo. Được thiết kế đồng bộ với CSS Variables và Responsive.</p>
+    </footer>
+
+</body>
+</html>
