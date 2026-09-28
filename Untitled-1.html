@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cá Nhân - Responsive 3 Thiết Bị & 3 Cột Bằng Khen</title>
+    <!-- Liên kết file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Banner tích hợp ảnh đại diện linh hoạt -->
+    <header>
+        <div class="avatar-container">
+            <img src="https://s160-26-ava-talk.zadn.vn/61/38315526fb90f1526fa32eb4988a8768.jpg?key=Eioht5Rz9sqe8ny32co3ew&time=1795769548">
+        </div>
+        <h1>Tô Vũ Hoàng Anh</h1>
+        <p>Front-End Developer & UI/UX Design Enthusiast</p>
+    </header>
+
+    <main>
+        <!-- 1. Giới thiệu bản thân -->
+        <section>
+            <h2>Giới thiệu bản thân</h2>
+            <p>Xin chào! Tôi là một lập trình viên Front-end đang xây dựng giao diện người dùng thân thiện, tối ưu trải nghiệm mượt mà trên mọi thiết bị từ Máy tính, Tablet đến Điện thoại.</p>
+        </section>
+
+        <!-- 2. Kỹ năng chuyên môn -->
+        <section>
+            <h2>Kỹ năng chuyên môn</h2>
+            <div class="skills-grid">
+                <div class="skill-item">HTML5 / CSS3</div>
+                <div class="skill-item">JavaScript (ES6)</div>
+                <div class="skill-item">Responsive Design</div>
+                <div class="skill-item">Git / GitHub</div>
+                <div class="skill-item">Chrome DevTools</div>
+                <div class="skill-item">UI/UX Basics</div>
+            </div>
+        </section>
+
+        <!-- 3. Bằng khen & Chứng nhận (Chia 3 cột, có hình ảnh) -->
+        <section>
+            <h2>Bằng khen & Chứng nhận</h2>
+            <div class="certificates-grid">
+                <div class="cert-card">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80" alt="Bằng khen 1" class="cert-img">
+                    <div class="cert-title">Giải Nhất Lập Trình Web</div>
+                    <div class="cert-time">Năm 2025</div>
+                </div>
+                <div class="cert-card">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80" alt="Bằng khen 2" class="cert-img">
+                    <div class="cert-title">Chứng chỉ Front-End Xuất Sắc</div>
+                    <div class="cert-time">Năm 2024</div>
+                </div>
+                <div class="cert-card">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop&q=80" alt="Bằng khen 3" class="cert-img">
+                    <div class="cert-title">Học tập Tiêu biểu Cấp Trường</div>
+                    <div class="cert-time">Năm 2023</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Dự án tiêu biểu -->
+        <section>
+            <h2>Dự án tiêu biểu</h2>
+            <div class="project-card">
+                <div class="item-title">Smart Color Palette App</div>
+                <div class="item-time">Tháng 2 / 2026</div>
+                <p>Ứng dụng web giúp quản lý mã màu và tùy biến biến CSS trực tiếp trên trình duyệt.</p>
+                <a href="#" class="btn">Xem Source Code</a>
+            </div>
+            <div class="project-card">
+                <div class="item-title">E-commerce Landing Page</div>
+                <div class="item-time">Tháng 1 / 2026</div>
+                <p>Trang thương mại điện tử tương thích đa thiết bị sử dụng CSS Grid và Flexbox.</p>
+                <a href="#" class="btn">Xem Trang Trực Tuyến</a>
+            </div>
+        </section>
+
+        <!-- 5. Thông tin liên lạc -->
+        <section>
+            <h2>Thông tin liên lạc</h2>
+            <ul class="contact-info">
+                <li><strong>Email:</strong> tranvanbao.dev@example.com</li>
+                <li><strong>Điện thoại:</strong> (+84) 912 345 678</li>
+                <li><strong>Địa chỉ:</strong> TP. Hồ Chí Minh, Việt Nam</li>
+            </ul>
+
+            <h3 class="contact-sub-title">Gửi tin nhắn cho tôi:</h3>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã gửi tin nhắn!');">
+                <div class="form-group">
+                    <label for="name">Họ và tên</label>
+                    <input type="text" id="name" placeholder="Nhập tên của bạn..." required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email của bạn</label>
+                    <input type="email" id="email" placeholder="Nhập email..." required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Nội dung tin nhắn</label>
+                    <textarea id="message" rows="4" placeholder="Nhập nội dung..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit">Gửi đi</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Trần Văn Bảo. Responsive cho Desktop, Tablet và Mobile.</p>
+    </footer>
+
+</body>
+</html>
