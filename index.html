@@ -2,10 +2,282 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Thiết kế Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cá Nhân - Responsive & UI Animations</title>
+    <!-- Liên kết file CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Thư viện AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Website của nhóm</h1>
-    <p>Chào mừng đến với website của chúng tôi.</p>
+
+    <!-- MÀN HÌNH LOADING TOÀN TRANG (THUẦN HTML & CSS) -->
+    <div id="page-loader">
+        <div class="loader-content">
+            <div class="spinner-border"></div>
+            <p style="margin-top: 15px; font-weight: 600; color: var(--primary-color);">Đang tải trang Portfolio...</p>
+        </div>
+    </div>
+
+    <!-- Header / Banner tích hợp ảnh đại diện linh hoạt -->
+    <header id="home" style="align-items: center;">
+        <div class="avatar-container">
+            <img src="https://s160-26-ava-talk.zadn.vn/61/38315526fb90f1526fa32eb4988a8768.jpg?key=Eioht5Rz9sqe8ny32co3ew&time=1795769548" alt="Avatar" width="80" style="border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 3px solid #fff;">
+        </div>
+        
+        <!-- Thêm thanh điều hướng (Navigation Menu) vào khoảng trống ở giữa -->
+        <nav class="main-nav">
+            <!-- Nút Hamburger Menu -->
+            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <label for="menu-toggle" class="menu-btn" id="menuBtn">
+                <div class="menu-btn-burger"></div>
+            </label>
+            
+            <ul class="nav-links" style="display: flex; gap: 2.5rem; list-style: none; margin: 0; padding: 0;">
+                <li><a href="#about" style="font-weight: 600; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 1px; color: var(--text-color);">Giới Thiệu</a></li>
+                <li><a href="#profile-card" style="font-weight: 600; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 1px; color: var(--text-color);">Hồ Sơ</a></li>
+                <li><a href="#skills" style="font-weight: 600; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 1px; color: var(--text-color);">Kỹ Năng</a></li>
+                <li><a href="#projects" style="font-weight: 600; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 1px; color: var(--text-color);">Dự Án</a></li>
+            </ul>
+        </nav>
+
+        <div style="text-align: center;">
+            <h1 style="font-size: 1.8rem; margin-bottom: 5px;">Tô Vũ Hoàng Anh</h1>
+            <div class="typing-wrapper" style="display: flex; justify-content: center; margin: 5px 0;">
+                <p class="typing-effect" style="font-size: 1rem; margin: 0;">Tôi là một Web Developer...</p>
+            </div>
+            <p style="font-size: 0.9rem; color: #475569; margin-top: 5px; font-weight: 500;">UI/UX Design Enthusiast</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Giới thiệu bản thân -->
+        <section id="about" data-aos="fade-up">
+            <h2>Giới thiệu bản thân</h2>
+            <p>Xin chào! Tôi là một lập trình viên Front-end đang xây dựng giao diện người dùng thân thiện, tối ưu trải nghiệm mượt mà trên mọi thiết bị từ Máy tính, Tablet đến Điện thoại.</p>
+        </section>
+
+        <!-- Thẻ nhân sự (Flip Card) -->
+        <section id="profile-card" data-aos="zoom-in" style="border-color: #3b82f6; background-color: #eff6ff;">
+            <h2>Thẻ Nhân Sự (Flip Card 3D)</h2>
+            <div class="card-wrapper">
+                <div class="flip-card">
+                    <!-- Mặt trước -->
+                    <div class="flip-card-front">
+                        <div class="front-header"></div>
+                        <div class="avatar-flip-container">
+                            <img src="https://s160-26-ava-talk.zadn.vn/61/38315526fb90f1526fa32eb4988a8768.jpg?key=Eioht5Rz9sqe8ny32co3ew&time=1795769548" alt="Avatar">
+                        </div>
+                        <div class="front-body">
+                            <h3 style="color:#1e293b; margin-bottom:5px;">Tô Vũ Hoàng Anh</h3>
+                            <p class="title" style="color:#2563eb; font-weight:600;">Hacker & Developer</p>
+                            <p class="company" style="color:#64748b; font-size:0.9rem; margin-top:5px;">Trường Đại Học Lạc Hồng University</p>
+                        </div>
+                        <div class="front-footer">
+                            <span>Hover (Di chuột) để lật thẻ</span>
+                        </div>
+                    </div>
+                    <!-- Mặt sau -->
+                    <div class="flip-card-back">
+                        <h3 style="color:#38bdf8; text-align:center; margin-bottom:15px;">Thông Tin Liên Hệ</h3>
+                        <hr style="border:none; height:1px; background:#334155; margin-bottom:20px;">
+                        <div class="contact-flip-info">
+                            <p><strong>📞</strong> (+84) 339 928 265</p>
+                            <p><strong>✉️</strong> hoanganh1405007@gmail.com</p>
+                            <p><strong>📍</strong> Phường Tân Triều, TP. Đồng Nai</p>
+                        </div>
+                        <button class="btn-flip-contact">Tải CV / Hồ sơ</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Kỹ năng chuyên môn -->
+        <section id="skills" data-aos="fade-right">
+            <h2>Kỹ năng chuyên môn</h2>
+            <div class="skill-bars-container">
+                <div class="skill-bar-wrapper">
+                    <div class="skill-info">
+                        <span class="skill-name">HTML5 / CSS3</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-progress-track">
+                        <div class="skill-progress-fill" style="--target-width: 90%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar-wrapper">
+                    <div class="skill-info">
+                        <span class="skill-name">JavaScript (ES6)</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                    <div class="skill-progress-track">
+                        <div class="skill-progress-fill" style="--target-width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar-wrapper">
+                    <div class="skill-info">
+                        <span class="skill-name">Responsive Design</span>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                    <div class="skill-progress-track">
+                        <div class="skill-progress-fill" style="--target-width: 80%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar-wrapper">
+                    <div class="skill-info">
+                        <span class="skill-name">UI/UX Basics</span>
+                        <span class="skill-percentage">75%</span>
+                    </div>
+                    <div class="skill-progress-track">
+                        <div class="skill-progress-fill" style="--target-width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Bằng khen & Chứng nhận -->
+        <section data-aos="fade-left">
+            <h2>Bằng khen & Chứng nhận</h2>
+            <div class="certificates-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <div class="cert-card" style="background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80" alt="Bằng khen 1" class="cert-img" style="width: 100%; border-radius: 8px; object-fit: cover; height: 160px;">
+                    <div class="cert-title" style="font-weight: 600; margin-top: 10px;">Giải Nhất Lập Trình Web</div>
+                    <div class="cert-time" style="font-size: 0.85rem; color: var(--text-muted);">Năm 2025</div>
+                </div>
+                <div class="cert-card" style="background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80" alt="Bằng khen 2" class="cert-img" style="width: 100%; border-radius: 8px; object-fit: cover; height: 160px;">
+                    <div class="cert-title" style="font-weight: 600; margin-top: 10px;">Chứng chỉ Front-End Xuất Sắc</div>
+                    <div class="cert-time" style="font-size: 0.85rem; color: var(--text-muted);">Năm 2024</div>
+                </div>
+                <div class="cert-card" style="background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop&q=80" alt="Bằng khen 3" class="cert-img" style="width: 100%; border-radius: 8px; object-fit: cover; height: 160px;">
+                    <div class="cert-title" style="font-weight: 600; margin-top: 10px;">Học tập Tiêu biểu Cấp Trường</div>
+                    <div class="cert-time" style="font-size: 0.85rem; color: var(--text-muted);">Năm 2023</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Parallax -->
+        <div class="parallax-banner" data-aos="fade-in">
+            <h2>Mang ý tưởng vào thực tế</h2>
+            <p>Khám phá những dự án tâm huyết của mình ở phần bên dưới</p>
+        </div>
+
+        <!-- 4. Dự án tiêu biểu -->
+        <section id="projects" data-aos="fade-up">
+            <h2>Dự án tiêu biểu</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="item-title"><h3>Smart Color Palette App</h3></div>
+                    <div class="item-time">Tháng 2 / 2026</div>
+                    <p>Ứng dụng web giúp quản lý mã màu và tùy biến biến CSS trực tiếp trên trình duyệt.</p>
+                    <a href="#" class="btn" style="display:inline-block; margin-top:10px; padding:8px 15px; background:var(--primary-color); color:#fff; border-radius:4px;">Xem Source Code</a>
+                </article>
+                <article class="project-card">
+                    <div class="item-title"><h3>E-commerce Landing Page</h3></div>
+                    <div class="item-time">Tháng 1 / 2026</div>
+                    <p>Trang thương mại điện tử tương thích đa thiết bị sử dụng CSS Grid và Flexbox.</p>
+                    <a href="#" class="btn" style="display:inline-block; margin-top:10px; padding:8px 15px; background:var(--primary-color); color:#fff; border-radius:4px;">Xem Trang Trực Tuyến</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- 5. Hiệu ứng UI Components -->
+        <section id="ui-components" data-aos="zoom-in">
+            <h2>Hiệu ứng UI Components (Loading Indicator)</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Hiệu ứng vòng tròn xoay liên tục sử dụng thuần CSS `@keyframes` để làm biểu tượng tải dữ liệu.</p>
+            
+            <div class="loading-container" style="display: flex; justify-content: center; align-items: center; gap: 3rem; padding: 20px; flex-wrap: wrap;">
+                <!-- Kiểu 1: Vòng tròn xoay viền đơn -->
+                <div class="loader-wrapper" style="text-align: center;">
+                    <div class="spinner-border"></div>
+                    <span style="display: block; margin-top: 10px; font-size: 0.9rem; font-weight: 500;">Border Spinner</span>
+                </div>
+
+                <!-- Kiểu 2: Vòng tròn chấm bi xoay -->
+                <div class="loader-wrapper" style="text-align: center;">
+                    <div class="spinner-dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <span style="display: block; margin-top: 10px; font-size: 0.9rem; font-weight: 500;">Dots Spinner</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Thông tin liên lạc -->
+        <section id="contact" data-aos="fade-up">
+            <h2>Thông tin liên lạc</h2>
+            <ul class="contact-info" style="list-style: none;">
+                <li><strong>Email:</strong> hoanganh1405007.dev@gmail.com</li>
+                <li><strong>Điện thoại:</strong> (+84) 339 928 265</li>
+                <li><strong>Địa chỉ:</strong> TP. Đồng Nai, Việt Nam</li>
+            </ul>
+
+            <h3 class="contact-sub-title" style="margin-top: 1.5rem;">Gửi tin nhắn cho tôi:</h3>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã gửi tin nhắn!');">
+                <fieldset style="margin-top: 1rem;">
+                    <legend>Liên hệ trực tiếp</legend>
+                    <div class="form-group">
+                        <label for="name">Họ và tên</label>
+                        <input type="text" id="name" placeholder="Nhập tên của bạn..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email của bạn</label>
+                        <input type="email" id="email" placeholder="Nhập email..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Nội dung tin nhắn</label>
+                        <textarea id="message" rows="4" placeholder="Nhập nội dung..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Gửi đi</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Tô Vũ Hoàng Anh. Responsive cho Desktop, Tablet và Mobile.</p>
+    </footer>
+
+    <!-- NÚT FAB LIÊN HỆ -->
+    <a href="#contact" class="fab-button" aria-label="Liên hệ với tôi">
+        Liên hệ
+    </a>
+
+    <!-- Thư viện AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Khởi tạo AOS
+        AOS.init({
+            duration: 1000, // Thời gian chạy hiệu ứng (1 giây)
+            once: true,     // Chỉ chạy 1 lần duy nhất khi cuộn tới
+            offset: 100     // Khoảng cách kích hoạt hiệu ứng
+        });
+    </script>
+
+    <!-- Xử lý sự kiện click cho Hamburger Menu -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        let menuOpen = false;
+        
+        menuBtn.addEventListener('click', () => {
+            if(!menuOpen) {
+                menuBtn.classList.add('open');
+                navLinks.classList.add('active'); 
+                menuOpen = true;
+            } else {
+                menuBtn.classList.remove('open');
+                navLinks.classList.remove('active');
+                menuOpen = false;
+            }
+        });
+    </script>
 </body>
 </html>
