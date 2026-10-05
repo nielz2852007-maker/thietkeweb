@@ -1,0 +1,1022 @@
+/* ========================================================
+   FILE: htai.css
+   Tác giả: Nguyễn Lê Hữu Tài
+   Mô tả: File CSS hoàn chỉnh đáp ứng 6 yêu cầu từ ảnh
+   ======================================================== */
+
+/* 1. BIẾN MÀU SẮC & THIẾT LẬP CHUNG */
+:root {
+    --primary: #2563eb;
+    --accent: #06b6d4;
+    --dark-bg: #090d16;
+    --card-bg: #111827;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-code: 'Fira Code', monospace;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--dark-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--accent);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 14px;
+}
+
+.section-desc {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 26px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
+}
+
+.btn-outline {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border: 1px solid var(--card-border);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ========================================================
+   2. NAVBAR & BÀI 5: MODERN HAMBURGER MENU (CSS TRANSITIONS)
+   ======================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(9, 13, 22, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.brand-logo {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-logo span {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+   background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Ẩn checkbox hack */
+.nav-toggle {
+    display: none;
+}
+
+/* Biểu tượng Hamburger 3 gạch */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+/* BÀI 5: Biến đổi 3 gạch thành dấu "X" mượt mà bằng CSS Transition */
+.nav-toggle:checked + .hamburger .bar:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+
+.nav-toggle:checked + .hamburger .bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.nav-toggle:checked + .hamburger .bar:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #fff;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: var(--transition);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ========================================================
+   3. SECTION 1: TRANG CHỦ & BÀI 3: TYPING EFFECT (CSS THUẦN)
+   ======================================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    background: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 45%);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-greeting {
+    font-size: 1.15rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-name {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+.hero-name .highlight {
+    background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* BÀI 3: TYPING EFFECT - CSS THUẦN KHÔNG DÙNG JS */
+.typing-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 22px;
+    font-size: clamp(1.15rem, 2.5vw, 1.7rem);
+    font-family: var(--font-code);
+    font-weight: 600;
+    color: #60a5fa;
+}
+
+.typing-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #38bdf8;
+    width: 0;
+    animation: typingEffect 4s steps(26, end) infinite alternate,
+               caretBlink 0.75s step-end infinite;
+}
+
+@keyframes typingEffect {
+    0% { width: 0; }
+    45% { width: 26ch; }
+    85% { width: 26ch; }
+    100% { width: 0; }
+}
+
+@keyframes caretBlink {
+    from, to { border-color: transparent; }
+    50% { border-color: #38bdf8; }
+}
+
+.hero-bio {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+    max-width: 540px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.code-window {
+    background: rgba(17, 24, 39, 0.85);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    font-family: var(--font-code);
+    font-size: 0.88rem;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.code-dots {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot-red { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green { background: #10b981; }
+
+.code-content .comment { color: #64748b; }
+.code-content .keyword { color: #f43f5e; }
+.code-content .prop { color: #38bdf8; }
+.code-content .val { color: #34d399; }
+
+/* ========================================================
+   4. SECTION 2: VỀ TÔI & BÀI 2: CARD FLIP EFFECT (LẬT 180 ĐỘ)
+   ======================================================== */
+.section-about {
+    padding: 100px 0;
+    background: #0d121f;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* BÀI 2: CARD FLIP EFFECT */
+.card-flip-container {
+    perspective: 1200px;
+    width: 100%;
+    max-width: 330px;
+    height: 460px;
+    margin: 0 auto;
+}
+
+.card-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Khi hover thì lật 180 độ */
+.card-flip-container:hover .card-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 32px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--card-border);
+}
+
+.card-front {
+    background: linear-gradient(160deg, #1e293b 0%, #0f172a 100%);
+}
+
+.card-avatar-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 18px;
+}
+
+.card-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 18px rgba(6, 182, 212, 0.4);
+}
+
+.online-badge {
+    position: absolute;
+    bottom: 4px;
+    right: 8px;
+    width: 15px;
+    height: 15px;
+    background: #10b981;
+    border: 2px solid #1e293b;
+    border-radius: 50%;
+}
+
+.card-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.card-title {
+    color: var(--accent);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.badge-tag {
+    background: rgba(37, 99, 235, 0.2);
+    color: #93c5fd;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+}
+
+.flip-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: bounceUpDown 1.8s infinite;
+}
+
+@keyframes bounceUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+.card-back {
+    background: linear-gradient(160deg, #172554 0%, #0f172a 100%);
+    transform: rotateY(180deg);
+    border-color: rgba(37, 99, 235, 0.4);
+}
+
+.card-back-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 22px;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 6px;
+}
+
+.contact-info-list {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+}
+
+.contact-info-item i {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: rgba(6, 182, 212, 0.15);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-back-socials {
+    display: flex;
+    gap: 10px;
+}
+
+.card-back-socials a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: var(--transition);
+}
+
+.card-back-socials a:hover {
+    background: var(--primary);
+    transform: translateY(-3px);
+}
+
+.about-text h3 {
+    font-size: 1.7rem;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.about-text p {
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    font-size: 1rem;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.stat-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--card-border);
+    padding: 18px 12px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stat-num {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ========================================================
+   5. SECTION 3: KỸ NĂNG & BÀI 6: SKILL BAR ANIMATION
+   ======================================================== */
+.section-skills {
+    padding: 100px 0;
+    background: var(--dark-bg);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+}
+
+.skill-group {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 32px 26px;
+    border-radius: 16px;
+}
+
+.skill-group h3 {
+    font-size: 1.25rem;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+}
+
+.skill-group h3 i {
+    color: var(--accent);
+}
+
+.skill-item {
+    margin-bottom: 20px;
+}
+
+.skill-item:last-child {
+    margin-bottom: 0;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.92rem;
+}
+
+.skill-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+}
+
+.skill-percent {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.skill-progress-track {
+    width: 100%;
+    height: 9px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* BÀI 6: Thanh kỹ năng tự chạy từ 0% đến giá trị đích khi tải trang */
+.skill-bar {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    width: 0%;
+}
+
+.skill-html  { animation: fillHTML 2s ease-out forwards; }
+.skill-css   { animation: fillCSS 2s ease-out forwards; }
+.skill-js    { animation: fillJS 2s ease-out forwards; }
+.skill-react { animation: fillReact 2s ease-out forwards; }
+.skill-node  { animation: fillNode 2s ease-out forwards; }
+.skill-git   { animation: fillGit 2s ease-out forwards; }
+
+@keyframes fillHTML  { from { width: 0%; } to { width: 90%; } }
+@keyframes fillCSS   { from { width: 0%; } to { width: 85%; } }
+@keyframes fillJS    { from { width: 0%; } to { width: 80%; } }
+@keyframes fillReact { from { width: 0%; } to { width: 75%; } }
+@keyframes fillNode  { from { width: 0%; } to { width: 70%; } }
+@keyframes fillGit   { from { width: 0%; } to { width: 90%; } }
+
+/* ========================================================
+   6. BÀI 4: PARALLAX IMAGE BANNER (background-attachment: fixed)
+   ======================================================== */
+.parallax-banner {
+    background-image: linear-gradient(rgba(9, 13, 22, 0.8), rgba(9, 13, 22, 0.85)), 
+                      url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1920&q=80');
+    min-height: 360px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 24px;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.parallax-content {
+    max-width: 780px;
+}
+
+.parallax-quote {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 14px;
+    line-height: 1.4;
+}
+
+.parallax-author {
+    color: var(--accent);
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+/* ========================================================
+   7. SECTION 4: DỰ ÁN TIÊU BIỂU (PROJECTS)
+   ======================================================== */
+.section-projects {
+    padding: 100px 0;
+    background: #0d121f;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.project-thumb {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.project-card:hover .project-thumb img {
+    transform: scale(1.08);
+}
+
+.project-body {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.project-tags span {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.project-desc {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.project-links {
+    display: flex;
+    gap: 12px;
+}
+
+.project-btn {
+    font-size: 0.88rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+/* ========================================================
+   8. SECTION 5: LIÊN HỆ (CONTACT)
+   ======================================================== */
+.section-contact {
+    padding: 100px 0 70px 0;
+    background: var(--dark-bg);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 45px;
+}
+
+.contact-card-info {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 36px 28px;
+    border-radius: 16px;
+}
+
+.contact-card-info h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 14px;
+}
+
+.contact-card-info p {
+    color: var(--text-muted);
+    margin-bottom: 28px;
+}
+
+.contact-detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.contact-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    color: var(--accent);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+}
+
+.contact-text h4 {
+    color: #fff;
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+}
+
+.contact-text span {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+.contact-form {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 36px 28px;
+    border-radius: 16px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #e2e8f0;
+    font-size: 0.88rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.92rem;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ========================================================
+   9. BÀI 1: FLOATING ACTION BUTTON (FAB) VỚI PULSE ANIMATION
+   ======================================================== */
+.fab-contact {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+    /* BÀI 1: HIỆU ỨNG PHẬP PHỒNG (PULSE) */
+    animation: pulseAnimation 2s infinite ease-in-out;
+    transition: transform 0.3s ease;
+}
+
+.fab-contact i {
+    font-size: 1.35rem;
+}
+
+.fab-contact .fab-text {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+}
+
+.fab-contact:hover {
+    transform: scale(1.12);
+}
+
+@keyframes pulseAnimation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+    }
+    70% {
+        transform: scale(1.06);
+        box-shadow: 0 0 0 18px rgba(37, 99, 235, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+    }
+}
+
+.footer {
+    border-top: 1px solid var(--card-border);
+    padding: 28px 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+/* ========================================================
+   10. RESPONSIVE THUẦN CSS
+   ======================================================== */
+@media (max-width: 992px) {
+    .hero-grid, .about-grid, .skills-grid, .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .code-window { display: none; }
+}
+
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(9, 13, 22, 0.98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 26px;
+        transition: left 0.4s ease;
+    }
+
+    /* Mở menu khi checkbox được check (Thuần CSS) */
+    .nav-toggle:checked ~ nav .nav-menu {
+        left: 0;
+    }
+
+    .form-row { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr; }
+}
