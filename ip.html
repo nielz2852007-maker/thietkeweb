@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyễn Văn A — Lập trình viên Frontend</title>
+  <meta name="description" content="Portfolio cá nhân của Nguyễn Văn A, lập trình viên Frontend chuyên về HTML, CSS và JavaScript.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo">NVA<span>.</span></a>
+      <nav class="nav" aria-label="Điều hướng chính">
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#ky-nang">Kỹ năng</a>
+        <a href="#du-an">Dự án</a>
+        <a href="#kinh-nghiem">Kinh nghiệm</a>
+        <a href="#lien-he">Liên hệ</a>
+      </nav>
+      <a href="#lien-he" class="btn btn--sm header__cta">Hire me</a>
+      <button class="toggle" id="menuBtn" aria-label="Mở menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="badge">Sẵn sàng cho dự án mới</p>
+          <h1>Xin chào, tôi là <span class="grad">Nguyễn Văn A</span></h1>
+          <p class="hero__desc">
+            Lập trình viên Frontend với 4 năm kinh nghiệm xây dựng giao diện web nhanh,
+            gọn và dễ sử dụng. Tôi thích biến ý tưởng thành sản phẩm thực tế.
+          </p>
+          <div class="hero__actions">
+            <a href="#du-an" class="btn">Xem dự án</a>
+            <a href="#lien-he" class="btn btn--ghost">Liên hệ</a>
+          </div>
+          <ul class="stats">
+            <li><strong>4+</strong><span>Năm kinh nghiệm</span></li>
+            <li><strong>30+</strong><span>Dự án hoàn thành</span></li>
+            <li><strong>12</strong><span>Khách hàng</span></li>
+          </ul>
+        </div>
+        <div class="hero__visual">
+          <div class="avatar-wrap">
+            <div class="avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gioi-thieu">
+      <div class="container about">
+        <div class="about__col">
+          <h2 class="section__title">Giới thiệu</h2>
+          <p>
+            Tôi bắt đầu với niềm yêu thích thiết kế giao diện từ năm 2021 và hiện
+            tập trung vào việc xây dựng hệ thống thiết kế có khả năng mở rộng cho
+            các sản phẩm SaaS và thương mại điện tử.
+          </p>
+          <p>
+            Tôi làm việc chủ yếu với HTML/CSS thuần khi cần tối ưu hiệu năng, và
+            framework JavaScript khi dự án lớn. Ngoài code, tôi dành thời gian
+            thiết kế hệ thống component để giảm thời gian phát triển.
+          </p>
+          <ul class="facts">
+            <li><span>Địa điểm</span>Hà Nội, Việt Nam</li>
+            <li><span>Email</span>hello@example.com</li>
+            <li><span>Ngôn ngữ</span>Tiếng Việt, English</li>
+          </ul>
+        </div>
+        <div class="about__col">
+          <div class="card card--service">
+            <h3>Dịch vụ</h3>
+            <ul class="ticks">
+              <li>Thiết kế giao diện responsive</li>
+              <li>Chuyển đổi thiết kế Figma sang code</li>
+              <li>Tối ưu tốc độ &amp; Core Web Vitals</li>
+              <li>Hệ thiết kế design system</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="ky-nang">
+      <div class="container">
+        <h2 class="section__title section__title--center">Kỹ năng</h2>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon">&lt;/&gt;</div>
+            <h3>Frontend</h3>
+            <p>HTML5, CSS3, JavaScript ES6+, TypeScript. Xây dựng giao diện sạch, không phụ thuộc framework.</p>
+            <div class="bar"><span style="--p:95%"></span></div>
+            <small>95%</small>
+          </article>
+          <article class="card">
+            <div class="card__icon">⚛</div>
+            <h3>Framework</h3>
+            <p>React, Next.js, Vue 3. Quen thuộc với hooks, SSR và quản lý state phức tạp.</p>
+            <div class="bar"><span style="--p:85%"></span></div>
+            <small>85%</small>
+          </article>
+          <article class="card">
+            <div class="card__icon">{ }</div>
+            <h3>Tooling</h3>
+            <p>Git, Vite, Webpack, ESLint. Tự động hoá pipeline build và kiểm thử giao diện.</p>
+            <div class="bar"><span style="--p:75%"></span></div>
+            <small>75%</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="du-an">
+      <div class="container">
+        <h2 class="section__title section__title--center">Dự án tiêu biểu</h2>
+        <div class="grid grid--3">
+          <article class="card card--project">
+            <span class="tag">Web App</span>
+            <h3>Quản lý công việc</h3>
+            <p>Bảng kanban realtime với drag &amp; drop, đồng bộ dữ liệu offline và thông báo đẩy.</p>
+            <a class="link" href="#">Xem dự án →</a>
+          </article>
+          <article class="card card--project">
+            <span class="tag">Thương mại điện tử</span>
+            <h3>Cửa hàng trực tuyến</h3>
+            <p>Trang sản phẩm tối ưu tốc độ, bộ lọc thông minh và thanh toán nhiều phương thức.</p>
+            <a class="link" href="#">Xem dự án →</a>
+          </article>
+          <article class="card card--project">
+            <span class="tag">Landing page</span>
+            <h3>Chiến dịch ra mắt</h3>
+            <p>Landing page tĩnh đạt điểu Lighthouse 99/100, điểm cao trên Google PageSpeed.</p>
+            <a class="link" href="#">Xem dự án →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="kinh-nghiem">
+      <div class="container">
+        <h2 class="section__title section__title--center">Kinh nghiệm</h2>
+        <ol class="timeline">
+          <li>
+            <span class="timeline__year">2023 — nay</span>
+            <h3>Frontend Lead</h3>
+            <p>Studio Digital</p>
+            <p>Dẫn dắt nhóm 5 người, tái cấu trúc design system và giảm 40% thời gian phát triển.</p>
+          </li>
+          <li>
+            <span class="timeline__year">2021 — 2023</span>
+            <h3>Frontend Developer</h3>
+            <p>Công ty TNHH Giải pháp Số</p>
+            <p>Xây dựng hệ thống thương mại điện tử phục vụ hơn 200 nghìn người dùng.</p>
+          </li>
+          <li>
+            <span class="timeline__year">2020 — 2021</span>
+            <h3>Thực tập sinh</h3>
+            <p>Khởi nghiệp</p>
+            <p>Cắt giao diện từ Figma, học và áp dụng quy trình kiểm thử giao diện.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="lien-he">
+      <div class="container">
+        <div class="cta">
+          <h2 class="section__title section__title--center">Cùng làm việc với tôi</h2>
+          <p class="cta__text">
+            Bạn đang có ý tưởng hoặc dự án cần hỗ trợ? Gửi email cho tôi, tôi sẽ phản hồi trong 24 giờ.
+          </p>
+          <div class="cta__actions">
+            <a href="mailto:hello@example.com" class="btn">Gửi email</a>
+            <a href="#" class="btn btn--ghost">Tải CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>&copy; 2026 Nguyễn Văn A. Được xây dựng bằng HTML &amp; CSS thuần.</p>
+      <ul class="social">
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Twitter</a></li>
+      </ul>
+      <a href="#top" class="totop">Lên đầu trang ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.header');
+    const btn = document.getElementById('menuBtn');
+    const nav = document.querySelector('.nav');
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('nav--open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    nav.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('nav--open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('scroll', () => {
+      header.classList.toggle('header--sticky', window.scrollY > 10);
+    });
+  </script>
+</body>
+</html>
