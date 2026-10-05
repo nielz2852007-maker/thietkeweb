@@ -1,284 +1,501 @@
 /* ==========================================
-   1. ĐỊNH NGHĨA BIẾN CSS (MÀU SẮC & CẤU HÌNH)
-   ================================---------- */
+   CSS VARIABLES & CORE STYLES
+   ========================================== */
 :root {
-    --primary-color: #ff0000;    /* Màu chủ đạo 1 */
-    --secondary-color: #ed0f59;  /* Màu chủ đạo 2 */
-    --text-main: #2d3748;        /* Màu chữ chính (xám đậm) */
-    --text-muted: #718096;        /* Màu chữ phụ (xám vừa) */
-    --text-light: #e2e8f0;        /* Màu viền / đường kẻ (xám nhạt) */
-    --bg-color: #f7fafc;          /* Màu nền tổng thể */
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --text-light: #666666;
+    --border-color: #e0e0e0;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --radius: 8px;
 }
 
-/* ==========================================
-   2. THIẾT LẬP CHUNG & KÍCH THƯỚC
-   ================================---------- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
     line-height: 1.6;
-    font-size: 16px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 /* ==========================================
-   3. HEADER / BANNER (SỬ DỤNG FLEXBOX)
-   ================================---------- */
-header {
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-    color: #ffffff;
-    padding: 4rem 1rem;
-    
-    /* FLEXBOX: Căn giữa nội dung theo chiều dọc và ngang */
+   BÀI 5: MODERN HAMBURGER MENU (CSS TRANSITIONS)
+   ========================================== */
+.navbar {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    background-color: #1a1a1a;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
-header h1 {
+.logo {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Ẩn checkbox Toggle */
+#menu-toggle {
+    display: none;
+}
+
+/* Biểu tượng 3 gạch (Hamburger) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.4s ease; /* Chuyển đổi mượt mà */
+}
+
+/* Responsive Menu cho Mobile */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1a1a1a;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    #menu-toggle:checked ~ .nav-links {
+        max-height: 300px;
+    }
+
+    /* BÀI 5: Biến đổi 3 gạch thành dấu "X" */
+    #menu-toggle:checked ~ .hamburger .bar:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+    }
+
+    #menu-toggle:checked ~ .hamburger .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    #menu-toggle:checked ~ .hamburger .bar:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+    }
+}
+
+/* ==========================================
+   BÀI 4: PARALLAX BANNER
+   ========================================== */
+.parallax-banner {
+    /* Sử dụng hình ảnh nền chất lượng cao */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                      url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1350&q=80');
+    height: 350px;
+    background-attachment: fixed; /* Nền di chuyển chậm hơn khi cuộn */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+.banner-content h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
 }
 
-header p {
-    font-size: 1.2rem;
-    opacity: 0.9;
+/* ==========================================
+   BÀI 3: TYPING EFFECT (THUẦN CSS)
+   ========================================== */
+.typing-container {
+    display: inline-block;
+}
+
+.typing-text {
+    font-size: 1.3rem;
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #007bff; /* Con trỏ nhấp nháy */
+    width: 0;
+    /* Chạy hiệu ứng tự gõ chữ */
+    animation: typing 3.5s steps(28, end) forwards,
+               blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: #007bff; }
 }
 
 /* ==========================================
-   4. CONTAINER & BỐ CỤC CHÍNH (SỬ DỤNG CSS GRID)
-   ================================---------- */
+   LAYOUT CHÍNH
+   ========================================== */
 main {
-    max-width: 1100px;
-    margin: -2rem auto 3rem auto;
-    padding: 0 1rem;
-    
-    /* CSS GRID: Chia bố cục lớn thành các cột dạng dashboard */
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem 2rem 1rem;
 }
 
 section {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
 }
 
-section h2 {
+h2 {
     color: var(--primary-color);
-    border-bottom: 2px solid var(--text-light);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 0.5rem;
-    margin-bottom: 1.2rem;
-    font-size: 1.5rem;
 }
 
 /* ==========================================
-   5. PHẦN KỸ NĂNG (SKILLS GRID)
-   ================================---------- */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 1rem;
+   BÀI 2: CARD FLIP EFFECT (LẬT THẺ 180 ĐỘ)
+   ========================================== */
+.flip-card-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
 }
 
-.skill-item {
-    background-color: var(--bg-color);
-    border: 1px solid var(--text-light);
-    padding: 0.8rem;
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 320px;
+    perspective: 1000px; /* Tạo không gian 3D */
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
     text-align: center;
-    border-radius: 6px;
-    font-weight: 600;
-    color: var(--text-main);
-    transition: transform 0.2s, border-color 0.2s;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
-.skill-item:hover {
-    transform: translateY(-3px);
-    border-color: var(--primary-color);
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg); /* Lật 180 độ khi hover */
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; /* Cắt phần mặt sau khi bị lật */
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Mặt trước */
+.flip-card-front {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.flip-card-front .role {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 0.2rem;
+}
+
+.flip-card-front .hint {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 1rem;
+}
+
+/* Mặt sau */
+.flip-card-back {
+    background-color: var(--primary-color);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-card-back h3 {
+    margin-bottom: 1rem;
+}
+
+.flip-card-back p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.btn-light {
+    background-color: white;
+    color: var(--primary-color);
+    font-weight: bold;
 }
 
 /* ==========================================
-   6. DỰ ÁN & KINH NGHIỆM (SỬ DỤNG FLEXBOX)
-   ================================---------- */
-.timeline-item, .project-card {
-    margin-bottom: 1.2rem;
-    padding-bottom: 1.2rem;
-    border-bottom: 1px dashed var(--text-light);
+   BÀI 6: SKILL BAR ANIMATION (0% ĐẾN ĐÍCH)
+   ========================================== */
+.skills-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
-.timeline-item:last-child, .project-card:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-/* FLEXBOX: Dùng để phân tách tiêu đề và thời gian sang 2 phía (trái - phải) */
-.item-header {
+.skill-info {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    font-weight: 600;
     margin-bottom: 0.3rem;
+}
+
+.progress-line {
+    height: 10px;
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-line span {
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    /* Animation chạy thanh giá trị */
+    animation: fillBars 2s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+
+/* Định nghĩa độ rộng đích cho từng kỹ năng */
+.progress-line.html span { width: 90%; }
+.progress-line.css span { width: 85%; }
+.progress-line.js span { width: 75%; }
+.progress-line.responsive span { width: 88%; }
+
+@keyframes fillBars {
+    from { width: 0%; }
+}
+
+/* ==========================================
+   CÁC PHẦN DỰ ÁN & LIÊN HỆ CŨ
+   ========================================== */
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .two-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+.project-card, .timeline-item {
+    border-left: 3px solid var(--primary-color);
+    padding-left: 1rem;
+    margin-bottom: 1.2rem;
 }
 
 .item-title {
     font-weight: bold;
-    font-size: 1.1rem;
-    color: var(--text-main);
+    font-size: 1.05rem;
 }
 
 .item-time {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--text-light);
+    margin-bottom: 0.3rem;
 }
 
-/* ==========================================
-   7. NÚT BẤM (BUTTONS - SỬ DỤNG FLEXBOX)
-   ================================---------- */
 .btn {
-    /* FLEXBOX: Giúp canh chỉnh icon và text bên trong nút (nếu có) nằm trên một hàng, căn giữa */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    
-    padding: 0.6rem 1.2rem;
+    display: inline-block;
     background-color: var(--primary-color);
     color: #ffffff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: 600;
-    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
     transition: background 0.3s;
     border: none;
     cursor: pointer;
 }
 
 .btn:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-hover);
 }
 
-.btn-submit {
-    width: fit-content;
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
 }
 
-/* ==========================================
-   8. THÔNG TIN LIÊN LẠC & FORM (FLEXBOX + GRID)
-   ================================---------- */
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 .contact-info {
     list-style: none;
-    margin-bottom: 1.5rem;
 }
 
 .contact-info li {
-    margin-bottom: 0.5rem;
-    color: var(--text-muted);
-    
-    /* FLEXBOX: Căn chỉnh icon và nội dung liên hệ trên một hàng */
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.contact-info strong {
-    color: var(--text-main);
+    margin-bottom: 0.8rem;
 }
 
 .contact-sub-title {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: var(--text-main);
-}
-
-.contact-form {
-    /* CSS GRID cho bố cục form tổng thể */
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
 }
 
 .form-group {
-    /* FLEXBOX cho các thành phần trong từng nhóm form (Label đi trên, Input đi dưới) */
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+    margin-bottom: 0.8rem;
 }
 
 .form-group label {
-    font-weight: 600;
-    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.2rem;
     font-size: 0.9rem;
 }
 
 .form-group input, .form-group textarea {
-    padding: 0.75rem;
-    border: 1px solid var(--text-light);
-    border-radius: 5px;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     font-family: inherit;
-    font-size: 1rem;
-    outline: none;
 }
 
-.form-group input:focus, .form-group textarea:focus {
-    border-color: var(--primary-color);
+.btn-submit {
+    width: 100%;
+    padding: 0.6rem;
 }
 
-/* ==========================================
-   9. FOOTER
-   ================================---------- */
 footer {
     text-align: center;
-    padding: 2rem;
-    background-color: #ffffff;
-    color: var(--text-muted);
-    border-top: 1px solid var(--text-light);
-font-size: 0.9rem;
+    padding: 1.5rem;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 0.85rem;
+    margin-top: 2rem;
 }
 
 /* ==========================================
-   10. RESPONSIVE MEDIA QUERIES
-   ================================---------- */
-@media screen and (min-width: 768px) {
-    /* Bố cục Grid 2 cột trên màn hình lớn */
-    main {
-        grid-template-columns: repeat(2, 1fr);
-    }
+   BÀI 1: FLOATING ACTION BUTTON (FAB)
+   ========================================== */
+.fab-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: pulse 2s infinite;
 }
 
-@media screen and (max-width: 767px) {
-    body {
-        font-size: 15px;
-    }
+.fab-btn:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.1);
+}
 
-    main {
-        margin: -1rem 0.5rem 2rem 0.5rem;
-        padding: 0;
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
     }
-
-    section {
-        padding: 1.2rem;
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(0, 123, 255, 0);
     }
-
-    header h1 {
-        font-size: 2rem;
-    }
-
-    header p {
-        font-size: 1rem;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
     }
 }

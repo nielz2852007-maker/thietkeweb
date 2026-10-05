@@ -3,42 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Cá Nhân</title>
+    <title>Portfolio Cá Nhân - Đào Minh Thanh</title>
+    
+    <!-- 1. TÍCH HỢP AOS CSS THÔNG QUA CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!-- Liên kết đến file CSS bên ngoài -->
     <link rel="stylesheet" href="thanh3.css">
 </head>
 <body>
 
-    <!-- Header / Banner -->
-    <header>
-        <h1>Đào Minh Thanh</h1>
-        <p>Front-End Developer & UI/UX Design Enthusiast</p>
+    <!-- BÀI 5: Hamburger Menu & Navigation -->
+    <nav class="navbar">
+        <div class="logo">MinhThanh.dev</div>
+        <!-- Thẻ checkbox ẩn để điều khiển mở/đóng menu thuần CSS -->
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </label>
+        <ul class="nav-links">
+            <li><a href="#about">Giới thiệu</a></li>
+            <li><a href="#skills">Kỹ năng</a></li>
+            <li><a href="#card-flip">Thẻ nhân sự</a></li>
+            <li><a href="#projects">Dự án</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <!-- BÀI 4: Parallax Banner -->
+    <header class="parallax-banner">
+        <div class="banner-content" data-aos="zoom-in" data-aos-duration="1000">
+            <h1>Đào Minh Thanh</h1>
+            <!-- BÀI 3: Typing Effect -->
+            <div class="typing-container">
+                <p class="typing-text">Tôi là một Web Developer...</p>
+            </div>
+        </div>
     </header>
 
     <main>
         <!-- 1. Giới thiệu bản thân -->
-        <section class="full-width">
+        <section id="about" class="full-width" data-aos="fade-up" data-aos-duration="800">
             <h2>Giới thiệu bản thân</h2>
             <p>Xin chào! Tôi là một lập trình viên Front-end đang trên con đường hoàn thiện kỹ năng xây dựng giao diện người dùng thân thiện, tối ưu trải nghiệm và đáp ứng tốt trên mọi thiết bị.</p>
         </section>
 
-        <!-- 2. Kỹ năng (Skills Grid) -->
-        <section class="full-width">
+        <!-- BÀI 2: Card Flip Effect (Thẻ nhân sự lật 180 độ) -->
+        <section id="card-flip" class="full-width" data-aos="flip-down" data-aos-duration="800">
+            <h2>Thẻ nhân sự (Lật thẻ)</h2>
+            <div class="flip-card-container">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <!-- Mặt trước -->
+                        <div class="flip-card-front">
+                            <div class="avatar-placeholder">DMT</div>
+                            <h3>Đào Minh Thanh</h3>
+                            <p class="role">Front-End Developer</p>
+                            <span class="hint">(Rê chuột vào đây để lật)</span>
+                        </div>
+                        <!-- Mặt sau -->
+                        <div class="flip-card-back">
+                            <h3>Thông tin liên hệ</h3>
+                            <p><strong>Email:</strong> tranvanbao.dev@example.com</p>
+                            <p><strong>Phone:</strong> (+84) 912 345 678</p>
+                            <p><strong>Địa chỉ:</strong> TP. Hồ Chí Minh</p>
+                            <a href="#contact" class="btn btn-light">Gửi tin nhắn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BÀI 6: Skill Bar Animation -->
+        <section id="skills" class="full-width" data-aos="fade-up" data-aos-duration="800">
             <h2>Kỹ năng chuyên môn</h2>
-            <div class="skills-grid">
-                <div class="skill-item">HTML5 / CSS3</div>
-                <div class="skill-item">JavaScript (ES6)</div>
-                <div class="skill-item">Responsive Design</div>
-                <div class="skill-item">Git / GitHub</div>
-                <div class="skill-item">Chrome DevTools</div>
-                <div class="skill-item">UI/UX Basics</div>
+            <div class="skills-bar-container">
+                
+                <div class="skill-bar-group">
+                    <div class="skill-info">
+                        <span>HTML5</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress-line html"><span></span></div>
+                </div>
+
+                <div class="skill-bar-group">
+                    <div class="skill-info">
+                        <span>CSS3 / SCSS</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-line css"><span></span></div>
+                </div>
+
+                <div class="skill-bar-group">
+                    <div class="skill-info">
+                        <span>JavaScript (ES6+)</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-line js"><span></span></div>
+                </div>
+
+                <div class="skill-bar-group">
+                    <div class="skill-info">
+                        <span>Responsive Design</span>
+                        <span>88%</span>
+                    </div>
+                    <div class="progress-line responsive"><span></span></div>
+                </div>
+
             </div>
         </section>
 
         <!-- KHỐI 2 CỘT: DỰ ÁN & HỌC TẬP -->
-        <div class="two-columns">
-            <!-- 3. Dự án tiêu biểu -->
-            <section>
+        <div id="projects" class="two-columns">
+            <!-- Dự án tiêu biểu -->
+            <section data-aos="fade-right" data-aos-duration="800">
                 <h2>Dự án tiêu biểu</h2>
                 <div class="project-card">
                     <div class="item-title">Smart Color Palette App</div>
@@ -54,8 +135,8 @@
                 </div>
             </section>
 
-            <!-- 4. Kinh nghiệm & Học tập -->
-            <section>
+            <!-- Kinh nghiệm & Học tập -->
+            <section data-aos="fade-left" data-aos-duration="800">
                 <h2>Học tập & Kinh nghiệm</h2>
                 <div class="timeline-item">
                     <div class="item-title">Thực tập sinh Front-End tại TechCorp</div>
@@ -70,15 +151,15 @@
             </section>
         </div>
 
-        <!-- 5. Thông tin liên lạc & Form liên hệ (Chia 2 cột bên trong) -->
-        <section class="full-width">
+        <!-- Thông tin liên lạc & Form liên hệ -->
+        <section id="contact" class="full-width" data-aos="zoom-in-up" data-aos-duration="800">
             <h2>Liên hệ với tôi</h2>
             <div class="contact-container">
                 <!-- Cột trái: Thông tin -->
                 <div class="contact-info-col">
                     <ul class="contact-info">
-                        <li><strong>Email:</strong> tranvanbao.dev@example.com</li>
-                        <li><strong>Điện thoại:</strong> (+84) 912 345 678</li>
+                        <li><strong>Email:</strong> tdao@gmail.com</li>
+                        <li><strong>Điện thoại:</strong> (+84) 123 456 789</li>
                         <li><strong>Địa chỉ:</strong> TP. Hồ Chí Minh, Việt Nam</li>
                         <li><strong>GitHub:</strong> github.com/username-portfolio</li>
                     </ul>
@@ -112,5 +193,18 @@
         <p>&copy; 2026 Đào Minh Thanh. Được thiết kế đồng bộ với CSS Variables và Responsive.</p>
     </footer>
 
+    <!-- BÀI 1: Floating Action Button (FAB) -->
+    <a href="#contact" class="fab-btn" title="Liên hệ">Liên hệ</a>
+
+    <!-- 2. TÍCH HỢP AOS JS THÔNG QUA CDN VÀ KHỞI TẠO -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Khởi tạo thư viện AOS
+        AOS.init({
+            duration: 800, // Thời gian chạy hiệu ứng (ms)
+            once: false,   // Đặt true nếu chỉ muốn hiệu ứng chạy 1 lần khi cuộn tới
+            offset: 120    // Khoảng cách (px) bắt đầu kích hoạt hiệu ứng khi cuộn
+        });
+    </script>
 </body>
 </html>
