@@ -1,0 +1,284 @@
+/* ==========================================
+   1. ĐỊNH NGHĨA BIẾN CSS (MÀU SẮC & CẤU HÌNH)
+   ================================---------- */
+:root {
+    --primary-color: #3f0df4;    /* Màu chủ đạo 1 */
+    --secondary-color: #654389;  /* Màu chủ đạo 2 */
+    --text-main: #2d3748;        /* Màu chữ chính (xám đậm) */
+    --text-muted: #718096;        /* Màu chữ phụ (xám vừa) */
+    --text-light: #e2e8f0;        /* Màu viền / đường kẻ (xám nhạt) */
+    --bg-color: #f7fafc;          /* Màu nền tổng thể */
+}
+
+/* ==========================================
+   2. THIẾT LẬP CHUNG & KÍCH THƯỚC
+   ================================---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* ==========================================
+   3. HEADER / BANNER (SỬ DỤNG FLEXBOX)
+   ================================---------- */
+header {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: #ffffff;
+    padding: 4rem 1rem;
+    
+    /* FLEXBOX: Căn giữa nội dung theo chiều dọc và ngang */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* ==========================================
+   4. CONTAINER & BỐ CỤC CHÍNH (SỬ DỤNG CSS GRID)
+   ================================---------- */
+main {
+    max-width: 1100px;
+    margin: -2rem auto 3rem auto;
+    padding: 0 1rem;
+    
+    /* CSS GRID: Chia bố cục lớn thành các cột dạng dashboard */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+section {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--text-light);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+}
+
+/* ==========================================
+   5. PHẦN KỸ NĂNG (SKILLS GRID)
+   ================================---------- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1rem;
+}
+
+.skill-item {
+    background-color: var(--bg-color);
+    border: 1px solid var(--text-light);
+    padding: 0.8rem;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.skill-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+}
+
+/* ==========================================
+   6. DỰ ÁN & KINH NGHIỆM (SỬ DỤNG FLEXBOX)
+   ================================---------- */
+.timeline-item, .project-card {
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px dashed var(--text-light);
+}
+
+.timeline-item:last-child, .project-card:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* FLEXBOX: Dùng để phân tách tiêu đề và thời gian sang 2 phía (trái - phải) */
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.item-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.item-time {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   7. NÚT BẤM (BUTTONS - SỬ DỤNG FLEXBOX)
+   ================================---------- */
+.btn {
+    /* FLEXBOX: Giúp canh chỉnh icon và text bên trong nút (nếu có) nằm trên một hàng, căn giữa */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    
+    padding: 0.6rem 1.2rem;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 0.8rem;
+    transition: background 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.btn-submit {
+    width: fit-content;
+}
+
+/* ==========================================
+   8. THÔNG TIN LIÊN LẠC & FORM (FLEXBOX + GRID)
+   ================================---------- */
+.contact-info {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info li {
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+    
+    /* FLEXBOX: Căn chỉnh icon và nội dung liên hệ trên một hàng */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-info strong {
+    color: var(--text-main);
+}
+
+.contact-sub-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.contact-form {
+    /* CSS GRID cho bố cục form tổng thể */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    /* FLEXBOX cho các thành phần trong từng nhóm form (Label đi trên, Input đi dưới) */
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.form-group input, .form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--text-light);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--primary-color);
+}
+
+/* ==========================================
+   9. FOOTER
+   ================================---------- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    color: var(--text-muted);
+    border-top: 1px solid var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   10. RESPONSIVE MEDIA QUERIES
+   ================================---------- */
+@media screen and (min-width: 768px) {
+    /* Bố cục Grid 2 cột trên màn hình lớn */
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 15px;
+    }
+
+    main {
+        margin: -1rem 0.5rem 2rem 0.5rem;
+        padding: 0;
+    }
+
+    section {
+        padding: 1.2rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
