@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài tập CSS — 6 hiệu ứng</title>
+<link rel="stylesheet" href="bai-tap.css">
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a href="#bai1" class="logo">CSS<span>Lab</span></a>
+    <input type="checkbox" id="menuToggle" class="menu-toggle">
+    <label for="menuToggle" class="burger" aria-label="Mở menu">
+      <span></span><span></span><span></span>
+    </label>
+    <nav class="menu">
+      <a href="#bai1">FAB</a>
+      <a href="#bai2">Card Flip</a>
+      <a href="#bai3">Typing</a>
+      <a href="#bai4">Parallax</a>
+      <a href="#bai5">Hamburger</a>
+      <a href="#bai6">Skill Bar</a>
+    </nav>
+  </div>
+</header>
+
+<!-- BÀI 5: Modern Hamburger Menu (nút 3 gạch biến thành X) -->
+<section class="hero" id="bai5">
+  <div class="wrap">
+    <p class="tag-b5">Bài 5 — Modern Hamburger Menu</p>
+    <h1>Sáu hiệu ứng CSS kinh điển</h1>
+    <p class="lead">
+      Bấm nút ba gạch ở góc trên để xem nó biến thành dấu X, menu trượt xuống
+      bằng CSS Transitions — không cần JavaScript cho phần chuyển động.
+    </p>
+  </div>
+</section>
+
+<!-- BÀI 3: Typing Effect (CSS only) -->
+<section class="sec" id="bai3">
+  <div class="wrap">
+    <p class="tag">Bài 3 — Typing Effect (không dùng JS)</p>
+    <h2 class="h2">Hiệu ứng chữ tự gõ</h2>
+    <p class="type-line">
+      <span class="type">Tôi là một Web Developer</span>
+    </p>
+    <p class="note">
+      Dùng <code>animation</code> với <code>steps(n)</code> để chữ hiện dần từng ký tự,
+      con trỏ nhấp nháy bằng một <code>infinite</code> riêng.
+    </p>
+  </div>
+</section>
+
+<!-- BÀI 1: Floating Action Button -->
+<section class="sec sec-alt" id="bai1">
+  <div class="wrap">
+    <p class="tag">Bài 1 — Floating Action Button</p>
+    <h2 class="h2">FAB nổi có pulse animation</h2>
+    <p class="note">
+      Nút tròn cố định ở góc phải màn hình, có vòng sóng lan ra nhờ
+      <code>::after</code> + <code>box-shadow</code> mở rộng liên tục.
+    </p>
+  </div>
+</section>
+
+<!-- BÀI 2: Card Flip Effect -->
+<section class="sec" id="bai2">
+  <div class="wrap">
+    <p class="tag">Bài 2 — Card Flip Effect</p>
+    <h2 class="h2">Thẻ nhân sự lật 180°</h2>
+    <p class="note">Rê chuột (hover) hoặc chạm vào thẻ để lật sang mặt sau.</p>
+
+    <div class="flip-scene">
+      <div class="card-flip" tabindex="0">
+        <div class="card-face">
+          <span class="chip">Front</span>
+          <div class="avatar">NA</div>
+          <h3>Nguyễn Văn A</h3>
+          <p>Frontend Developer</p>
+          <small>Hà Nội, Việt Nam</small>
+        </div>
+        <div class="card-face card-face--back">
+          <span class="chip chip--alt">Back</span>
+          <h3>Liên hệ</h3>
+          <ul class="contact">
+            <li><span>Email</span><a href="mailto:hello@example.com">hello@example.com</a></li>
+            <li><span>Phone</span>0123 456 789</li>
+            <li><span>GitHub</span>@nielz2852007-maker</li>
+            <li><span>Web</span>thietkeweb.pages.dev</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BÀI 6: Skill Bar Animation -->
+<section class="sec sec-alt" id="bai6">
+  <div class="wrap">
+    <p class="tag">Bài 6 — Skill Bar Animation</p>
+    <h2 class="h2">Thanh kỹ năng chạy từ 0% đến giá trị đích</h2>
+    <p class="note">
+      Dùng <code>@keyframes</code> với <code>animation-delay</code> lệch nhau để các thanh
+      chạy nối tiếp ngay khi trang tải xong.
+    </p>
+
+    <div class="skills">
+      <div class="skill">
+        <div class="skill__top"><span>HTML</span><b>90%</b></div>
+        <div class="track"><span class="fill" style="--to:90%; --d:.1s"></span></div>
+      </div>
+      <div class="skill">
+        <div class="skill__top"><span>CSS</span><b>85%</b></div>
+        <div class="track"><span class="fill" style="--to:85%; --d:.35s"></span></div>
+      </div>
+      <div class="skill">
+        <div class="skill__top"><span>JavaScript</span><b>75%</b></div>
+        <div class="track"><span class="fill" style="--to:75%; --d:.6s"></span></div>
+      </div>
+      <div class="skill">
+        <div class="skill__top"><span>TypeScript</span><b>65%</b></div>
+        <div class="track"><span class="fill" style="--to:65%; --d:.85s"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BÀI 4: Parallax Image -->
+<section class="parallax" id="bai4">
+  <div class="parallax__inner">
+    <p class="tag tag--light">Bài 4 — Parallax Image</p>
+    <h2 class="h2 h2--light">Ảnh nền chậm hơn nội dung</h2>
+    <p class="note note--light">
+      <code>background-attachment: fixed</code> giữ ảnh đứng yên khi cuộn trang.
+      Trên màn hình nhỏ được tắt đi để tránh giật.
+    </p>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">Bài tập CSS — không dùng framework, không dùng JavaScript.</div>
+</footer>
+
+<!-- BÀI 1: FAB nổi -->
+<a href="#bai2" class="fab" aria-label="Liên hệ">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+    <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <span class="fab__label">Liên hệ</span>
+</a>
+
+</body>
+</html>
