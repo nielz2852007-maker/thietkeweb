@@ -20,33 +20,32 @@
     </div>
 
     <!-- Header / Banner tích hợp ảnh đại diện linh hoạt -->
-    <header id="home" style="align-items: center;">
+    <header id="home">
         <div class="avatar-container">
-            <img src="https://s160-26-ava-talk.zadn.vn/61/38315526fb90f1526fa32eb4988a8768.jpg?key=Eioht5Rz9sqe8ny32co3ew&time=1795769548" alt="Avatar" width="80" style="border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 3px solid #fff;">
+            <img src="avatar.webp" alt="Avatar">
         </div>
         
-        <!-- Thêm thanh điều hướng (Navigation Menu) vào khoảng trống ở giữa -->
         <nav class="main-nav">
             <!-- Nút Hamburger Menu -->
-            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-btn" id="menuBtn">
-                <div class="menu-btn-burger"></div>
+                <span class="menu-btn-burger"></span>
             </label>
-            
-            <ul class="nav-links" style="display: flex; gap: 2.5rem; list-style: none; margin: 0; padding: 0;">
-                <li><a href="#about" style="font-weight: 600; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 1px; color: var(--text-color);">Giới Thiệu</a></li>
-                <li><a href="#profile-card" style="font-weight: 600; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 1px; color: var(--text-color);">Hồ Sơ</a></li>
-                <li><a href="#skills" style="font-weight: 600; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 1px; color: var(--text-color);">Kỹ Năng</a></li>
-                <li><a href="#projects" style="font-weight: 600; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 1px; color: var(--text-color);">Dự Án</a></li>
+                
+            <ul class="nav-links">
+                <li><a href="#about">Giới Thiệu</a></li>
+                <li><a href="#profile-card">Hồ Sơ</a></li>
+                <li><a href="#skills">Kỹ Năng</a></li>
+                <li><a href="#projects">Dự Án</a></li>
             </ul>
         </nav>
 
-        <div style="text-align: center;">
-            <h1 style="font-size: 1.8rem; margin-bottom: 5px;">Tô Vũ Hoàng Anh</h1>
-            <div class="typing-wrapper" style="display: flex; justify-content: center; margin: 5px 0;">
-                <p class="typing-effect" style="font-size: 1rem; margin: 0;">Tôi là một Web Developer...</p>
+        <div class="header-content">
+            <h1>Tô Vũ Hoàng Anh</h1>
+            <div class="typing-wrapper">
+                <p class="typing-effect">Tôi là một Web Developer...</p>
             </div>
-            <p style="font-size: 0.9rem; color: #475569; margin-top: 5px; font-weight: 500;">UI/UX Design Enthusiast</p>
+            <p>UI/UX Design Enthusiast</p>
         </div>
     </header>
 
@@ -66,7 +65,7 @@
                     <div class="flip-card-front">
                         <div class="front-header"></div>
                         <div class="avatar-flip-container">
-                            <img src="https://s160-26-ava-talk.zadn.vn/61/38315526fb90f1526fa32eb4988a8768.jpg?key=Eioht5Rz9sqe8ny32co3ew&time=1795769548" alt="Avatar">
+                            <img src="avatar.webp" alt="Avatar">
                         </div>
                         <div class="front-body">
                             <h3 style="color:#1e293b; margin-bottom:5px;">Tô Vũ Hoàng Anh</h3>
@@ -143,17 +142,17 @@
             <h2>Bằng khen & Chứng nhận</h2>
             <div class="certificates-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                 <div class="cert-card" style="background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80" alt="Bằng khen 1" class="cert-img" style="width: 100%; border-radius: 8px; object-fit: cover; height: 160px;">
+                    <img src="certificate-1.webp" alt="Bằng khen 1" class="cert-img" style="width: 100%; border-radius: 8px; object-fit: cover; height: 160px;">
                     <div class="cert-title" style="font-weight: 600; margin-top: 10px;">Giải Nhất Lập Trình Web</div>
                     <div class="cert-time" style="font-size: 0.85rem; color: var(--text-muted);">Năm 2025</div>
                 </div>
                 <div class="cert-card" style="background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80" alt="Bằng khen 2" class="cert-img" style="width: 100%; border-radius: 8px; object-fit: cover; height: 160px;">
+                    <img src="certificate-2.webp" alt="Bằng khen 2" class="cert-img" style="width: 100%; border-radius: 8px; object-fit: cover; height: 160px;">
                     <div class="cert-title" style="font-weight: 600; margin-top: 10px;">Chứng chỉ Front-End Xuất Sắc</div>
                     <div class="cert-time" style="font-size: 0.85rem; color: var(--text-muted);">Năm 2024</div>
                 </div>
                 <div class="cert-card" style="background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop&q=80" alt="Bằng khen 3" class="cert-img" style="width: 100%; border-radius: 8px; object-fit: cover; height: 160px;">
+                    <img src="certificate-3.webp" alt="Bằng khen 3" class="cert-img" style="width: 100%; border-radius: 8px; object-fit: cover; height: 160px;">
                     <div class="cert-title" style="font-weight: 600; margin-top: 10px;">Học tập Tiêu biểu Cấp Trường</div>
                     <div class="cert-time" style="font-size: 0.85rem; color: var(--text-muted);">Năm 2023</div>
                 </div>

@@ -17,8 +17,21 @@
     padding: 0;
 }
 
+img,
+svg,
+video {
+    max-width: 100%;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -26,6 +39,7 @@ body {
     line-height: 1.6;
     background-color: var(--bg-color);
     color: var(--text-color);
+    overflow-x: hidden;
 }
 
 a {
@@ -71,24 +85,107 @@ a:hover {
 /* === 3. HEADER & NAVIGATION === */
 header {
     display: flex;
-    justify-content: space-between;
+    min-height: 128px;
     align-items: center;
     padding: 1rem 2rem;
     background-color: var(--card-bg);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(30, 41, 59, 0.08);
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
+header#home {
+    text-align: left;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    overflow: visible;
+    
+    /* Hiệu ứng nền động lá/cánh đào rơi */
+    border-color: #ff9a9e; 
+    position: relative;
+    background-image: 
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><path d='M10,0 C25,10 25,25 10,30 C-5,25 -5,10 10,0 Z' fill='%23ff6b8b' opacity='0.75' transform='translate(15,15) rotate(25)'/><path d='M8,0 C20,8 20,20 8,25 C-4,20 -4,8 8,0 Z' fill='%23ff8da1' opacity='0.6' transform='translate(75,45) rotate(60)'/></svg>"),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><path d='M6,0 C15,6 15,15 6,18 C-3,15 -3,6 6,0 Z' fill='%23ffb6c1' opacity='0.8' transform='translate(10,30) rotate(-15)'/></svg>"),
+        linear-gradient(135deg, #fff0f3 0%, #ffe4e6 50%, #ffd1d9 100%);
+    background-size: 140px 140px, 90px 90px, cover;
+    animation: falling-peach-leaves 10s linear infinite;
+}
+
+@keyframes falling-peach-leaves {
+    0% { 
+        background-position: 0px -140px, 0px -90px, center; 
+    }
+    100% { 
+        background-position: 140px 140px, 90px 90px, center; 
+    }
+}
+
+header#home .avatar-container {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+header#home .avatar-container img {
+    width: 68px;
+    height: 68px;
+    object-fit: cover;
+    box-shadow: 0 5px 14px rgba(37, 99, 235, 0.2) !important;
+    border: 3px solid #ffffff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+header#home .avatar-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28) !important;
+}
+
+header#home .header-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    min-width: 0;
+    max-width: calc(100% - 220px);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+header#home .header-content h1 {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+header#home .header-content p:last-child {
+    margin-top: 5px;
+    color: var(--text-muted) !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+header#home .main-nav {
+    margin-left: auto;
+    flex: 0 0 auto;
+}
+
 header nav ul {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
     list-style: none;
 }
 
 header nav a {
     font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
     color: var(--text-color);
 }
 
@@ -99,11 +196,13 @@ header nav a:hover {
 /* === 4. BỐ CỤC CHÍNH (MAIN & SECTIONS) === */
 main {
     max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
     padding: 2rem 1.5rem;
 }
 
 section {
+    min-width: 0;
     margin-bottom: 3rem;
     padding: 2rem;
     background-color: #ffffff;
@@ -121,37 +220,6 @@ h2 {
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
-}
-
-/* Khung Trang chủ */
-#home {
-    text-align: center;
-    border-color: #ff9a9e; 
-    position: relative;
-    overflow: hidden;
-    background-image: 
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'><path d='M10,0 C20,0 20,20 10,20 C0,20 0,0 10,0 Z' fill='%23ff758c' opacity='0.7' transform='translate(20,20) rotate(30)'/><path d='M10,0 C20,0 20,20 10,20 C0,20 0,0 10,0 Z' fill='%23ff7eb3' opacity='0.5' transform='translate(80,60) rotate(75)'/><path d='M10,0 C20,0 20,20 10,20 C0,20 0,0 10,0 Z' fill='%23ff9a9e' opacity='0.8' transform='translate(40,110) rotate(-20)'/></svg>"),
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='90'><path d='M7,0 C14,0 14,14 7,14 C0,14 0,0 7,0 Z' fill='%23ff758c' opacity='0.6' transform='translate(10,10) rotate(45)'/><path d='M7,0 C14,0 14,14 7,14 C0,14 0,0 7,0 Z' fill='%23ff7eb3' opacity='0.4' transform='translate(60,50) rotate(110)'/></svg>"),
-        linear-gradient(135deg, #fff0f5 0%, #ffe4e1 50%, #ffd1dc 100%);
-    background-size: 150px 150px, 90px 90px, cover;
-    animation: falling-blossoms 12s linear infinite;
-}
-
-@keyframes falling-blossoms {
-    0% { background-position: 0px -150px, 0px -180px, center; }
-    100% { background-position: 150px 0px, 90px 0px, center; }
-}
-
-#home h1 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-}
-
-#home p {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 650px;
-    margin: 1rem auto;
 }
 
 /* Màu sắc riêng cho từng section */
@@ -213,7 +281,7 @@ h2 {
 /* === 6. PROJECTS GRID === */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: 1.5rem;
 }
 
@@ -255,6 +323,8 @@ legend {
 
 .form-group input,
 .form-group textarea {
+    width: 100%;
+    max-width: 100%;
     padding: 0.75rem;
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
@@ -302,6 +372,66 @@ footer {
         gap: 1rem;
         text-align: center;
     }
+
+    header#home {
+        display: flex;
+        padding: 1rem 1.25rem;
+        gap: 0.75rem;
+    }
+
+    header#home .header-content {
+        position: static;
+        order: 2;
+        max-width: 100%;
+        transform: none;
+    }
+
+    header#home .typing-wrapper {
+        justify-content: center !important;
+    }
+
+    header#home .main-nav {
+        order: 3;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    header#home .nav-links.active {
+        top: 100%;
+    }
+
+    #home h1 {
+        font-size: 2rem;
+    }
+
+    .typing-effect {
+        font-size: 1rem;
+    }
+
+    main {
+        padding: 1.25rem 0.75rem;
+    }
+
+    section {
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.45rem;
+    }
+
+    .parallax-banner h2 {
+        font-size: 1.8rem;
+    }
+
+    .fab-button {
+        right: 1rem;
+        bottom: 1rem;
+        width: 58px;
+        height: 58px;
+    }
 }
 
 /* === 9. FLOATING ACTION BUTTON (FAB) === */
@@ -342,7 +472,7 @@ footer {
 /* === 10. FLIP CARD === */
 .card-wrapper {
     perspective: 1000px;
-    width: 320px;
+    width: min(320px, 100%);
     height: 450px;
     margin: 20px auto; 
 }
@@ -447,7 +577,8 @@ footer {
     white-space: nowrap;
     border-right: 3px solid var(--primary-color);
     margin: 0 auto;
-    width: 27ch; 
+    width: min(27ch, 100%);
+    max-width: 100%;
     animation: 
         typing 3.5s steps(27, end) forwards,
         blink-caret 0.8s step-end infinite;
@@ -467,7 +598,7 @@ footer {
 .parallax-banner {
     background-image: 
         linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
-        url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop');
+        url('parallax-bg.webp');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -582,7 +713,11 @@ footer {
 
 @media (max-width: 850px) {
     .menu-btn { display: flex; }
+    #menu-toggle { display: none; }
     .nav-links { display: none !important; }
+    header#home .main-nav {
+        position: relative;
+    }
     .nav-links.active {
         display: flex !important;
         flex-direction: column;
@@ -594,6 +729,21 @@ footer {
         padding: 20px;
         box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         gap: 1.5rem !important;
+        z-index: 1001;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1100px) {
+    header {
+        padding-inline: 1.25rem;
+    }
+
+    header#home .header-content {
+        max-width: calc(100% - 180px);
+    }
+
+    header nav a {
+        font-size: 0.75rem;
     }
 }
 
