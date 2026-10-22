@@ -1,424 +1,741 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hồ sơ năng lực chi tiết của Nguyên Lê Hữu Tài - Lập trình viên Web Front-end chuyên sâu về HTML5 Semantic, SEO và Trợ năng Web (WCAG).">
-  <meta name="author" content="Nguyên Lê Hữu Tài">
-  <title>Nguyên Lê Hữu Tài | Hồ Sơ Năng Lực &amp; Lập Trình Viên Web</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Htaiels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Bố cục: bản đồ 12 thì (3 cột thời gian x 4 hàng dạng thì) làm trung tâm; mỗi ô có vòng tiến độ. */
+:root{
+  --bg:#F1F3F8; --surface:#FFFFFF; --surface2:#E8ECF5; --ink:#0F1A35; --muted:#566180; --line:#D3DAE8; --track:#DCE2EF;
+  --past:#C25E00; --past-soft:#FDEBD6;
+  --pres:#1F5FE0; --pres-soft:#DCE8FF;
+  --fut:#7027DB; --fut-soft:#EBE0FF;
+  --good:#12763A; --good-soft:#DCF3E3;
+  --bad:#B42323; --bad-soft:#FBE1E1;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0A0F1F; --surface:#131A31; --surface2:#1C2544; --ink:#E9EDFA; --muted:#9AA6C8; --line:#29345A; --track:#26315A;
+    --past:#FFAA57; --past-soft:#3A2813;
+    --pres:#7AA8FF; --pres-soft:#162A58;
+    --fut:#BBA2FF; --fut-soft:#2B2158;
+    --good:#4FDB86; --good-soft:#12361F;
+    --bad:#FF8383; --bad-soft:#3C1919;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--body);min-height:100vh}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--pres);outline-offset:2px}
+.wrap{max-width:940px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar1{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px 6px;flex-wrap:wrap}
+.brand{font:800 26px/1 var(--display);letter-spacing:-.03em}
+.brand em{font-style:normal;color:var(--pres)}
+.stats{display:flex;gap:8px;flex-wrap:wrap;font:600 12px/1 var(--mono)}
+.stats span{background:var(--surface);border:1px solid var(--line);padding:6px 9px;border-radius:99px}
+nav{display:flex;gap:4px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{border:0;background:transparent;padding:8px 14px;border-radius:99px;font-weight:600;color:var(--muted);white-space:nowrap}
+nav button.on{background:var(--ink);color:var(--bg)}
+nav button:hover:not(.on){background:var(--surface2)}
+main{padding-block:22px 60px}
+
+/* thành phần chung */
+.btn{border:0;background:var(--ink);color:var(--bg);padding:13px 22px;border-radius:12px;font-weight:700;min-height:48px}
+.btn:hover{filter:brightness(1.15)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ink);filter:none}
+.btn.sm{padding:8px 14px;min-height:38px;border-radius:10px;font-size:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}
+.label{font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.chip{display:inline-block;padding:3px 10px;border-radius:99px;font-size:13px;font-weight:700;background:var(--soft,var(--surface2));color:var(--c,var(--ink))}
+.t-past{--c:var(--past);--soft:var(--past-soft)}
+.t-present{--c:var(--pres);--soft:var(--pres-soft)}
+.t-future{--c:var(--fut);--soft:var(--fut-soft)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.stack{display:grid;gap:16px}
+.muted{color:var(--muted)}
+.notice{background:var(--pres-soft);color:var(--pres);padding:12px 16px;border-radius:12px;font-weight:600}
+
+/* trang chủ */
+.hero{display:grid;gap:18px;margin-bottom:22px}
+.hero h1{font-size:clamp(32px,6.4vw,56px);max-width:16ch}
+.hero p{color:var(--muted);max-width:52ch}
+.goal{display:flex;align-items:center;gap:12px;font-weight:600;font-size:14px}
+.goal .prog{width:160px}
+.prog{height:10px;background:var(--track);border-radius:99px;overflow:hidden;flex:1;min-width:60px}
+.prog i{display:block;height:100%;background:var(--good);border-radius:99px;transition:width .35s}
+.map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.colh{font:800 14px var(--display);letter-spacing:.06em;text-transform:uppercase;padding:8px 10px;border-radius:10px;background:var(--soft);color:var(--c)}
+.cell{display:grid;gap:6px;justify-items:start;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:12px;min-width:0;transition:transform .15s,border-color .15s}
+.cell:hover{border-color:var(--c);transform:translateY(-2px)}
+.cell b{font:700 14px/1.2 var(--display);overflow-wrap:anywhere}
+.cell i{font-style:normal;font-size:12px;color:var(--muted);line-height:1.2}
+.ring{width:44px;height:44px;border-radius:50%;background:conic-gradient(var(--c) calc(var(--p)*1%),var(--track) 0);display:grid;place-items:center}
+.ring span{width:34px;height:34px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font:600 11px var(--mono)}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+/* luyện tập */
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.mode{display:grid;gap:6px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;min-height:96px}
+.mode:hover{border-color:var(--ink)}
+.mode b{font:700 18px var(--display)}
+.mode span{color:var(--muted);font-size:14px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.pill{border:1px solid var(--line);background:var(--surface);padding:8px 14px;border-radius:99px;font-weight:600;font-size:14px}
+.pill.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+select.pill{padding-right:8px}
+
+/* phiên luyện */
+.sbar{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.sbar .mono{font-size:13px;color:var(--muted)}
+.timer{font-weight:600;color:var(--ink)!important;background:var(--surface);border:1px solid var(--line);padding:6px 10px;border-radius:99px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,4vw,34px);display:grid;gap:20px}
+.sentence{font:500 clamp(20px,3.6vw,28px)/2 var(--body)}
+.sentence b.hl{color:var(--c,var(--pres));background:var(--soft,var(--pres-soft));padding:2px 8px;border-radius:8px}
+.cue{font-family:var(--mono);font-size:.7em;color:var(--muted);background:var(--surface2);padding:2px 8px;border-radius:8px;white-space:nowrap}
+.blank{font:inherit;color:var(--ink);background:var(--surface2);border:0;border-bottom:3px solid var(--ink);border-radius:8px 8px 0 0;padding:0 10px;text-align:center;min-width:7ch;max-width:100%}
+.blank.ok{border-color:var(--good);background:var(--good-soft);color:var(--good)}
+.blank.bad{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.hint{font-size:14px;color:var(--muted);background:var(--surface2);border-radius:12px;padding:10px 14px}
+.hint code,.fb code{font-family:var(--mono);font-size:13px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.opt{border:2px solid var(--line);background:var(--surface);border-radius:14px;padding:14px;text-align:left;font-weight:600;min-height:54px}
+.opt:hover:not(:disabled){border-color:var(--ink)}
+.opt.good{border-color:var(--good);background:var(--good-soft);color:var(--good)}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.tray{min-height:62px;border:2px dashed var(--line);border-radius:14px;padding:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tok{border:0;background:var(--ink);color:var(--bg);padding:9px 14px;border-radius:10px;font-weight:600;font-size:17px}
+.tok.alt{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
+.fb{border-radius:14px;padding:14px 16px;display:grid;gap:8px}
+.fb.good{background:var(--good-soft);color:var(--good)}
+.fb.bad{background:var(--bad-soft);color:var(--bad)}
+.fb .full{color:var(--ink);font-weight:600}
+.fb .why{color:var(--ink);font-size:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.irr{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;align-items:end}
+.irr label{display:grid;gap:4px;font:600 12px var(--mono);color:var(--muted)}
+.irr input{font:500 20px var(--body);border:2px solid var(--line);background:var(--surface2);border-radius:12px;padding:10px 12px;width:100%;color:var(--ink)}
+.irr input.ok{border-color:var(--good);background:var(--good-soft)}
+.irr input.bad{border-color:var(--bad);background:var(--bad-soft)}
+.v1 b{font:800 30px var(--display);display:block}
+.v1 span{color:var(--muted);font-size:14px}
+.flash{border:2px solid var(--line);background:var(--surface);border-radius:22px;padding:28px;min-height:260px;text-align:left;display:grid;align-content:center;gap:12px;width:100%}
+.flash:hover{border-color:var(--ink)}
+.flash h2{font-size:clamp(28px,6vw,44px)}
+.flash .f{font-family:var(--mono);font-size:15px;background:var(--surface2);padding:8px 12px;border-radius:10px}
+.flash ul{margin:0;padding-left:20px;color:var(--muted)}
+
+/* kết quả */
+.score{font:800 clamp(56px,14vw,104px)/1 var(--display);letter-spacing:-.04em}
+.list{display:grid;gap:8px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.item small{display:block;color:var(--muted)}
+
+/* lý thuyết */
+.tchips{display:flex;gap:6px;flex-wrap:wrap}
+.tchip{border:1px solid var(--line);background:var(--surface);padding:7px 12px;border-radius:99px;font-weight:600;font-size:13px}
+.tchip.on{background:var(--c);color:var(--bg);border-color:var(--c)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.panel header{background:var(--soft);color:var(--c);padding:20px 22px}
+.panel header h2{font-size:clamp(26px,5vw,38px)}
+.panel header span{font:600 13px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.panel section{padding:18px 22px;border-top:1px solid var(--line);display:grid;gap:10px}
+.formula{display:grid;grid-template-columns:34px 1fr;gap:8px 10px;align-items:center;font-family:var(--mono);font-size:15px}
+.formula i{font-style:normal;font-weight:700;color:var(--c);background:var(--soft);border-radius:8px;text-align:center;padding:2px 0}
+.panel ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.sig{display:flex;gap:6px;flex-wrap:wrap}
+.sig span{background:var(--surface2);padding:3px 10px;border-radius:8px;font-family:var(--mono);font-size:13px}
+.ex{border-left:4px solid var(--c);padding-left:12px}
+.ex b{display:block;font-weight:600}
+.ex small{color:var(--muted)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--surface2);position:sticky;top:0}
+td.m{font-family:var(--mono);font-size:13px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--track);margin-right:6px}
+.dot.on{background:var(--good)}
+.search{font:inherit;border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 14px;width:100%;max-width:360px;color:var(--ink)}
+
+/* tiến độ */
+.bars{display:grid;gap:10px}
+.barrow{display:grid;grid-template-columns:minmax(120px,190px) 1fr 44px;gap:10px;align-items:center;font-size:14px}
+.barrow .prog i{background:var(--c)}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.num{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
+.num b{font:800 32px var(--display);display:block}
+.num span{color:var(--muted);font-size:13px}
+h2.sec{font-size:22px;margin:30px 0 12px}
+
+@media (max-width:560px){
+  .irr{grid-template-columns:1fr 1fr}.irr .v1{grid-column:1/-1}
+  .barrow{grid-template-columns:1fr 44px}.barrow .prog{grid-column:1/-1;order:3}
+  .cell{padding:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
 </head>
 <body>
-
-  <!-- =========================================================================
-       1. PHẦN ĐẦU TRANG (HEADER)
-       ========================================================================= -->
-  <header>
-    <p><strong>HuuTai.Dev</strong> &mdash; <em>Front-end Web Developer</em></p>
-
-    <!-- Điều hướng liên kết nội bộ trong trang -->
-    <nav aria-label="Menu điều hướng chính">
-      <ul>
-        <li><a href="#about">1. Giới thiệu bản thân</a></li>
-        <li><a href="#experience">2. Lộ trình &amp; Kinh nghiệm</a></li>
-        <li><a href="#skills">3. Bảng kỹ năng chi tiết</a></li>
-        <li><a href="#projects">4. Dự án thực tế</a></li>
-        <li><a href="#faq">5. Câu hỏi thường gặp</a></li>
-        <li><a href="#contact">6. Liên hệ &amp; Hợp tác</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <hr>
-
-  <!-- =========================================================================
-       2. NỘI DUNG CHÍNH (MAIN)
-       ========================================================================= -->
-  <main>
-
-    <!-- SECTION 1: GIỚI THIỆU (HERO & ABOUT) -->
-    <section id="about">
-      <h1>Nguyên Lê Hữu Tài &mdash; Chuyên Viên Phát Triển Giao Diện Web</h1>
-      
-      <!-- Châm ngôn / Triết lý làm việc -->
-      <blockquote cite="https://www.w3.org/WAI/">
-        <p>&ldquo;Sức mạnh của Web nằm ở tính phổ quát. Việc mọi người, bất kể khả năng hay khiếm khuyết nào, đều có thể truy cập được là khía cạnh thiết yếu nhất.&rdquo;</p>
-        <footer>&mdash; <cite>Tim Berners-Lee</cite>, Nhà phát minh ra World Wide Web</footer>
-      </blockquote>
-
-      <h2>Tóm tắt mục tiêu nghề nghiệp</h2>
-      <p>
-        Xin chào! Tôi là <strong>Nguyên Lê Hữu Tài</strong>, một lập trình viên yêu thích việc xây dựng các trang web sạch sẽ, 
-        ngăn nắp và đúng chuẩn kỹ thuật ngay từ nền móng <abbr title="HyperText Markup Language 5">HTML5</abbr>. 
-        Tôi tin rằng một trang web vững chắc bắt đầu từ <mark>cấu trúc ngữ nghĩa (Semantic Markup)</mark>, 
-        giúp tối ưu hóa công cụ tìm kiếm (<abbr title="Search Engine Optimization">SEO</abbr>) và 
-        đảm bảo người dùng sử dụng thiết bị đọc màn hình (<abbr title="Web Content Accessibility Guidelines">WCAG</abbr>) luôn có trải nghiệm thuận tiện nhất.
-      </p>
-
-      <!-- Khối thông tin bổ trợ sử dụng thẻ <aside> -->
-      <aside>
-        <h3>Thông tin tóm tắt cá nhân:</h3>
-        <!-- Danh sách định nghĩa / mô tả <dl>, <dt>, <dd> -->
-        <dl>
-          <dt><strong>Họ và tên:</strong></dt>
-          <dd>Nguyên Lê Hữu Tài</dd>
-
-          <dt><strong>Định hướng chuyên môn:</strong></dt>
-          <dd>Web Accessibility (A11y), Semantic HTML, Core Web Vitals</dd>
-
-          <dt><strong>Trạng thái làm việc:</strong></dt>
-          <dd>Sẵn sàng tiếp nhận dự án thực tập / dự án tự do (Freelance)</dd>
-
-          <dt><strong>Ngôn ngữ sử dụng:</strong></dt>
-          <dd>Tiếng Việt (Bản ngữ), Tiếng Anh (Đọc hiểu tài liệu kỹ thuật)</dd>
-        </dl>
-      </aside>
-
-      <p>
-        <a href="#contact">Gửi thông điệp ngay</a> | 
-        <a href="#projects">Khám phá các dự án mẫu</a>
-      </p>
-    </section>
-
-    <hr>
-
-    <!-- SECTION 2: LỘ TRÌNH HỌC TẬP & KINH NGHIỆM -->
-    <section id="experience">
-      <h2>Lộ trình Học tập &amp; Quá trình Rèn luyện</h2>
-      <p>Các mốc thời gian ghi nhận sự tiến bộ trong kỹ năng lập trình web của tôi:</p>
-
-      <ol>
-        <li>
-          <article>
-            <h3>Tự học &amp; Thực hành Front-end Tiêu chuẩn</h3>
-            <p><small>Thời gian: <time datetime="2025-01">Tháng 01/2025</time> &ndash; <time datetime="2026-09">Hiện tại</time></small></p>
-            <p>
-              Tập trung nghiên cứu chuyên sâu về tiêu chuẩn Web của tổ chức W3C. 
-              Thực hành chuyển đổi các thiết kế phức tạp thành mã nguồn thuần ngữ nghĩa, 
-              không lạm dụng thẻ vô nghĩa như <code>&lt;div&gt;</code> hay <code>&lt;span&gt;</code> khi không cần thiết.
-            </p>
-          </article>
-        </li>
-
-        <li>
-          <article>
-            <h3>Hoàn thành các Chứng chỉ Trực tuyến về Web Foundation</h3>
-            <p><small>Thời gian: <time datetime="2024-06">Tháng 06/2024</time> &ndash; <time datetime="2024-12">Tháng 12/2024</time></small></p>
-            <p>
-              Hoàn thành các khoá học chuyên sâu về Responsive Web Design, cấu trúc DOM, 
-              biểu mẫu truy cập accessible form và thuật toán JavaScript cơ bản.
-            </p>
-          </article>
-        </li>
-      </ol>
-    </section>
-
-    <hr>
-
-    <!-- SECTION 3: BẢNG KỸ NĂNG CHI TIẾT (SỬ DỤNG TABLE CHUẨN TRỢ NĂNG) -->
-    <section id="skills">
-      <h2>Bảng Đánh Giá Năng Lực &amp; Kỹ Năng Kỹ Thuật</h2>
-      <p>Mức độ thành thạo đối với từng nhóm công nghệ nền tảng của lập trình Web:</p>
-
-      <!-- Thẻ table hoàn chỉnh với caption, thead, tbody, scope -->
-      <table border="1">
-        <caption>Bảng phân loại kỹ năng và mức độ thành thạo</caption>
-        <thead>
-          <tr>
-            <th scope="col">Nhóm Kỹ Năng</th>
-            <th scope="col">Công Nghệ / Tiêu Chuẩn</th>
-            <th scope="col">Mức Độ Đạt Được</th>
-            <th scope="col">Ứng Dụng Thực Tế</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row" rowspan="2">Cấu trúc &amp; Ngữ nghĩa</th>
-            <td>HTML5 Semantic</td>
-            <td>Nâng cao (Advanced)</td>
-            <td>Tổ chức trang web chuẩn theo các Landmark: header, nav, main, article, section, footer.</td>
-          </tr>
-          <tr>
-            <td>WAI-ARIA &amp; WCAG 2.1</td>
-            <td>Trung cấp (Intermediate)</td>
-            <td>Gắn nhãn aria-label, aria-describedby, quản lý focus cho bàn phím.</td>
-          </tr>
-          <tr>
-            <th scope="row" rowspan="2">Giao diện &amp; Bố cục</th>
-            <td>CSS3 Layout</td>
-            <td>Cơ bản - Trung cấp</td>
-            <td>Sắp xếp khối phần tử bằng Flexbox, CSS Grid và căn chỉnh theo Media Queries.</td>
-          </tr>
-          <tr>
-            <td>Responsive Design</td>
-            <td>Khá</td>
-            <td>Tương thích màn hình điện thoại di động, máy tính bảng và màn hình lớn.</td>
-          </tr>
-          <tr>
-            <th scope="row">Hành vi &amp; Dữ liệu</th>
-            <td>JavaScript (ES6+)</td>
-            <td>Căn bản</td>
-            <td>Xử lý sự kiện form, kiểm tra tính hợp lệ dữ liệu (Client-side validation), xử lý mảng.</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4"><small>Ghi chú: Mục tiêu tiếp theo là làm chủ hoàn toàn JavaScript nâng cao và Framework React.</small></td>
-          </tr>
-        </tfoot>
-      </table>
-    </section>
-
-    <hr>
-
-    <!-- SECTION 4: DỰ ÁN TIÊU BIỂU (PROJECTS) -->
-    <section id="projects">
-      <h2>Dự án Nổi bật Đã Triển Khai</h2>
-      <p>Danh sách các dự án thực nghiệm được phân tách rõ ràng bằng cấu trúc thẻ <code>&lt;article&gt;</code>:</p>
-
-      <!-- Dự án 1 -->
-      <article>
-        <header>
-          <h3>1. Trang Web Giới Thiệu Cửa Hàng Bán Hoa Tươi</h3>
-          <p><small>Thể loại: Website Thương Mại / Dịch Vụ Cửa Hàng Địa Phương</small></p>
-        </header>
-
-        <p><strong>Bối cảnh &amp; Mục tiêu:</strong> Xây dựng landing page giới thiệu các sản phẩm hoa theo chủ đề cưới, sinh nhật và hoa văn phòng, hỗ trợ đặt hàng qua email và gọi điện trực tiếp.</p>
-        
-        <h4>Các kỹ thuật HTML nổi bật đã áp dụng:</h4>
-        <ul>
-          <li>Cấu trúc bảng giá sử dụng thẻ <code>&lt;table&gt;</code> phân chia rõ loại hoa và mùa nở.</li>
-          <li>Thẻ <code>&lt;address&gt;</code> cung cấp địa chỉ tiệm, số điện thoại và giờ mở cửa chính xác.</li>
-          <li>Liên kết trực tiếp đến số điện thoại qua cú pháp <code>href="tel:..."</code>.</li>
-        </ul>
-
-        <h4>Thông số kỹ thuật:</h4>
-        <p>
-          Mã nguồn: <strong>HTML5 thuần</strong> | 
-          Thời gian tải trang giả lập: <strong>&lt; 0.5s</strong> | 
-          Tiêu chuẩn tiếp cận: <strong>WCAG 2.1 Level AA</strong>
-        </p>
-
-        <p>
-          <a href="https://example.com/flower-shop" target="_blank" rel="noopener noreferrer">Xem liên kết thử nghiệm</a> | 
-          <a href="https://github.com/example/flower-shop" target="_blank" rel="noopener noreferrer">Xem kho mã nguồn (Repository)</a>
-        </p>
-      </article>
-
-      <br>
-
-      <!-- Dự án 2 -->
-      <article>
-        <header>
-          <h3>2. Trang Báo Điện Tử &amp; Blog Chuyên Đề Công Nghệ</h3>
-          <p><small>Thể loại: Trang Tin Tức &amp; Báo Chí Số</small></p>
-        </header>
-
-        <p><strong>Bối cảnh &amp; Mục tiêu:</strong> Nền tảng chia sẻ các bài viết kỹ thuật, tối ưu hóa để bot tìm kiếm của Google có thể thu thập dữ liệu (crawling) nhanh chóng nhất.</p>
-
-        <h4>Cấu trúc mã nguồn ví dụ được sử dụng trong bài viết:</h4>
-        <pre><code>&lt;article&gt;
-  &lt;header&gt;
-    &lt;h2&gt;Tối ưu hoá Accessibility trong HTML5&lt;/h2&gt;
-    &lt;p&gt;Tác giả: &lt;strong&gt;Nguyên Lê Hữu Tài&lt;/strong&gt;&lt;/p&gt;
-    &lt;time datetime="2026-03-15"&gt;15 tháng 3, 2026&lt;/time&gt;
-  &lt;/header&gt;
-  &lt;p&gt;Nội dung bài viết chi tiết...&lt;/p&gt;
-&lt;/article&gt;</code></pre>
-
-        <p>
-          <a href="https://example.com/tech-blog" target="_blank" rel="noopener noreferrer">Xem liên kết thử nghiệm</a> | 
-          <a href="https://github.com/example/tech-blog" target="_blank" rel="noopener noreferrer">Xem kho mã nguồn (Repository)</a>
-        </p>
-      </article>
-
-      <br>
-
-      <!-- Dự án 3 -->
-      <article>
-        <header>
-          <h3>3. Bảng So Sánh Các Gói Phần Mềm Quản Trị (SaaS Pricing)</h3>
-          <p><small>Thể loại: Bảng Biểu &amp; Tương Tác Dữ Liệu</small></p>
-        </header>
-
-        <p><strong>Bối cảnh &amp; Mục tiêu:</strong> Tạo bảng chọn giá cước (Cơ bản, Tiêu chuẩn, Doanh nghiệp) với đầy đủ các ô chọn tính năng và câu hỏi hỗ trợ khách hàng.</p>
-        
-        <p><strong>Điểm mạnh:</strong> Hỗ trợ hoàn toàn thao tác điều hướng bằng phím Tab và phím mũi tên dành cho người dùng không sử dụng chuột.</p>
-
-        <p>
-          <a href="https://example.com/saas-pricing" target="_blank" rel="noopener noreferrer">Xem liên kết thử nghiệm</a> | 
-          <a href="https://github.com/example/saas-pricing" target="_blank" rel="noopener noreferrer">Xem kho mã nguồn (Repository)</a>
-        </p>
-      </article>
-    </section>
-
-    <hr>
-
-    <!-- SECTION 5: CÂU HỎI THƯỜNG GẶP (SỬ DỤNG DETAILS & SUMMARY) -->
-    <section id="faq">
-      <h2>Những Câu Hỏi Thường Gặp (FAQ)</h2>
-      <p><em>(Nhấp vào từng câu hỏi bên dưới để mở rộng nội dung giải đáp thuần HTML mà không cần JavaScript)</em></p>
-
-      <!-- Khối mở gập bằng HTML5 <details> & <summary> -->
-      <details>
-        <summary><strong>Tại sao việc sử dụng HTML Semantic lại quan trọng đến vậy?</strong></summary>
-        <p>
-          HTML Semantic (thẻ có ý nghĩa) giúp máy tính, trình duyệt và máy tìm kiếm hiểu chính xác vai trò của từng thành phần trên trang web. 
-          Nó giúp tăng thứ hạng SEO tự nhiên, giúp trình đọc màn hình cho người khiếm thị đọc đúng thứ tự, 
-          và giúp mã nguồn dễ đọc, dễ bảo trì cho các lập trình viên khác trong nhóm.
-        </p>
-      </details>
-
-      <br>
-
-      <details>
-        <summary><strong>Nguyên Lê Hữu Tài có nhận làm các dự án tự do (Freelance) không?</strong></summary>
-        <p>
-          Có. Tôi sẵn sàng nhận xây dựng giao diện landing page, cắt giao diện từ tệp thiết kế Figma sang mã nguồn chuẩn HTML/CSS, 
-          hoặc kiểm định (audit) chuẩn trợ năng cho các trang web hiện có.
-        </p>
-      </details>
-
-      <br>
-
-      <details>
-        <summary><strong>Thời gian phản hồi qua email thông thường là bao lâu?</strong></summary>
-        <p>
-          Tôi luôn kiểm tra hộp thư mỗi ngày và cam kết phản hồi các thư điện tử hợp tác trong vòng <strong>24 giờ làm việc</strong>.
-        </p>
-      </details>
-    </section>
-
-    <hr>
-
-    <!-- SECTION 6: LIÊN HỆ & BIỂU MẪU (CONTACT) -->
-    <section id="contact">
-      <h2>Liên Hệ Hợp Tác &amp; Trao Đổi Công Việc</h2>
-      <p>Hãy liên hệ với tôi qua thông tin bên dưới hoặc gửi yêu cầu trực tiếp qua biểu mẫu có cấu trúc chi tiết:</p>
-
-      <!-- Thẻ <address> chuyên biệt -->
-      <address>
-        <h3>Thông tin liên lạc trực tiếp:</h3>
-        <ul>
-          <li><strong>Họ và tên người nhận:</strong> Nguyên Lê Hữu Tài</li>
-          <li><strong>Thư điện tử:</strong> <a href="mailto:contact@nguyenlehuutai.dev">contact@nguyenlehuutai.dev</a></li>
-          <li><strong>Điện thoại:</strong> <a href="tel:+84901234567">+84 (0) 90 123 4567</a></li>
-          <li><strong>Địa điểm làm việc:</strong> Quận 1, Thành phố Hồ Chí Minh, Việt Nam</li>
-          <li><strong>Giờ làm việc:</strong> Thứ Hai &ndash; Thứ Bảy (08:30 &ndash; 17:30)</li>
-        </ul>
-      </address>
-
-      <br>
-
-      <!-- Biểu mẫu Form đầy đủ các trường dữ liệu và thẻ <fieldset>, <legend> -->
-      <form action="#" method="post">
-        
-        <!-- Khối 1: Thông tin người gửi -->
-        <fieldset>
-          <legend><strong>1. Thông tin cá nhân của bạn</strong></legend>
-
-          <p>
-            <label for="client-name">Họ và tên đầy đủ (*):</label><br>
-            <input type="text" id="client-name" name="client_name" placeholder="Ví dụ: Trần Văn Nam" required autocomplete="name">
-          </p>
-
-          <p>
-            <label for="client-email">Địa chỉ Email liên hệ (*):</label><br>
-            <input type="email" id="client-email" name="client_email" placeholder="name@company.com" required autocomplete="email">
-          </p>
-
-          <p>
-            <label for="client-phone">Số điện thoại di động:</label><br>
-            <input type="tel" id="client-phone" name="client_phone" placeholder="0901234567" autocomplete="tel">
-          </p>
-        </fieldset>
-
-        <br>
-
-        <!-- Khối 2: Chi tiết yêu cầu công việc -->
-        <fieldset>
-          <legend><strong>2. Yêu cầu &amp; Phạm vi dự án</strong></legend>
-
-          <p>
-            <label for="service-category">Mục đích liên hệ chính:</label><br>
-            <select id="service-category" name="service_category">
-              <option value="intern">Tuyển dụng vị trí thực tập / Junior Front-end</option>
-              <option value="landing-page">Thuê xây dựng Landing Page giới thiệu sản phẩm</option>
-              <option value="accessibility-audit">Kiểm tra chuẩn tiếp cận Accessibility (WCAG)</option>
-              <option value="other">Trao đổi học thuật / Mục đích khác</option>
-            </select>
-          </p>
-
-          <p>Dịch vụ bạn đang quan tâm (Có thể chọn nhiều mục):</p>
-          <p>
-            <input type="checkbox" id="srv-html" name="services" value="html-semantic">
-            <label for="srv-html">Cấu trúc HTML5 chuẩn SEO</label><br>
-
-            <input type="checkbox" id="srv-responsive" name="services" value="responsive">
-            <label for="srv-responsive">Tối ưu tương thích điện thoại (Responsive)</label><br>
-
-            <input type="checkbox" id="srv-a11y" name="services" value="accessibility">
-            <label for="srv-a11y">Đạt chuẩn tiếp cận cho người khiếm thị</label>
-          </p>
-
-          <p>Ngân sách dự kiến của bạn (VND):</p>
-          <p>
-            <input type="radio" id="budget-small" name="budget" value="under-5m" checked>
-            <label for="budget-small">Dưới 5.000.000đ</label><br>
-
-            <input type="radio" id="budget-medium" name="budget" value="5m-15m">
-            <label for="budget-medium">5.000.000đ &ndash; 15.000.000đ</label><br>
-
-            <input type="radio" id="budget-large" name="budget" value="over-15m">
-            <label for="budget-large">Trên 15.000.000đ hoặc thoả thuận</label>
-          </p>
-
-          <p>
-            <label for="project-deadline">Hạn chót hoàn thành dự kiến:</label><br>
-            <input type="date" id="project-deadline" name="project_deadline">
-          </p>
-
-          <p>
-            <label for="project-notes">Mô tả tóm tắt nội dung trao đổi (*):</label><br>
-            <textarea id="project-notes" name="project_notes" rows="6" cols="45" placeholder="Hãy mô tả sơ lược về ý tưởng, tài liệu đính kèm hoặc thời gian thuận tiện để trao đổi..." required></textarea>
-          </p>
-        </fieldset>
-
-        <br>
-
-        <!-- Thao tác gửi dữ liệu -->
-        <p>
-          <button type="submit"><strong>Xác nhận gửi thông điệp</strong></button>
-          <button type="reset">Xoá toàn bộ nội dung đã nhập</button>
-        </p>
-
-      </form>
-    </section>
-
-  </main>
-
-  <hr>
-
-  <!-- =========================================================================
-       3. PHẦN CHÂN TRANG (FOOTER)
-       ========================================================================= -->
-  <footer>
-    <p>
-      <small>
-        Bản quyền &copy; <time datetime="2026">2026</time> thuộc về <strong>Nguyên Lê Hữu Tài</strong>. 
-        Mã nguồn được biên soạn thủ công theo các chuẩn mực của tổ chức W3C.
-      </small>
-    </p>
-
-    <!-- Điều hướng liên kết bổ trợ -->
-    <nav aria-label="Menu phụ chân trang">
-      <ul>
-        <li><a href="#about">Trở về đầu trang &uarr;</a></li>
-        <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">Trang cá nhân GitHub</a></li>
-        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">Trang hồ sơ LinkedIn</a></li>
-        <li><a href="https://validator.w3.org" target="_blank" rel="noopener noreferrer">Kiểm tra hợp lệ W3C HTML Validator</a></li>
-      </ul>
-    </nav>
-  </footer>
-
+<div id="hdr"></div>
+<main class="wrap" id="app"></main>
+<noscript><p class="wrap">Cần bật JavaScript để dùng trang này.</p></noscript>
+<script>
+"use strict";
+/*DATA*/
+const T=[
+{id:"pas",time:"past",vi:"Quá khứ đơn",en:"Past Simple",f:["S + V2/ed","S + did not + V","Did + S + V?"],use:["Hành động đã xảy ra và kết thúc ở một thời điểm xác định trong quá khứ","Chuỗi hành động nối tiếp nhau trong quá khứ"],sig:["yesterday","last week","ago","in 2010","when I was a child"],ex:[["I visited my grandparents last weekend.","Tôi đã đến thăm ông bà vào cuối tuần trước."],["She did not go to school yesterday.","Hôm qua cô ấy không đi học."]]},
+{id:"ps",time:"present",vi:"Hiện tại đơn",en:"Present Simple",f:["S + V(s/es)","S + do/does not + V","Do/Does + S + V?"],use:["Thói quen, hành động lặp đi lặp lại","Sự thật hiển nhiên, chân lý","Lịch trình, thời gian biểu"],sig:["always","usually","often","sometimes","never","every day","on Mondays"],ex:[["She goes to school every day.","Cô ấy đi học mỗi ngày."],["The sun rises in the east.","Mặt trời mọc ở hướng đông."]]},
+{id:"fs",time:"future",vi:"Tương lai đơn",en:"Future Simple",f:["S + will + V","S + will not (won't) + V","Will + S + V?"],use:["Quyết định tức thời ngay lúc nói","Dự đoán không có căn cứ chắc chắn, lời hứa, lời đề nghị"],sig:["tomorrow","next week","soon","I think","probably","I promise"],ex:[["I will help you.","Tôi sẽ giúp bạn."],["I think it will rain tomorrow.","Tôi nghĩ ngày mai trời sẽ mưa."]]},
+{id:"pasc",time:"past",vi:"Quá khứ tiếp diễn",en:"Past Continuous",f:["S + was/were + V-ing","S + was/were not + V-ing","Was/Were + S + V-ing?"],use:["Hành động đang diễn ra tại một thời điểm trong quá khứ","Hành động đang diễn ra thì bị hành động khác cắt ngang","Hai hành động diễn ra song song trong quá khứ"],sig:["at 8 p.m. yesterday","while","when","at that time"],ex:[["I was watching TV when she called.","Tôi đang xem TV thì cô ấy gọi."],["They were playing football at 5 p.m. yesterday.","5 giờ chiều hôm qua họ đang chơi bóng đá."]]},
+{id:"pc",time:"present",vi:"Hiện tại tiếp diễn",en:"Present Continuous",f:["S + am/is/are + V-ing","S + am/is/are not + V-ing","Am/Is/Are + S + V-ing?"],use:["Hành động đang diễn ra ngay lúc nói","Hành động tạm thời, xung quanh thời điểm nói","Kế hoạch đã sắp xếp trong tương lai gần"],sig:["now","at the moment","right now","Look!","Listen!","this week"],ex:[["Look! The baby is sleeping.","Nhìn kìa! Em bé đang ngủ."],["We are meeting our teacher tomorrow.","Ngày mai chúng tôi sẽ gặp thầy giáo (đã hẹn trước)."]]},
+{id:"fc",time:"future",vi:"Tương lai tiếp diễn",en:"Future Continuous",f:["S + will be + V-ing","S + will not be + V-ing","Will + S + be + V-ing?"],use:["Hành động sẽ đang diễn ra tại một thời điểm xác định trong tương lai"],sig:["this time tomorrow","at 8 p.m. tonight","at noon next Monday"],ex:[["This time tomorrow, I will be flying to Paris.","Giờ này ngày mai tôi sẽ đang bay tới Paris."],["At 8 p.m. tonight, she will be watching her favorite show.","8 giờ tối nay cô ấy sẽ đang xem chương trình yêu thích."]]},
+{id:"pap",time:"past",vi:"Quá khứ hoàn thành",en:"Past Perfect",f:["S + had + V3/ed","S + had not + V3/ed","Had + S + V3/ed?"],use:["Hành động xảy ra trước một hành động hoặc một mốc khác trong quá khứ"],sig:["before","after","by the time","when","already"],ex:[["The film had started before we arrived.","Bộ phim đã bắt đầu trước khi chúng tôi đến."],["After he had eaten, he went to bed.","Sau khi ăn xong, anh ấy đi ngủ."]]},
+{id:"pp",time:"present",vi:"Hiện tại hoàn thành",en:"Present Perfect",f:["S + have/has + V3/ed","S + have/has not + V3/ed","Have/Has + S + V3/ed?"],use:["Hành động bắt đầu trong quá khứ, kéo dài đến hiện tại","Hành động vừa xảy ra, kết quả còn ở hiện tại","Trải nghiệm trong đời, không nói rõ thời điểm"],sig:["already","yet","just","ever","never","since","for","so far","recently"],ex:[["I have lived here since 2015.","Tôi sống ở đây từ năm 2015."],["She has already finished her homework.","Cô ấy đã làm xong bài tập rồi."]]},
+{id:"fp",time:"future",vi:"Tương lai hoàn thành",en:"Future Perfect",f:["S + will have + V3/ed","S + will not have + V3/ed","Will + S + have + V3/ed?"],use:["Hành động sẽ hoàn thành trước một thời điểm hoặc một hành động khác trong tương lai"],sig:["by + mốc thời gian","by the time","before","by next month"],ex:[["By 2030, I will have graduated from university.","Đến năm 2030, tôi sẽ tốt nghiệp đại học xong rồi."],["She will have finished the report by Friday.","Cô ấy sẽ hoàn thành báo cáo trước thứ Sáu."]]},
+{id:"papc",time:"past",vi:"Quá khứ hoàn thành tiếp diễn",en:"Past Perfect Continuous",f:["S + had been + V-ing","S + had not been + V-ing","Had + S + been + V-ing?"],use:["Nhấn mạnh quá trình kéo dài của hành động trước một mốc trong quá khứ","Giải thích nguyên nhân của một tình trạng trong quá khứ"],sig:["for + khoảng thời gian","since","before","until then","all day"],ex:[["I was tired because I had been working all day.","Tôi mệt vì đã làm việc cả ngày."],["They had been waiting for an hour when the bus came.","Họ đã đợi một tiếng thì xe buýt đến."]]},
+{id:"ppc",time:"present",vi:"Hiện tại hoàn thành tiếp diễn",en:"Present Perfect Continuous",f:["S + have/has been + V-ing","S + have/has not been + V-ing","Have/Has + S + been + V-ing?"],use:["Nhấn mạnh quá trình của hành động bắt đầu từ quá khứ và còn kéo dài đến hiện tại","Hành động vừa kết thúc, còn để lại dấu vết hiện tại"],sig:["for","since","all day","how long","lately","recently"],ex:[["I have been waiting for you for two hours.","Tôi đã đợi bạn suốt hai tiếng rồi."],["It has been raining all day.","Trời mưa suốt cả ngày nay."]]},
+{id:"fpc",time:"future",vi:"Tương lai hoàn thành tiếp diễn",en:"Future Perfect Continuous",f:["S + will have been + V-ing","S + will not have been + V-ing","Will + S + have been + V-ing?"],use:["Nhấn mạnh quá trình kéo dài của hành động tính đến một mốc trong tương lai"],sig:["by next June","by the time","for + khoảng thời gian","by the end of this year"],ex:[["By next June, I will have been working here for five years.","Đến tháng Sáu tới, tôi sẽ làm ở đây được năm năm."],["By 5 p.m., she will have been studying for six hours.","Đến 5 giờ chiều, cô ấy sẽ học được sáu tiếng."]]}
+];
+const TM={};T.forEach(t=>TM[t.id]=t);
+
+/* Câu hỏi: [câu có ___ và động từ trong ngoặc, các đáp án chấp nhận cách nhau bởi |] (dạng đầy đủ đứng trước) */
+const Q={
+ps:[
+["She ___ (go) to school every day.","goes"],
+["They ___ (not like) coffee.","do not like|don't like"],
+["Water ___ (boil) at 100 degrees Celsius.","boils"],
+["My mother ___ (not watch) TV in the morning.","does not watch|doesn't watch"],
+["The sun ___ (rise) in the east.","rises"],
+["We usually ___ (have) dinner at 7 p.m.","have"],
+["He ___ (study) English every night.","studies"],
+["The train ___ (leave) at 6:30 tomorrow morning.","leaves"]],
+pc:[
+["Look! The baby ___ (sleep).","is sleeping"],
+["They ___ (not watch) TV now.","are not watching|aren't watching"],
+["I ___ (talk) on the phone at the moment.","am talking|'m talking"],
+["Listen! Someone ___ (knock) at the door.","is knocking"],
+["She ___ (study) for her exam this week.","is studying"],
+["We ___ (meet) our teacher tomorrow afternoon. It is arranged.","are meeting"],
+["The children ___ (play) in the garden right now.","are playing"],
+["It ___ (rain) now, so take an umbrella.","is raining"]],
+pp:[
+["I ___ (live) here since 2015.","have lived|'ve lived"],
+["She ___ (finish) her homework already.","has finished"],
+["They ___ (not see) that film yet.","have not seen|haven't seen"],
+["We ___ (know) each other for ten years.","have known|'ve known"],
+["He ___ (lose) his wallet, so he can't pay.","has lost"],
+["I ___ (visit) Paris three times.","have visited|'ve visited"],
+["My sister ___ (not call) me since Monday.","has not called|hasn't called"],
+["This is the best meal I ___ (ever/eat).","have ever eaten|'ve ever eaten"]],
+ppc:[
+["I ___ (wait) for you for two hours.","have been waiting|'ve been waiting"],
+["She ___ (study) English since 8 o'clock.","has been studying"],
+["They ___ (not work) here for long.","have not been working|haven't been working"],
+["It ___ (rain) all day.","has been raining"],
+["We ___ (learn) French for three years.","have been learning|'ve been learning"],
+["He is tired because he ___ (run).","has been running"],
+["My brother ___ (play) video games since lunch.","has been playing"],
+["The children ___ (play) outside since morning, so they are muddy.","have been playing"]],
+pas:[
+["I ___ (visit) my grandparents last weekend.","visited"],
+["She ___ (not go) to school yesterday.","did not go|didn't go"],
+["They ___ (buy) a new car in 2020.","bought"],
+["We ___ (see) a great film last night.","saw"],
+["He ___ (wake) up at 6 a.m. this morning.","woke"],
+["The Titanic ___ (sink) in 1912.","sank"],
+["I ___ (not eat) breakfast this morning.","did not eat|didn't eat"],
+["She ___ (write) me a letter two days ago.","wrote"]],
+pasc:[
+["I ___ (watch) TV when she called.","was watching"],
+["They ___ (play) football at 5 p.m. yesterday.","were playing"],
+["She ___ (not sleep) when I came in.","was not sleeping|wasn't sleeping"],
+["While he ___ (cook), the phone rang.","was cooking"],
+["We ___ (have) dinner when the lights went out.","were having"],
+["It ___ (rain) heavily at midnight.","was raining"],
+["The kids ___ (do) homework while their mother was cooking.","were doing"],
+["He ___ (drive) to work when he had an accident.","was driving"]],
+pap:[
+["The film ___ (start) before we arrived.","had started"],
+["She ___ (not finish) her work before the boss came.","had not finished|hadn't finished"],
+["They ___ (leave) when I got there.","had left"],
+["After he ___ (eat), he went to bed.","had eaten"],
+["We were late because the bus ___ (go).","had gone"],
+["She told me she ___ (visit) Japan before.","had visited"],
+["He ___ (not study), so he failed the test.","had not studied|hadn't studied"],
+["By the time I called, they ___ (finish) dinner.","had finished"]],
+papc:[
+["I was tired because I ___ (work) all day.","had been working"],
+["She ___ (cry), so her eyes were red.","had been crying"],
+["They ___ (wait) for an hour when the bus finally came.","had been waiting"],
+["He ___ (not sleep) well, so he looked exhausted.","had not been sleeping|hadn't been sleeping"],
+["We ___ (walk) for two hours before we found the hotel.","had been walking"],
+["The ground was wet because it ___ (rain).","had been raining"],
+["She ___ (study) English for five years before she moved to London.","had been studying"],
+["The kids ___ (play) outside, so they were dirty.","had been playing"]],
+fs:[
+["I think it ___ (rain) tomorrow.","will rain|'ll rain"],
+["She ___ (not come) to the party.","will not come|won't come"],
+["Don't worry. I ___ (help) you.","will help|'ll help"],
+["They ___ (visit) us next month.","will visit|'ll visit"],
+["The phone is ringing. I ___ (answer) it.","will answer|'ll answer"],
+["He ___ (be) 18 next year.","will be|'ll be"],
+["I'm sure you ___ (pass) the exam.","will pass|'ll pass"],
+["We ___ (not be) late, I promise.","will not be|won't be"]],
+fc:[
+["This time tomorrow, I ___ (fly) to Paris.","will be flying|'ll be flying"],
+["At 8 p.m. tonight, she ___ (watch) her favorite show.","will be watching|'ll be watching"],
+["They ___ (not work) at noon tomorrow.","will not be working|won't be working"],
+["Don't call at 7. We ___ (have) dinner then.","will be having|'ll be having"],
+["This time next week, we ___ (lie) on the beach.","will be lying|'ll be lying"],
+["He ___ (sleep) at midnight.","will be sleeping|'ll be sleeping"],
+["At 9 a.m. next Monday, I ___ (attend) a meeting.","will be attending|'ll be attending"],
+["The students ___ (take) the exam at this time tomorrow.","will be taking"]],
+fp:[
+["By 2030, I ___ (graduate) from university.","will have graduated|'ll have graduated"],
+["She ___ (finish) the report by Friday.","will have finished|'ll have finished"],
+["They ___ (not arrive) by 6 p.m.","will not have arrived|won't have arrived"],
+["By next month, we ___ (live) here for ten years.","will have lived|'ll have lived"],
+["By the time you come back, I ___ (cook) dinner.","will have cooked|'ll have cooked"],
+["He ___ (read) the whole book by tomorrow.","will have read|'ll have read"],
+["By this time next year, she ___ (save) $5,000.","will have saved|'ll have saved"],
+["We ___ (complete) the project before the deadline.","will have completed|'ll have completed"]],
+fpc:[
+["By next June, I ___ (work) here for five years.","will have been working|'ll have been working"],
+["By 5 p.m., she ___ (study) for six hours.","will have been studying|'ll have been studying"],
+["They ___ (not live) here long by then.","will not have been living|won't have been living"],
+["By the end of this year, we ___ (learn) English for ten years.","will have been learning|'ll have been learning"],
+["By tomorrow noon, he ___ (drive) for eight hours.","will have been driving|'ll have been driving"],
+["In December, they ___ (date) for three years.","will have been dating|'ll have been dating"],
+["By the time she arrives, I ___ (wait) for two hours.","will have been waiting|'ll have been waiting"],
+["By next month, he ___ (run) every morning for a year.","will have been running|'ll have been running"]]
+};
+
+/* Động từ bất quy tắc: V1|V2|V3|nghĩa  (nhiều dạng cách nhau bởi /) */
+const IRR=["begin|began|begun|bắt đầu","break|broke|broken|làm vỡ","bring|brought|brought|mang đến","build|built|built|xây dựng","buy|bought|bought|mua","catch|caught|caught|bắt, đón","choose|chose|chosen|chọn","come|came|come|đến","cost|cost|cost|có giá","cut|cut|cut|cắt","do|did|done|làm","draw|drew|drawn|vẽ","drink|drank|drunk|uống","drive|drove|driven|lái xe","eat|ate|eaten|ăn","fall|fell|fallen|ngã, rơi","feel|felt|felt|cảm thấy","find|found|found|tìm thấy","fly|flew|flown|bay","forget|forgot|forgotten|quên","get|got|got/gotten|nhận được","give|gave|given|cho","go|went|gone|đi","grow|grew|grown|lớn lên","have|had|had|có","hear|heard|heard|nghe","hide|hid|hidden|giấu","hit|hit|hit|đánh","hold|held|held|cầm, giữ","keep|kept|kept|giữ","know|knew|known|biết","leave|left|left|rời đi","lend|lent|lent|cho mượn","let|let|let|để cho","lose|lost|lost|mất","make|made|made|làm ra","mean|meant|meant|có nghĩa là","meet|met|met|gặp","pay|paid|paid|trả tiền","put|put|put|đặt","read|read|read|đọc","ride|rode|ridden|cưỡi, đạp","ring|rang|rung|reo","rise|rose|risen|mọc, tăng","run|ran|run|chạy","say|said|said|nói","see|saw|seen|thấy","sell|sold|sold|bán","send|sent|sent|gửi","sing|sang|sung|hát","sit|sat|sat|ngồi","sleep|slept|slept|ngủ","speak|spoke|spoken|nói","spend|spent|spent|tiêu, dành","stand|stood|stood|đứng","swim|swam|swum|bơi","take|took|taken|lấy, mất (thời gian)","teach|taught|taught|dạy","tell|told|told|kể, bảo","think|thought|thought|nghĩ","throw|threw|thrown|ném","understand|understood|understood|hiểu","wake|woke|woken|thức dậy","wear|wore|worn|mặc","win|won|won|thắng","write|wrote|written|viết"];
+/*ENDDATA*/
+
+const QL=[];Object.keys(Q).forEach(t=>Q[t].forEach((r,i)=>QL.push({id:t+i,t:t,s:r[0],a:r[1].split("|")})));
+const QM={};QL.forEach(q=>QM[q.id]=q);
+const IL=IRR.map(r=>{const p=r.split("|");return{id:p[0],v1:p[0],v2:p[1].split("/"),v3:p[2].split("/"),vi:p[3]};});
+const IM={};IL.forEach(v=>IM[v.id]=v);
+
+/* ===== lưu trữ ===== */
+const KEY="thi-lab-v1";
+function fresh(){return{xp:0,streak:0,last:"",day:"",today:0,st:{},wrong:[],irr:{},best:0,tot:0,ok:0};}
+let S=fresh();
+function load(){try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(fresh(),JSON.parse(r));}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function dayKey(d){return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();}
+function bump(){
+  const now=new Date(),k=dayKey(now);
+  if(S.day!==k){S.day=k;S.today=0;}
+  if(S.last!==k){const y=new Date(now);y.setDate(y.getDate()-1);S.streak=(S.last===dayKey(y))?S.streak+1:1;S.last=k;}
+  S.today++;
+}
+function rec(id,ok,irr){
+  const m=irr?S.irr:S.st;
+  const e=m[id]||(m[id]={c:0,w:0,s:0});
+  if(ok){e.c++;e.s++;S.ok++;}else{e.w++;e.s=0;}
+  S.tot++;bump();
+  if(!irr){const i=S.wrong.indexOf(id);if(ok){if(i>-1)S.wrong.splice(i,1);}else if(i<0)S.wrong.push(id);}
+}
+
+/* ===== tiện ích ===== */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const norm=s=>String(s).toLowerCase().replace(/[‘’`]/g,"'").replace(/\s+/g," ").trim();
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function full(q){return q.s.replace(/\s*\([^)]*\)/,"").replace("___",q.a[0]);}
+function scoped(sc){return QL.filter(q=>sc==="all"||q.t===sc||TM[q.t].time===sc);}
+const mq=q=>{const e=S.st[q.id];return !!e&&e.s>=2;};
+const mi=v=>{const e=S.irr[v.id];return !!e&&e.s>=2;};
+function pick(pool,n,mf){return pool.map(x=>({x:x,k:(mf(x)?1:0)+Math.random()})).sort((a,b)=>a.k-b.k).slice(0,n).map(o=>o.x);}
+function mastery(sc){const l=scoped(sc);return l.length?Math.round(l.filter(mq).length/l.length*100):0;}
+function fmt(s){s=Math.max(0,s);return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");}
+function speak(t){try{const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+const canSpeak=()=>typeof window!=="undefined"&&"speechSynthesis" in window;
+function speakBtn(t){return canSpeak()?`<button class="btn ghost sm" data-act="speak" data-t="${esc(t)}">Nghe câu</button>`:"";}
+
+/* ===== trạng thái giao diện ===== */
+const ui={view:"home",tense:"pas",scope:"all",len:10,q:"",msg:"",rs:false};
+let ses=null;
+const SCOPES=[["all","Tất cả"],["past","Quá khứ"],["present","Hiện tại"],["future","Tương lai"]];
+
+function exit(){if(ses&&ses.timer)clearInterval(ses.timer);ses=null;}
+
+/* ===== phiên luyện tập ===== */
+function startSes(m){
+  exit();ui.msg="";
+  const n=ui.len;let items=[],mode=m;
+  if(m==="fill"||m==="id"||m==="order")items=pick(scoped(ui.scope),n,mq);
+  else if(m==="exam"){items=pick(QL,20,mq);mode="fill";}
+  else if(m==="review"){items=S.wrong.map(i=>QM[i]).filter(Boolean).slice(0,n);mode="fill";}
+  else if(m==="flashT"){items=T.filter(t=>ui.scope==="all"||t.id===ui.scope||t.time===ui.scope);mode="flashT";}
+  else if(m==="irr"||m==="flashI")items=pick(IL,n,mi);
+  if(!items.length){ui.msg="Chưa có câu sai nào để ôn. Hãy luyện thêm vài câu trước.";render();return;}
+  ses={src:m,mode:mode,exam:m==="exam",items:items,i:0,ok:0,bad:[],xp:0,total:items.length,left:m==="exam"?900:0,done:false,
+       checked:false,good:false,hint:false,val:"",flip:false,sel:-1,flash:mode==="flashT"||mode==="flashI"};
+  if(ses.exam)ses.timer=setInterval(tick,1000);
+  prep();render();
+}
+function prep(){
+  const it=ses.items[ses.i];
+  ses.checked=false;ses.hint=false;ses.val="";ses.flip=false;ses.sel=-1;ses.v2="";ses.v3="";
+  if(!it)return;
+  if(ses.mode==="id"){
+    const others=shuffle(T.filter(t=>t.id!==it.t)).slice(0,3);
+    ses.opts=shuffle(others.concat([TM[it.t]])).map(t=>t.id);
+  }
+  if(ses.mode==="order"){
+    const w=full(it).split(" ").map((x,i)=>({x:x,i:i}));
+    let b=shuffle(w),k=0;
+    while(k<10&&w.length>1&&b.every((o,i)=>o.i===i)){b=shuffle(w);k++;}
+    ses.bank=b;ses.ans=[];
+  }
+}
+function tick(){
+  if(!ses)return;
+  ses.left--;
+  const e=$("#tm");if(e)e.textContent=fmt(ses.left);
+  if(ses.left<=0)finish();
+}
+function grade(it,ok,typed,irr){
+  rec(it.id,ok,irr);
+  const g=ok?(ses.hint?5:10):0;
+  ses.xp+=g;S.xp+=g;
+  if(ok)ses.ok++;else ses.bad.push({it:it,typed:typed});
+  ses.good=ok;ses.checked=true;save();
+}
+function check(){
+  if(!ses||ses.done||ses.flash)return;
+  const it=ses.items[ses.i];if(!it||ses.checked)return;
+  let ok=false,typed="";
+  if(ses.mode==="fill"){
+    const el=$("#ans");typed=el?el.value:"";
+    if(!norm(typed))return;
+    ses.val=typed;ok=it.a.some(a=>norm(a)===norm(typed));
+  }else if(ses.mode==="order"){
+    if(ses.ans.length!==ses.bank.length)return;
+    typed=ses.ans.map(bi=>ses.bank[bi].x).join(" ");
+    ok=typed===full(it);
+  }else if(ses.mode==="irr"){
+    const a=$("#a2"),b=$("#a3");
+    ses.v2=a?a.value:"";ses.v3=b?b.value:"";
+    if(!norm(ses.v2)||!norm(ses.v3))return;
+    typed=norm(ses.v2)+" / "+norm(ses.v3);
+    ok=it.v2.indexOf(norm(ses.v2))>-1&&it.v3.indexOf(norm(ses.v3))>-1;
+  }else return;
+  grade(it,ok,typed,ses.mode==="irr");
+  if(ses.exam){next();return;}
+  render();
+}
+function pickOpt(i){
+  if(!ses||ses.mode!=="id"||ses.checked)return;
+  const it=ses.items[ses.i];
+  const chosen=ses.opts[i];
+  ses.sel=i;
+  grade(it,chosen===it.t,TM[chosen].vi,false);
+  render();
+}
+function tok(i){
+  if(!ses||ses.mode!=="order"||ses.checked)return;
+  if(ses.ans.indexOf(i)<0)ses.ans.push(i);
+  render();
+}
+function untok(p){
+  if(!ses||ses.mode!=="order"||ses.checked)return;
+  ses.ans.splice(p,1);render();
+}
+function next(){
+  if(!ses)return;
+  ses.i++;
+  if(ses.i>=ses.items.length)return finish();
+  prep();render();
+}
+function know(ok){
+  if(!ses||!ses.flash)return;
+  const it=ses.items[ses.i];
+  if(ses.mode==="flashI")rec(it.id,ok,true);
+  if(ok){ses.ok++;ses.xp+=2;S.xp+=2;ses.i++;}
+  else{ses.items.push(ses.items.splice(ses.i,1)[0]);}
+  ses.flip=false;save();
+  if(ses.i>=ses.items.length)return finish();
+  render();
+}
+function finish(){
+  if(!ses)return;
+  if(ses.timer){clearInterval(ses.timer);ses.timer=null;}
+  ses.done=true;
+  if(ses.exam){const sc=Math.round(ses.ok/ses.total*100)/10;if(sc>S.best)S.best=sc;save();}
+  render();
+}
+
+/* ===== giao diện ===== */
+function hdr(){
+  const lv=Math.floor(S.xp/150)+1;
+  const nav=[["home","Trang chủ"],["practice","Luyện tập"],["theory","Lý thuyết"],["verbs","Động từ"],["stats","Tiến độ"]];
+  $("#hdr").innerHTML=`<div class="top"><div class="wrap"><div class="bar1"><div class="brand">Thì <em>Lab</em></div><div class="stats"><span>Lv ${lv}</span><span>${S.xp} XP</span><span>Chuỗi ${S.streak} ngày</span></div></div><nav>${nav.map(n=>`<button class="${!ses&&ui.view===n[0]?"on":""}" data-act="nav" data-v="${n[0]}">${n[1]}</button>`).join("")}</nav></div></div>`;
+}
+function render(){
+  hdr();
+  let h;
+  if(ses)h=viewSession();
+  else if(ui.view==="practice")h=viewPractice();
+  else if(ui.view==="theory")h=viewTheory();
+  else if(ui.view==="verbs")h=viewVerbs();
+  else if(ui.view==="stats")h=viewStats();
+  else h=viewHome();
+  $("#app").innerHTML=h;
+  if(ses&&!ses.done&&!ses.checked){
+    const el=$("#ans")||$("#a2");
+    if(el&&el.focus)setTimeout(()=>el.focus(),0);
+  }
+}
+
+function cell(t){
+  const p=mastery(t.id);
+  return `<button class="cell t-${t.time}" data-act="tense" data-id="${t.id}"><span class="ring" style="--p:${p}"><span>${p}</span></span><b>${t.vi}</b><i>${t.en}</i></button>`;
+}
+function viewHome(){
+  const done=S.day===dayKey(new Date())?S.today:0;
+  const pct=Math.min(100,Math.round(done/20*100));
+  const wr=S.wrong.length;
+  return `<section class="hero"><h1>Nhớ 12 thì bằng cách làm, không phải đọc.</h1>
+  <p>Điền chỗ trống, ghép câu, nhận diện thì và lật thẻ công thức. Câu nào sai sẽ quay lại cho đến khi bạn làm đúng hai lần liên tiếp.</p>
+  <div class="goal"><span>Hôm nay ${Math.min(done,99)}/20 câu</span><div class="prog"><i style="width:${pct}%"></i></div></div>
+  <div class="cta"><button class="btn" data-act="start" data-m="fill">Học ngay 10 câu</button><button class="btn ghost" data-act="start" data-m="review">Ôn câu sai${wr?" ("+wr+")":""}</button></div>
+  ${ui.msg?`<p class="notice">${esc(ui.msg)}</p>`:""}</section>
+  <h2 class="sec" style="margin-top:0">Bản đồ 12 thì</h2>
+  <div class="map"><div class="colh t-past">Quá khứ</div><div class="colh t-present">Hiện tại</div><div class="colh t-future">Tương lai</div>${T.map(cell).join("")}</div>
+  <p class="muted" style="margin-top:12px;font-size:14px">Chạm vào một ô để xem công thức. Vòng tròn là phần trăm câu bạn đã thuộc.</p>`;
+}
+
+function scopeChips(){
+  const opts=T.map(t=>`<option value="${t.id}"${ui.scope===t.id?" selected":""}>${t.vi}</option>`).join("");
+  const isT=!!TM[ui.scope];
+  return `<div class="chips">${SCOPES.map(s=>`<button class="pill${ui.scope===s[0]?" on":""}" data-act="scope" data-v="${s[0]}">${s[1]}</button>`).join("")}<select class="pill${isT?" on":""}" id="scopeSel" aria-label="Chọn một thì"><option value="" disabled${isT?"":" selected"}>Một thì cụ thể</option>${opts}</select></div>`;
+}
+function lenChips(){
+  return `<div class="chips">${[10,20,30].map(n=>`<button class="pill${ui.len===n?" on":""}" data-act="len" data-v="${n}">${n} câu</button>`).join("")}</div>`;
+}
+function viewPractice(){
+  const wr=S.wrong.length;
+  const n=scoped(ui.scope).length;
+  return `<div class="stack"><div><h2>Luyện tập</h2><p class="muted">Phạm vi hiện tại có ${n} câu. Câu chưa thuộc được ưu tiên xuất hiện trước.</p></div>
+  <div class="stack"><span class="label">Phạm vi</span>${scopeChips()}<span class="label">Số câu mỗi lượt</span>${lenChips()}</div>
+  ${ui.msg?`<p class="notice">${esc(ui.msg)}</p>`:""}
+  <div class="modes">
+  <button class="mode" data-act="start" data-m="fill"><b>Điền chỗ trống</b><span>Gõ đúng dạng của động từ trong ngoặc. Có gợi ý công thức.</span></button>
+  <button class="mode" data-act="start" data-m="id"><b>Nhận diện thì</b><span>Đọc câu, chọn đúng tên thì của động từ in đậm.</span></button>
+  <button class="mode" data-act="start" data-m="order"><b>Sắp xếp câu</b><span>Chạm các từ theo đúng thứ tự để ghép câu hoàn chỉnh.</span></button>
+  <button class="mode" data-act="start" data-m="flashT"><b>Thẻ công thức</b><span>Lật thẻ, tự chấm đã nhớ hay chưa. Thẻ chưa nhớ sẽ quay lại.</span></button>
+  <button class="mode" data-act="start" data-m="exam"><b>Thi thử</b><span>20 câu điền chỗ trống trong 15 phút, chấm thang 10. Điểm cao nhất: ${S.best||"chưa có"}.</span></button>
+  <button class="mode" data-act="start" data-m="review"><b>Ôn câu sai</b><span>${wr?"Đang có "+wr+" câu cần ôn.":"Chưa có câu sai nào."}</span></button>
+  </div></div>`;
+}
+
+function viewTheory(){
+  const t=TM[ui.tense];
+  const chips=T.map(x=>`<button class="tchip t-${x.time}${x.id===t.id?" on":""}" data-act="tense" data-id="${x.id}">${x.vi}</button>`).join("");
+  const lab=["+","-","?"];
+  const rows=T.map(x=>`<tr><td><span class="chip t-${x.time}">${x.vi}</span></td><td class="m">${esc(x.f[0])}</td><td>${esc(x.sig.slice(0,4).join(", "))}</td></tr>`).join("");
+  return `<div class="stack"><div><h2>Lý thuyết</h2><p class="muted">Chọn một thì để xem công thức, cách dùng và dấu hiệu nhận biết.</p></div>
+  <div class="tchips">${chips}</div>
+  <article class="panel t-${t.time}"><header><span>${t.en}</span><h2>${t.vi}</h2></header>
+  <section><span class="label">Công thức</span><div class="formula">${t.f.map((f,i)=>`<i>${lab[i]}</i><span>${esc(f)}</span>`).join("")}</div></section>
+  <section><span class="label">Cách dùng</span><ul>${t.use.map(u=>`<li>${esc(u)}</li>`).join("")}</ul></section>
+  <section><span class="label">Dấu hiệu nhận biết</span><div class="sig">${t.sig.map(s=>`<span>${esc(s)}</span>`).join("")}</div></section>
+  <section><span class="label">Ví dụ</span>${t.ex.map(e=>`<div class="ex"><b>${esc(e[0])}</b><small>${esc(e[1])}</small></div>`).join("")}</section>
+  <section><div class="row"><button class="btn" data-act="practice" data-id="${t.id}">Luyện thì này</button><button class="btn ghost" data-act="start-t" data-id="${t.id}">Lật thẻ thì này</button></div></section></article>
+  <h2 class="sec">Bảng tổng hợp 12 thì</h2>
+  <div class="tablewrap"><table><thead><tr><th>Thì</th><th>Công thức</th><th>Dấu hiệu</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+}
+
+function irrRows(){
+  const q=norm(ui.q);
+  const l=IL.filter(v=>!q||v.v1.indexOf(q)>-1||norm(v.vi).indexOf(q)>-1);
+  if(!l.length)return `<tr><td colspan="4" class="muted">Không tìm thấy động từ phù hợp.</td></tr>`;
+  return l.map(v=>`<tr><td><span class="dot${mi(v)?" on":""}"></span><b>${v.v1}</b></td><td class="m">${v.v2.join(" / ")}</td><td class="m">${v.v3.join(" / ")}</td><td>${esc(v.vi)}</td></tr>`).join("");
+}
+function viewVerbs(){
+  const k=IL.filter(mi).length;
+  return `<div class="stack"><div><h2>Động từ bất quy tắc</h2><p class="muted">${IL.length} động từ hay gặp nhất. Bạn đã thuộc ${k}/${IL.length}. Chấm xanh là đã thuộc.</p></div>
+  <div class="stack"><span class="label">Số động từ mỗi lượt</span>${lenChips()}</div>
+  <div class="modes"><button class="mode" data-act="start" data-m="irr"><b>Gõ V2 và V3</b><span>Cho V1 và nghĩa, bạn gõ hai dạng còn lại.</span></button>
+  <button class="mode" data-act="start" data-m="flashI"><b>Thẻ ghi nhớ</b><span>Lật thẻ để xem V2, V3 rồi tự chấm.</span></button></div>
+  <h2 class="sec" style="margin:8px 0 0">Bảng tra cứu</h2>
+  <input class="search" id="q" type="search" placeholder="Tìm theo động từ hoặc nghĩa" value="${esc(ui.q)}" autocomplete="off">
+  <div class="tablewrap"><table><thead><tr><th>V1</th><th>V2</th><th>V3</th><th>Nghĩa</th></tr></thead><tbody id="irrbody">${irrRows()}</tbody></table></div></div>`;
+}
+
+function viewStats(){
+  const acc=S.tot?Math.round(S.ok/S.tot*100):0;
+  const bars=T.map(t=>{const p=mastery(t.id);return `<div class="barrow t-${t.time}"><span>${t.vi}</span><div class="prog"><i style="width:${p}%"></i></div><span class="mono">${p}%</span></div>`;}).join("");
+  return `<div class="stack"><div><h2>Tiến độ</h2><p class="muted">Một câu được tính là đã thuộc khi bạn làm đúng hai lần liên tiếp.</p></div>
+  <div class="nums"><div class="num"><b>${S.tot}</b><span>Câu đã làm</span></div><div class="num"><b>${acc}%</b><span>Tỷ lệ đúng</span></div><div class="num"><b>${S.streak}</b><span>Ngày liên tiếp</span></div><div class="num"><b>${S.wrong.length}</b><span>Câu cần ôn</span></div><div class="num"><b>${IL.filter(mi).length}/${IL.length}</b><span>Động từ đã thuộc</span></div><div class="num"><b>${S.best||"-"}</b><span>Điểm thi thử cao nhất</span></div></div>
+  <h2 class="sec" style="margin:8px 0 0">Mức độ thuộc từng thì</h2><div class="bars">${bars}</div>
+  <div>${ui.rs?`<p class="notice" style="margin-bottom:10px">Xóa toàn bộ tiến độ trên trình duyệt này?</p><div class="row"><button class="btn" data-act="resetYes">Xóa hết</button><button class="btn ghost" data-act="resetNo">Giữ lại</button></div>`:`<button class="btn ghost sm" data-act="reset">Xóa tiến độ</button>`}</div></div>`;
+}
+
+/* ===== màn hình phiên luyện ===== */
+function feedback(it){
+  if(ses.mode==="irr"){
+    const ok=ses.good;
+    return `<div class="fb ${ok?"good":"bad"}" role="status"><b>${ok?"Chính xác":"Chưa đúng"}</b><p class="full">${it.v1} - ${it.v2.join("/")} - ${it.v3.join("/")}</p></div>`;
+  }
+  const t=TM[it.t],ok=ses.good;
+  return `<div class="fb ${ok?"good":"bad"}" role="status"><b>${ok?"Chính xác":"Chưa đúng"}${ok?"":` <span style="font-weight:500">Đáp án: <u>${esc(it.a.join(" / "))}</u></span>`}</b><p class="full">${esc(full(it))}</p><div class="why"><span class="chip t-${t.time}">${t.vi}</span><code>${esc(t.f[0])}</code></div>${speakBtn(full(it))}</div>`;
+}
+function hintBox(it){
+  if(!ses.hint)return "";
+  if(ses.mode==="irr")return `<p class="hint">V2 bắt đầu bằng "${esc(it.v2[0][0])}", V3 bắt đầu bằng "${esc(it.v3[0][0])}".</p>`;
+  const t=TM[it.t];
+  return `<p class="hint">Dùng <b>${t.vi}</b>: <code>${esc(t.f[0])}</code></p>`;
+}
+function viewSession(){
+  const s=ses;
+  if(s.done)return resultView();
+  const it=s.items[s.i];
+  const cur=s.flash?s.ok:s.i;
+  const prog=Math.round(cur/s.total*100);
+  const top=`<div class="sbar"><button class="btn ghost sm" data-act="exit">Thoát</button><div class="prog"><i style="width:${prog}%"></i></div><span class="mono">${s.flash?s.ok+"/"+s.total+" thẻ":(s.i+1)+"/"+s.total}</span>${s.exam?`<span class="timer mono" id="tm">${fmt(s.left)}</span>`:""}</div>`;
+  let body="";
+  const last=s.i>=s.items.length-1;
+  const nextBtn=`<button class="btn" data-act="next">${last?"Xem kết quả":"Câu tiếp theo"}</button>`;
+  if(s.mode==="fill"){
+    const parts=it.s.split("___");
+    const right=esc(parts[1]).replace(/\(([^)]+)\)/,'<span class="cue">($1)</span>');
+    const w=Math.max.apply(null,it.a.map(a=>a.length))+2;
+    const cls=s.checked?(s.good?"ok":"bad"):"";
+    body=`<div class="qcard"><span class="label">${s.exam?"Thi thử":"Điền dạng đúng của động từ"}</span>
+    <p class="sentence">${esc(parts[0])}<input class="blank ${cls}" id="ans" type="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" style="width:${w}ch" value="${esc(s.val)}"${s.checked?" disabled":""} aria-label="Đáp án">${right}</p>
+    ${hintBox(it)}${s.checked?feedback(it):""}
+    <div class="row">${s.checked?nextBtn:`<button class="btn" data-act="check">${s.exam?"Lưu và tiếp tục":"Kiểm tra"}</button>${s.exam?"":`<button class="btn ghost" data-act="hint">Gợi ý</button>`}`}</div></div>`;
+  }else if(s.mode==="id"){
+    const t=TM[it.t];
+    const sent=esc(it.s.replace(/\s*\([^)]*\)/,"")).replace("___",`<b class="hl">${esc(it.a[0])}</b>`);
+    const opts=s.opts.map((id,i)=>{
+      let c="opt";
+      if(s.checked){if(id===it.t)c+=" good";else if(i===s.sel)c+=" bad";}
+      return `<button class="${c}" data-act="opt" data-i="${i}"${s.checked?" disabled":""}>${TM[id].vi}</button>`;
+    }).join("");
+    body=`<div class="qcard t-${t.time}"><span class="label">Động từ in đậm đang ở thì nào?</span><p class="sentence">${sent}</p><div class="opts">${opts}</div>${s.checked?feedback(it)+`<div class="row">${nextBtn}</div>`:""}</div>`;
+  }else if(s.mode==="order"){
+    const used=s.ans;
+    const tray=used.map((bi,p)=>`<button class="tok" data-act="untok" data-i="${p}"${s.checked?" disabled":""}>${esc(s.bank[bi].x)}</button>`).join("");
+    const bank=s.bank.map((o,i)=>used.indexOf(i)<0?`<button class="tok alt" data-act="tok" data-i="${i}"${s.checked?" disabled":""}>${esc(o.x)}</button>`:"").join("");
+    body=`<div class="qcard"><span class="label">Ghép thành câu đúng</span>
+    <div class="tray" aria-label="Câu của bạn">${tray||'<span class="muted">Chạm vào các từ bên dưới</span>'}</div>
+    <div class="row">${bank}</div>${hintBox(it)}${s.checked?feedback(it):""}
+    <div class="row">${s.checked?nextBtn:`<button class="btn" data-act="check"${used.length===s.bank.length?"":" disabled"}>Kiểm tra</button><button class="btn ghost" data-act="hint">Gợi ý</button>`}</div></div>`;
+  }else if(s.mode==="irr"){
+    const c2=s.checked?(it.v2.indexOf(norm(s.v2))>-1?"ok":"bad"):"";
+    const c3=s.checked?(it.v3.indexOf(norm(s.v3))>-1?"ok":"bad"):"";
+    body=`<div class="qcard"><span class="label">Điền V2 và V3</span>
+    <div class="irr"><div class="v1"><b>${it.v1}</b><span>${esc(it.vi)}</span></div>
+    <label>V2 (quá khứ)<input id="a2" class="${c2}" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" value="${esc(s.v2)}"${s.checked?" disabled":""}></label>
+    <label>V3 (quá khứ phân từ)<input id="a3" class="${c3}" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" value="${esc(s.v3)}"${s.checked?" disabled":""}></label></div>
+    ${hintBox(it)}${s.checked?feedback(it):""}
+    <div class="row">${s.checked?nextBtn:`<button class="btn" data-act="check">Kiểm tra</button><button class="btn ghost" data-act="hint">Gợi ý</button>`}</div></div>`;
+  }else if(s.mode==="flashT"){
+    const t=it;
+    const front=`<span class="label">Thì nào có công thức này?</span><h2>${t.vi}</h2><p class="muted">${t.en}</p><p class="muted" style="font-size:14px">Chạm để lật thẻ</p>`;
+    const back=`<span class="chip t-${t.time}" style="justify-self:start">${t.vi}</span><div class="stack" style="gap:8px">${t.f.map((f,i)=>`<div class="f">${["+","-","?"][i]} ${esc(f)}</div>`).join("")}</div><ul>${t.use.map(u=>`<li>${esc(u)}</li>`).join("")}</ul><div class="sig">${t.sig.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`;
+    body=`<button class="flash t-${t.time}" data-act="flip" aria-label="Lật thẻ">${s.flip?back:front}</button>${s.flip?`<div class="row"><button class="btn ghost" data-act="again">Chưa nhớ</button><button class="btn" data-act="know">Đã nhớ</button></div>`:""}`;
+  }else if(s.mode==="flashI"){
+    const front=`<span class="label">${esc(it.vi)}</span><h2>${it.v1}</h2><p class="muted" style="font-size:14px">Chạm để xem V2 và V3</p>`;
+    const back=`<span class="label">${it.v1} - ${esc(it.vi)}</span><h2>${it.v2.join(" / ")}</h2><h2 class="muted">${it.v3.join(" / ")}</h2>`;
+    body=`<button class="flash" data-act="flip" aria-label="Lật thẻ">${s.flip?back:front}</button>${s.flip?`<div class="row"><button class="btn ghost" data-act="again">Chưa nhớ</button><button class="btn" data-act="know">Đã nhớ</button></div>`:""}`;
+  }
+  return top+`<div class="stack">${body}</div>`;
+}
+function resultView(){
+  const s=ses,n=s.total||1;
+  if(s.flash){
+    return `<div class="stack"><span class="label">Hoàn thành</span><p class="score">${s.ok}/${s.total}</p><p>Bạn đã nhớ hết các thẻ trong lượt này. +${s.xp} XP.</p><div class="row"><button class="btn" data-act="start" data-m="${s.src}">Học lượt mới</button><button class="btn ghost" data-act="exit">Về trang trước</button></div></div>`;
+  }
+  const pct=Math.round(s.ok/n*100);
+  const grade10=Math.round(s.ok/n*100)/10;
+  const msg=pct>=90?"Rất vững. Bạn có thể thử phạm vi khó hơn.":pct>=70?"Khá tốt. Xem lại các câu sai bên dưới rồi làm thêm một lượt.":"Cần ôn thêm. Đọc lại công thức ở tab Lý thuyết rồi luyện lại.";
+  const skipped=s.exam?s.total-s.ok-s.bad.length:0;
+  const wrongs=s.bad.map(b=>{
+    const it=b.it;
+    if(s.mode==="irr")return `<div class="item"><b>${it.v1} - ${it.v2.join("/")} - ${it.v3.join("/")}</b><small>Bạn trả lời: ${esc(b.typed)}</small></div>`;
+    return `<div class="item"><b>${esc(full(it))}</b><small>Bạn trả lời: ${esc(b.typed)} · ${TM[it.t].vi}</small></div>`;
+  }).join("");
+  return `<div class="stack"><span class="label">${s.exam?"Kết quả thi thử":"Kết quả"}</span>
+  <p class="score">${s.exam?grade10+"/10":s.ok+"/"+s.total}</p><p>${pct}% đúng. ${msg} +${s.xp} XP.</p>
+  ${skipped>0?`<p class="muted">Chưa làm: ${skipped} câu do hết giờ.</p>`:""}
+  <div class="row"><button class="btn" data-act="start" data-m="${s.src}">Làm lượt mới</button>${s.bad.length&&!s.exam?`<button class="btn ghost" data-act="start" data-m="review">Ôn câu sai</button>`:""}<button class="btn ghost" data-act="exit">Về trang trước</button></div>
+  ${wrongs?`<h2 class="sec" style="margin:8px 0 0">Câu cần xem lại</h2><div class="list">${wrongs}</div>`:`<p class="notice">Không có câu nào sai.</p>`}</div>`;
+}
+
+/* ===== sự kiện ===== */
+function act(a,d){
+  switch(a){
+    case "nav":exit();ui.view=d.v;ui.msg="";render();window.scrollTo(0,0);break;
+    case "tense":exit();ui.tense=d.id;ui.view="theory";render();window.scrollTo(0,0);break;
+    case "scope":ui.scope=d.v;render();break;
+    case "len":ui.len=+d.v;render();break;
+    case "start":startSes(d.m);window.scrollTo(0,0);break;
+    case "start-t":ui.scope=d.id;startSes("flashT");window.scrollTo(0,0);break;
+    case "exit":exit();render();break;
+    case "check":check();break;
+    case "next":next();break;
+    case "hint":{const el=$("#ans");if(el)ses.val=el.value;const a2=$("#a2"),a3=$("#a3");if(a2){ses.v2=a2.value;ses.v3=a3?a3.value:"";}ses.hint=true;render();break;}
+    case "opt":pickOpt(+d.i);break;
+    case "tok":tok(+d.i);break;
+    case "untok":untok(+d.i);break;
+    case "flip":ses.flip=!ses.flip;render();break;
+    case "know":know(true);break;
+    case "again":know(false);break;
+    case "speak":speak(d.t);break;
+    case "reset":ui.rs=true;render();break;
+    case "resetYes":S=fresh();save();ui.rs=false;render();break;
+    case "resetNo":ui.rs=false;render();break;
+    case "practice":ui.scope=d.id;ui.view="practice";render();window.scrollTo(0,0);break;
+  }
+}
+if(typeof document!=="undefined"&&document.addEventListener){
+  document.addEventListener("click",e=>{
+    const b=e.target.closest&&e.target.closest("[data-act]");
+    if(b)act(b.dataset.act,b.dataset);
+  });
+  document.addEventListener("change",e=>{
+    if(e.target.id==="scopeSel"){ui.scope=e.target.value;render();}
+  });
+  document.addEventListener("input",e=>{
+    if(e.target.id==="q"){ui.q=e.target.value;const tb=$("#irrbody");if(tb)tb.innerHTML=irrRows();}
+  });
+  document.addEventListener("keydown",e=>{
+    if(e.key!=="Enter"||!ses||ses.done||ses.flash)return;
+    const tg=e.target;
+    if(tg&&tg.tagName==="BUTTON")return;
+    e.preventDefault();
+    if(tg&&tg.id==="a2"&&!ses.checked){const b=$("#a3");if(b)b.focus();return;}
+    if(ses.checked)next();else check();
+  });
+  load();render();
+}
+</script>
 </body>
 </html>
