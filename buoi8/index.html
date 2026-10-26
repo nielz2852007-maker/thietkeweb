@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lê Nguyễn Nhật Khánh - Portfolio Cá Nhân | Responsive & UI Animations</title>
+    <meta name="description" content="Portfolio cá nhân của Lê Nguyễn Nhật Khánh - Web Developer & UI/UX Design Enthusiast tại Trường Đại Học Lạc Hồng.">
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons 6.5.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Thư viện AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Liên kết file CSS chính -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MÀN HÌNH LOADING TOÀN TRANG (NÂNG CẤP HIỆU ỨNG HIỆN ĐẠI) -->
+    <div id="page-loader">
+        <div class="loader-content">
+            <div class="loader-spinner-wrapper">
+                <div class="spinner-border"></div>
+                <div class="spinner-inner-glow"></div>
+                <div class="spinner-icon"><i class="fa-solid fa-code"></i></div>
+            </div>
+            <p class="loader-text">Đang tải trang Portfolio...</p>
+            <div class="loader-progress-track">
+                <div class="loader-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ĐÈN NỀN AMBIENT GLOW MỜ ẢO -->
+    <div class="ambient-glow glow-1" aria-hidden="true"></div>
+    <div class="ambient-glow glow-2" aria-hidden="true"></div>
+    <div class="ambient-glow glow-3" aria-hidden="true"></div>
+
+    <!-- BANNER LỜI CHÀO THEO THỜI GIAN THỰC (REAL-TIME GREETING) -->
+    <aside id="greeting-banner" class="greeting-banner" aria-label="Lời chào theo thời gian thực">
+        <div class="greeting-container">
+            <div class="greeting-badge">
+                <span class="greeting-icon" id="greetingIcon" aria-hidden="true">☕</span>
+                <span class="greeting-live-time" id="greetingLiveTime">17:15</span>
+            </div>
+            <span class="greeting-text" id="greetingText">Chào buổi chiều! ☕ Làm việc hiệu quả nhé!</span>
+            <button class="greeting-close" id="greetingClose" aria-label="Đóng lời chào">&times;</button>
+        </div>
+    </aside>
+
+    <!-- Header / Banner tích hợp ảnh đại diện linh hoạt -->
+    <header id="home">
+        <!-- Thanh điều hướng dính (Sticky Nav) -->
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <a href="#home">
+                    <span class="brand-bracket">&lt;</span>
+                    <span class="brand-name">NhatKhanh</span>
+                    <span class="brand-highlight">.dev</span>
+                    <span class="brand-bracket">/&gt;</span>
+                </a>
+            </div>
+
+            <!-- Nút Hamburger Menu cho Mobile -->
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-btn" id="menuBtn" aria-label="Mở menu">
+                <span class="menu-btn-burger"></span>
+            </label>
+                
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link"><i class="fa-solid fa-user"></i> Giới Thiệu</a></li>
+                <li><a href="#profile-card" class="nav-link"><i class="fa-solid fa-id-card"></i> Hồ Sơ 3D</a></li>
+                <li><a href="#skills" class="nav-link"><i class="fa-solid fa-layer-group"></i> Kỹ Năng</a></li>
+                <li><a href="#certificates" class="nav-link"><i class="fa-solid fa-award"></i> Chứng Nhận</a></li>
+                <li><a href="#projects" class="nav-link"><i class="fa-solid fa-laptop-code"></i> Dự Án</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Liên Hệ</a></li>
+            </ul>
+
+            <!-- Theme Toggle: Chuyển đổi Dark / Light mode -->
+            <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Chuyển chế độ giao diện" title="Chuyển chế độ Sáng / Tối">
+                <i class="fa-solid fa-moon moon-icon"></i>
+                <i class="fa-solid fa-sun sun-icon"></i>
+            </button>
+        </nav>
+
+        <!-- Nội dung Hero Banner -->
+        <div class="hero-wrapper">
+            <div class="avatar-container" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="avatar-glow-ring"></div>
+                <div class="avatar-halo-orbit"></div>
+                <img src="avatar.webp" alt="Lê Nguyễn Nhật Khánh Avatar" class="hero-avatar" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80';">
+                
+                <!-- Floating Tech Badges -->
+                <div class="floating-badge badge-code" title="Code"><i class="fa-solid fa-code"></i></div>
+                <div class="floating-badge badge-design" title="Design"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <div class="floating-badge badge-rocket" title="Performance"><i class="fa-solid fa-bolt"></i></div>
+            </div>
+
+            <div class="header-content" data-aos="fade-up" data-aos-delay="200">
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    <span>Sẵn sàng kết nối & hợp tác dự án mới</span>
+                </div>
+                <h1>Lê Nguyễn Nhật Khánh</h1>
+                <div class="typing-wrapper">
+                    <p class="typing-effect" id="typingEffect">Tôi là một Web Developer...</p>
+                </div>
+                <p class="hero-subtitle">UI/UX Design Enthusiast & Front-End Developer</p>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>Xem Dự Án</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fa-regular fa-comment-dots"></i>
+                        <span>Liên Hệ Ngay</span>
+                    </a>
+                    <a href="#profile-card" class="btn btn-outline">
+                        <i class="fa-solid fa-id-badge"></i>
+                        <span>Thẻ 3D</span>
+                    </a>
+                </div>
+
+                <!-- Thống kê nhanh nổi bật -->
+                <div class="hero-quick-stats">
+                    <div class="stat-box">
+                        <span class="stat-number">ĐH Lạc Hồng</span>
+                        <span class="stat-desc">Đơn vị đào tạo</span>
+                    </div>
+                    <div class="stat-separator"></div>
+                    <div class="stat-box">
+                        <span class="stat-number">Front-End</span>
+                        <span class="stat-desc">Định hướng cốt lõi</span>
+                    </div>
+                    <div class="stat-separator"></div>
+                    <div class="stat-box">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-desc">Nhiệt huyết & Sáng tạo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Giới thiệu bản thân -->
+        <section id="about" data-aos="fade-up">
+            <div class="section-title-wrap">
+                <span class="section-badge">TỔNG QUAN</span>
+                <h2>Giới thiệu bản thân</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="about-container">
+                <div class="about-lead-box glass-card">
+                    <div class="terminal-bar">
+                        <div class="terminal-dots">
+                            <span class="t-dot red"></span>
+                            <span class="t-dot yellow"></span>
+                            <span class="t-dot green"></span>
+                        </div>
+                        <span class="terminal-title">nhatkhanh@dev:~$ cat about.md</span>
+                    </div>
+                    <div class="terminal-content">
+                        <p class="lead-intro">Xin chào! Tôi là Lê Nguyễn Nhật Khánh, một lập trình viên Front-end đang xây dựng giao diện người dùng thân thiện, tối ưu trải nghiệm mượt mà trên mọi thiết bị từ Máy tính, Tablet đến Điện thoại.</p>
+                        <p>Với tinh thần kiên trì và tư duy thẩm mỹ hiện đại, tôi luôn trau chuốt từng pixel, từng chuyển động vi mô (micro-interactions) để mang lại cảm giác trực quan, tinh gọn và cuốn hút nhất cho người dùng khi tương tác trên website.</p>
+                    </div>
+
+                    <div class="about-skills-chips">
+                        <span class="tag-chip"><i class="fa-solid fa-check"></i> Responsive-First Design</span>
+                        <span class="tag-chip"><i class="fa-solid fa-check"></i> Semantic & Clean Code</span>
+                        <span class="tag-chip"><i class="fa-solid fa-check"></i> Modern UI/UX Glassmorphism</span>
+                        <span class="tag-chip"><i class="fa-solid fa-check"></i> Tối ưu tốc độ tải trang</span>
+                    </div>
+                </div>
+
+                <div class="about-features-grid">
+                    <div class="feature-item glass-card">
+                        <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
+                        <h3>Thiết Kế Thẩm Mỹ</h3>
+                        <p>Kết hợp hài hòa giữa màu sắc, kiểu chữ và không gian để nâng tầm trải nghiệm thị giác.</p>
+                    </div>
+                    <div class="feature-item glass-card">
+                        <div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                        <h3>Đa Nền Tảng</h3>
+                        <p>Tương thích linh hoạt, mượt mà từ màn hình siêu lớn cho tới các dòng smartphone nhỏ gọn.</p>
+                    </div>
+                    <div class="feature-item glass-card">
+                        <div class="feature-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                        <h3>Tối Ưu Hiệu Suất</h3>
+                        <p>Sử dụng CSS thuần & JavaScript nhẹ nhàng, không gây giật lag và tối ưu điểm số SEO.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Thẻ nhân sự (Flip Card 3D) -->
+        <section id="profile-card" data-aos="zoom-in">
+            <div class="section-title-wrap">
+                <span class="section-badge">INTERACTIVE ID PASS</span>
+                <h2>Thẻ Nhân Sự (Flip Card 3D)</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Rê chuột (Desktop) hoặc Chạm nhẹ (Mobile) để kích hoạt hiệu ứng xoay lật 3D danh thiếp</p>
+            </div>
+
+            <div class="card-wrapper">
+                <div class="flip-card" id="flipCardElement" tabindex="0" role="button" aria-label="Thẻ nhân sự 3D">
+                    <!-- Mặt trước -->
+                    <div class="flip-card-front glass-card">
+                        <div class="hologram-overlay"></div>
+                        <div class="front-header">
+                            <div class="hardware-chip">
+                                <span class="chip-wire"></span>
+                                <span class="chip-wire"></span>
+                            </div>
+                            <span class="vip-tag"><i class="fa-solid fa-shield-halved"></i> DEV PASS</span>
+                        </div>
+                        <div class="avatar-flip-container">
+                            <div class="avatar-halo"></div>
+                            <img src="avatar.webp" alt="Avatar Lê Nguyễn Nhật Khánh" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80';">
+                        </div>
+                        <div class="front-body">
+                            <h3 class="person-name">Lê Nguyễn Nhật Khánh</h3>
+                            <p class="title"><i class="fa-solid fa-code"></i> Hacker & Developer</p>
+                            <p class="company"><i class="fa-solid fa-graduation-cap"></i> Trường Đại Học Lạc Hồng University</p>
+                        </div>
+                        <div class="front-footer">
+                            <div class="flip-hint">
+                                <i class="fa-solid fa-rotate"></i>
+                                <span>Hover (Di chuột) để lật thẻ</span>
+                            </div>
+                            <span class="pass-id">ID: #LNNK-25CT113</span>
+                        </div>
+                    </div>
+
+                    <!-- Mặt sau -->
+                    <div class="flip-card-back glass-card">
+                        <div class="hologram-overlay"></div>
+                        <div class="back-header-box">
+                            <i class="fa-solid fa-address-book"></i>
+                            <h3>Thông Tin Liên Hệ</h3>
+                            <span class="status-online"><i class="fa-solid fa-circle"></i> Sẵn sàng</span>
+                        </div>
+                        <hr class="card-divider">
+                        <div class="contact-flip-info">
+                            <a href="tel:+84339928265" class="flip-contact-row">
+                                <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
+                                <div class="contact-detail">
+                                    <label>Điện thoại</label>
+                                    <strong>(+84) 339 928 265</strong>
+                                </div>
+                            </a>
+                            <a href="mailto:lenguyennhatkhanh.dev@gmail.com" class="flip-contact-row">
+                                <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                                <div class="contact-detail">
+                                    <label>Email cá nhân</label>
+                                    <strong>lenguyennhatkhanh.dev@gmail.com</strong>
+                                </div>
+                            </a>
+                            <div class="flip-contact-row">
+                                <span class="contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+                                <div class="contact-detail">
+                                    <label>Khu vực</label>
+                                    <strong>Phường Tân Triều, TP. Đồng Nai</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-action-btns">
+                            <button class="btn-flip-contact" onclick="alert('Đang tiến hành tải hồ sơ CV...');">
+                                <i class="fa-solid fa-file-arrow-down"></i> Tải CV / Hồ sơ
+                            </button>
+                            <a href="#contact" class="btn-flip-message">
+                                <i class="fa-solid fa-paper-plane"></i> Gửi Tin Nhắn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Kỹ năng chuyên môn -->
+        <section id="skills" data-aos="fade-right">
+            <div class="section-title-wrap">
+                <span class="section-badge">NĂNG LỰC KỸ THUẬT</span>
+                <h2>Kỹ năng chuyên môn</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Những công nghệ và công cụ tôi sử dụng hàng ngày để xây dựng sản phẩm chất lượng</p>
+            </div>
+
+            <div class="skill-bars-container">
+                <!-- Skill 1 -->
+                <div class="skill-bar-wrapper glass-card">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fa-brands fa-html5 skill-icon html-color"></i>
+                            <span>HTML5 / CSS3</span>
+                        </span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-progress-track">
+                        <div class="skill-progress-fill" style="--target-width: 90%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="skill-bar-wrapper glass-card">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fa-brands fa-js skill-icon js-color"></i>
+                            <span>JavaScript (ES6)</span>
+                        </span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                    <div class="skill-progress-track">
+                        <div class="skill-progress-fill" style="--target-width: 85%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-bar-wrapper glass-card">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fa-solid fa-mobile-screen-button skill-icon responsive-color"></i>
+                            <span>Responsive Design</span>
+                        </span>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                    <div class="skill-progress-track">
+                        <div class="skill-progress-fill" style="--target-width: 80%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-bar-wrapper glass-card">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fa-solid fa-pen-nib skill-icon uiux-color"></i>
+                            <span>UI/UX Basics</span>
+                        </span>
+                        <span class="skill-percentage">75%</span>
+                    </div>
+                    <div class="skill-progress-track">
+                        <div class="skill-progress-fill" style="--target-width: 75%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 5 (Nâng cấp bổ sung) -->
+                <div class="skill-bar-wrapper glass-card">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fa-brands fa-git-alt skill-icon git-color"></i>
+                            <span>Git & Version Control</span>
+                        </span>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                    <div class="skill-progress-track">
+                        <div class="skill-progress-fill" style="--target-width: 80%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 6 (Nâng cấp bổ sung) -->
+                <div class="skill-bar-wrapper glass-card">
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i class="fa-solid fa-bolt skill-icon perf-color"></i>
+                            <span>Web Performance & SEO</span>
+                        </span>
+                        <span class="skill-percentage">78%</span>
+                    </div>
+                    <div class="skill-progress-track">
+                        <div class="skill-progress-fill" style="--target-width: 78%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Bằng khen & Chứng nhận -->
+        <section id="certificates" data-aos="fade-left">
+            <div class="section-title-wrap">
+                <span class="section-badge">THÀNH TÍCH TIÊU BIỂU</span>
+                <h2>Bằng khen & Chứng nhận</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Những cột mốc ghi nhận nỗ lực rèn luyện, thi đua và học tập tại trường</p>
+            </div>
+
+            <div class="certificates-grid">
+                <!-- Cert 1 -->
+                <div class="cert-card glass-card" onclick="openCertModal('Giải Nhất Lập Trình Web (2025)', 'certificate-1.webp', 'Đạt thành tích giải nhất trong cuộc thi phát triển giao diện Web tương tác')">
+                    <div class="cert-img-container">
+                        <img src="certificate-1.webp" alt="Bằng khen 1" class="cert-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=600&q=80';">
+                        <div class="cert-zoom-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            <span>Xem chi tiết</span>
+                        </div>
+                        <span class="cert-ribbon gold"><i class="fa-solid fa-trophy"></i> Giải Nhất</span>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-title">Giải Nhất Lập Trình Web</div>
+                        <div class="cert-time"><i class="fa-regular fa-calendar-check"></i> Năm 2025</div>
+                        <p class="cert-snippet">Đạt giải nhất xuất sắc trong cuộc thi thiết kế và phát triển ứng dụng Web tại LHU.</p>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="cert-card glass-card" onclick="openCertModal('Chứng chỉ Front-End Xuất Sắc (2024)', 'certificate-2.webp', 'Chứng nhận hoàn thành chuyên sâu khóa học lập trình Front-End Web hiện đại')">
+                    <div class="cert-img-container">
+                        <img src="certificate-2.webp" alt="Bằng khen 2" class="cert-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1589330694653-dad6ef49cf6f?auto=format&fit=crop&w=600&q=80';">
+                        <div class="cert-zoom-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            <span>Xem chi tiết</span>
+                        </div>
+                        <span class="cert-ribbon blue"><i class="fa-solid fa-star"></i> Xuất Sắc</span>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-title">Chứng chỉ Front-End Xuất Sắc</div>
+                        <div class="cert-time"><i class="fa-regular fa-calendar-check"></i> Năm 2024</div>
+                        <p class="cert-snippet">Chứng nhận hoàn thành toàn diện khóa huấn luyện kỹ năng Front-End công nghệ cao.</p>
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="cert-card glass-card" onclick="openCertModal('Học tập Tiêu biểu Cấp Trường (2023)', 'certificate-3.webp', 'Khen thưởng sinh viên tiêu biểu có thành tích học tập và rèn luyện gương mẫu')">
+                    <div class="cert-img-container">
+                        <img src="certificate-3.webp" alt="Bằng khen 3" class="cert-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1496469888073-80de7e952517?auto=format&fit=crop&w=600&q=80';">
+                        <div class="cert-zoom-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            <span>Xem chi tiết</span>
+                        </div>
+                        <span class="cert-ribbon green"><i class="fa-solid fa-medal"></i> Tiêu Biểu</span>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-title">Học tập Tiêu biểu Cấp Trường</div>
+                        <div class="cert-time"><i class="fa-regular fa-calendar-check"></i> Năm 2023</div>
+                        <p class="cert-snippet">Được vinh danh là gương mặt sinh viên tiêu biểu có thành tích rèn luyện gương mẫu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Parallax -->
+        <div class="parallax-banner" data-aos="fade-in">
+            <div class="parallax-glow-overlay"></div>
+            <div class="parallax-content">
+                <span class="parallax-badge"><i class="fa-solid fa-sparkles"></i> INSPIRATION</span>
+                <h2>Mang ý tưởng vào thực tế</h2>
+                <p>Khám phá những dự án tâm huyết của mình ở phần bên dưới</p>
+                <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-arrow-down"></i> Xem Sản Phẩm Thực Tế</a>
+            </div>
+        </div>
+
+        <!-- 4. Dự án tiêu biểu -->
+        <section id="projects" data-aos="fade-up">
+            <div class="section-title-wrap">
+                <span class="section-badge">PORTFOLIO SHOWCASE</span>
+                <h2>Dự án tiêu biểu</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Những sản phẩm web hoàn chỉnh kết hợp giữa thiết kế bắt mắt và mã nguồn tối ưu</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="browser-mockup-bar">
+                        <div class="browser-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="browser-url"><i class="fa-solid fa-lock"></i> color-palette-app.dev</span>
+                    </div>
+                    <div class="project-visual palette-visual">
+                        <div class="palette-swatch s1"><span>#3B82F6</span></div>
+                        <div class="palette-swatch s2"><span>#8B5CF6</span></div>
+                        <div class="palette-swatch s3"><span>#06B6D4</span></div>
+                        <div class="palette-swatch s4"><span>#10B981</span></div>
+                    </div>
+                    <div class="project-card-body">
+                        <div class="item-title"><h3>Smart Color Palette App</h3></div>
+                        <div class="item-time"><i class="fa-regular fa-calendar"></i> Tháng 2 / 2026</div>
+                        <p>Ứng dụng web giúp quản lý mã màu và tùy biến biến CSS trực tiếp trên trình duyệt, hỗ trợ kiểm tra độ tương phản màu chuẩn WCAG.</p>
+                        
+                        <div class="project-tags">
+                            <span>HTML5</span>
+                            <span>CSS Variables</span>
+                            <span>JavaScript ES6</span>
+                            <span>LocalStorage</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-source" onclick="alert('Mở liên kết GitHub Repository...'); return false;">
+                                <i class="fa-brands fa-github"></i> Xem Source Code
+                            </a>
+                            <a href="#" class="btn btn-demo" onclick="alert('Đang mở trang Demo trực tuyến...'); return false;">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="browser-mockup-bar">
+                        <div class="browser-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="browser-url"><i class="fa-solid fa-lock"></i> ecommerce-store.dev</span>
+                    </div>
+                    <div class="project-visual ecom-visual">
+                        <div class="ecom-card-preview">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span>Modern Store Concept</span>
+                            <span class="ecom-sale-badge">Hot Deal 2026</span>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <div class="item-title"><h3>E-commerce Landing Page</h3></div>
+                        <div class="item-time"><i class="fa-regular fa-calendar"></i> Tháng 1 / 2026</div>
+                        <p>Trang thương mại điện tử tương thích đa thiết bị sử dụng CSS Grid và Flexbox, tối ưu giỏ hàng động và tương tác mượt mà.</p>
+                        
+                        <div class="project-tags">
+                            <span>CSS Grid</span>
+                            <span>Flexbox</span>
+                            <span>UI/UX Animation</span>
+                            <span>Mobile First</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-source" onclick="alert('Mở liên kết GitHub Repository...'); return false;">
+                                <i class="fa-brands fa-github"></i> Xem Source Code
+                            </a>
+                            <a href="#" class="btn btn-demo" onclick="alert('Đang mở trang Demo trực tuyến...'); return false;">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem Trang Trực Tuyến
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 (Nâng cấp bổ sung) -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="browser-mockup-bar">
+                        <div class="browser-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="browser-url"><i class="fa-solid fa-lock"></i> nhatkhanh-portfolio.dev</span>
+                    </div>
+                    <div class="project-visual portfolio-visual">
+                        <div class="portfolio-card-preview">
+                            <i class="fa-solid fa-id-card-clip"></i>
+                            <span>3D Interactive Portfolio</span>
+                            <span class="portfolio-tag-badge">Live System</span>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <div class="item-title"><h3>Portfolio Cá Nhân 3D</h3></div>
+                        <div class="item-time"><i class="fa-regular fa-calendar"></i> Bản Cập Nhật 2026</div>
+                        <p>Trang portfolio tích hợp thẻ danh thiếp 3D Flip Card, hệ thống lời chào tự động theo thời gian thực và Dark/Light mode hiện đại.</p>
+                        
+                        <div class="project-tags">
+                            <span>HTML5 / CSS3</span>
+                            <span>3D Perspective</span>
+                            <span>Real-Time Clock</span>
+                            <span>AOS Library</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="#home" class="btn btn-demo">
+                                <i class="fa-solid fa-eye"></i> Đang Trải Nghiệm
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 5. Hiệu ứng UI Components -->
+        <section id="ui-components" data-aos="zoom-in">
+            <div class="section-title-wrap">
+                <span class="section-badge">CSS ANIMATIONS LAB</span>
+                <h2>Hiệu ứng UI Components (Loading Indicator)</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Hiệu ứng vòng tròn xoay liên tục sử dụng thuần CSS <code>@keyframes</code> để làm biểu tượng tải dữ liệu mượt mà, tối ưu GPU.</p>
+            </div>
+            
+            <div class="loading-container">
+                <!-- Kiểu 1: Vòng tròn xoay viền đơn -->
+                <div class="loader-wrapper glass-card">
+                    <div class="spinner-showcase-box">
+                        <div class="spinner-border"></div>
+                    </div>
+                    <span class="loader-name">Border Spinner</span>
+                    <span class="loader-desc">Vòng xoay viền đơn thuần CSS</span>
+                </div>
+
+                <!-- Kiểu 2: Vòng tròn chấm bi xoay -->
+                <div class="loader-wrapper glass-card">
+                    <div class="spinner-showcase-box">
+                        <div class="spinner-dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    <span class="loader-name">Dots Spinner</span>
+                    <span class="loader-desc">Ba chấm bi nhấp nhô tuần tự</span>
+                </div>
+
+                <!-- Kiểu 3: Vòng xoay phát sáng Dual Gradient (Bổ sung nâng cấp) -->
+                <div class="loader-wrapper glass-card">
+                    <div class="spinner-showcase-box">
+                        <div class="spinner-dual-gradient"></div>
+                    </div>
+                    <span class="loader-name">Dual Gradient Glow</span>
+                    <span class="loader-desc">Vòng xoay gradient đối xứng</span>
+                </div>
+
+                <!-- Kiểu 4: Sóng quét Radar Wave (Bổ sung nâng cấp) -->
+                <div class="loader-wrapper glass-card">
+                    <div class="spinner-showcase-box">
+                        <div class="spinner-radar">
+                            <div class="radar-circle"></div>
+                            <div class="radar-dot"></div>
+                        </div>
+                    </div>
+                    <span class="loader-name">Radar Pulse</span>
+                    <span class="loader-desc">Sóng xung lan tỏa nhịp nhàng</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Thông tin liên lạc -->
+        <section id="contact" data-aos="fade-up">
+            <div class="section-title-wrap">
+                <span class="section-badge">HÃY NÓI CHUYỆN</span>
+                <h2>Thông tin liên lạc</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Bạn muốn kết nối hay cùng hiện thực hóa một ý tưởng giao diện web? Hãy liên hệ ngay nhé!</p>
+            </div>
+
+            <div class="contact-layout">
+                <!-- Cột thông tin liên hệ -->
+                <div class="contact-details-col">
+                    <div class="contact-info-card glass-card">
+                        <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="contact-text-box">
+                            <span class="contact-label">Email Trực Tiếp</span>
+                            <span class="contact-val">lenguyennhatkhanh.dev@gmail.com</span>
+                            <button class="copy-action-btn" onclick="copyToClipboard('lenguyennhatkhanh.dev@gmail.com', this)">
+                                <i class="fa-regular fa-copy"></i> <span>Sao chép</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card glass-card">
+                        <div class="contact-icon-box"><i class="fa-solid fa-phone"></i></div>
+                        <div class="contact-text-box">
+                            <span class="contact-label">Điện Thoại / Zalo</span>
+                            <span class="contact-val">(+84) 339 928 265</span>
+                            <a href="tel:+84339928265" class="call-action-btn">
+                                <i class="fa-solid fa-phone-volume"></i> <span>Gọi ngay</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card glass-card">
+                        <div class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="contact-text-box">
+                            <span class="contact-label">Địa Chỉ Hoạt Động</span>
+                            <span class="contact-val">Phường Tân Triều, TP. Đồng Nai, Việt Nam</span>
+                            <span class="timezone-note"><i class="fa-regular fa-clock"></i> Múi giờ GMT+7</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links-card glass-card">
+                        <h4>Mạng Xã Hội</h4>
+                        <div class="social-buttons-grid">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-circle" title="GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-circle" title="Facebook">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-circle" title="LinkedIn">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </a>
+                            <a href="mailto:lenguyennhatkhanh.dev@gmail.com" class="social-circle" title="Gửi Email">
+                                <i class="fa-solid fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cột Form liên hệ -->
+                <div class="contact-form-col">
+                    <div class="contact-form-card glass-card">
+                        <h3 class="contact-sub-title"><i class="fa-solid fa-paper-plane"></i> Gửi tin nhắn cho tôi:</h3>
+                        <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+                            <fieldset>
+                                <legend><i class="fa-solid fa-comment-dots"></i> Liên hệ trực tiếp</legend>
+                                <div class="form-group">
+                                    <label for="name"><i class="fa-regular fa-user"></i> Họ và tên</label>
+                                    <input type="text" id="name" placeholder="Nhập tên của bạn..." required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email"><i class="fa-regular fa-envelope"></i> Email của bạn</label>
+                                    <input type="email" id="email" placeholder="Nhập email..." required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message"><i class="fa-regular fa-comment-lines"></i> Nội dung tin nhắn</label>
+                                    <textarea id="message" rows="4" placeholder="Nhập nội dung tin nhắn của bạn..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-submit" id="btnSubmit">
+                                    <span class="btn-text">Gửi đi</span>
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>&copy; 2026 <strong>Lê Nguyễn Nhật Khánh</strong>. Responsive cho Desktop, Tablet và Mobile.</p>
+            <p class="footer-craft">Thiết kế chuẩn UI/UX hiện đại với Glassmorphism & Pure CSS Animations.</p>
+        </div>
+    </footer>
+
+    <!-- NÚT FAB LIÊN HỆ & BACK TO TOP -->
+    <div class="floating-actions-wrap">
+        <button id="backToTopBtn" class="fab-circle back-to-top" aria-label="Lên đầu trang" title="Lên đầu trang">
+            <i class="fa-solid fa-chevron-up"></i>
+        </button>
+        <a href="#contact" class="fab-button" aria-label="Liên hệ với tôi">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span>Liên hệ</span>
+        </a>
+    </div>
+
+    <!-- THÔNG BÁO TOAST GÓC DƯỚI BÊN PHẢI (BOTTOM-RIGHT) -->
+    <div id="greetingToast" class="greeting-toast" role="alert" aria-live="polite">
+        <div class="toast-indicator-bar"></div>
+        <div class="toast-wrapper">
+            <span class="toast-icon" id="toastIcon">☕</span>
+            <div class="toast-body">
+                <span class="toast-title">Lời chào từ Nhật Khánh</span>
+                <span class="toast-message" id="toastMessage">Chào buổi chiều! ☕ Làm việc hiệu quả nhé!</span>
+            </div>
+            <button class="toast-close-btn" id="toastCloseBtn" aria-label="Đóng thông báo">&times;</button>
+        </div>
+    </div>
+
+    <!-- MODAL PHÓNG TO BẰNG KHEN / CHỨNG CHỈ -->
+    <div id="certModal" class="cert-modal" aria-hidden="true" role="dialog">
+        <div class="cert-modal-backdrop" onclick="closeCertModal()"></div>
+        <div class="cert-modal-dialog">
+            <button class="cert-modal-close" onclick="closeCertModal()" aria-label="Đóng">&times;</button>
+            <div class="cert-modal-img-wrap">
+                <img id="modalCertImg" src="" alt="Chứng chỉ lớn">
+            </div>
+            <div class="cert-modal-caption">
+                <h3 id="modalCertTitle">Tiêu đề bằng khen</h3>
+                <p id="modalCertDesc">Mô tả chi tiết bằng khen</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thư viện AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Khởi tạo AOS
+        AOS.init({
+            duration: 900,
+            once: true,
+            offset: 80
+        });
+    </script>
+
+    <!-- Liên kết mã JavaScript xử lý Lời chào thời gian thực & Tương tác giao diện -->
+    <script src="script.js"></script>
+</body>
+</html>
