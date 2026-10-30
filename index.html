@@ -19,6 +19,14 @@
         </div>
     </div>
 
+    <!-- BANNER LỜI CHÀO THEO THỜI GIAN THỰC (REAL-TIME GREETING) -->
+    <aside id="greeting-banner" class="greeting-banner" aria-label="Lời chào theo thời gian thực">
+        <div class="greeting-container">
+            <span class="greeting-icon" id="greetingIcon" aria-hidden="true">☀️</span>
+            <span class="greeting-text" id="greetingText">Chào buổi chiều! ☕ Làm việc hiệu quả nhé!</span>
+        </div>
+    </aside>
+
     <!-- Header / Banner tích hợp ảnh đại diện linh hoạt -->
     <header id="home">
         <div class="avatar-container">
@@ -168,20 +176,8 @@
         <!-- 4. Dự án tiêu biểu -->
         <section id="projects" data-aos="fade-up">
             <h2>Dự án tiêu biểu</h2>
-            <div class="projects-grid">
-                <article class="project-card">
-                    <div class="item-title"><h3>Smart Color Palette App</h3></div>
-                    <div class="item-time">Tháng 2 / 2026</div>
-                    <p>Ứng dụng web giúp quản lý mã màu và tùy biến biến CSS trực tiếp trên trình duyệt.</p>
-                    <a href="#" class="btn" style="display:inline-block; margin-top:10px; padding:8px 15px; background:var(--primary-color); color:#fff; border-radius:4px;">Xem Source Code</a>
-                </article>
-                <article class="project-card">
-                    <div class="item-title"><h3>E-commerce Landing Page</h3></div>
-                    <div class="item-time">Tháng 1 / 2026</div>
-                    <p>Trang thương mại điện tử tương thích đa thiết bị sử dụng CSS Grid và Flexbox.</p>
-                    <a href="#" class="btn" style="display:inline-block; margin-top:10px; padding:8px 15px; background:var(--primary-color); color:#fff; border-radius:4px;">Xem Trang Trực Tuyến</a>
-                </article>
-            </div>
+            <!-- Danh sách dự án được JavaScript tự sinh từ mảng projectList (xem script.js) -->
+            <div class="projects-grid" id="projectsGrid"></div>
         </section>
 
         <!-- 5. Hiệu ứng UI Components -->
@@ -249,6 +245,12 @@
         Liên hệ
     </a>
 
+    <!-- THÔNG BÁO TOAST GÓC DƯỚI BÊN PHẢI (BOTTOM-RIGHT) -->
+    <div id="greetingToast" class="greeting-toast" role="alert" aria-live="polite">
+        <span class="toast-message" id="toastMessage">Chào buổi chiều! ☕ Làm việc hiệu quả nhé!</span>
+        <button class="toast-close-btn" id="toastCloseBtn" aria-label="Đóng thông báo">&times;</button>
+    </div>
+
     <!-- Thư viện AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -260,23 +262,7 @@
         });
     </script>
 
-    <!-- Xử lý sự kiện click cho Hamburger Menu -->
-    <script>
-        const menuBtn = document.getElementById('menuBtn');
-        const navLinks = document.querySelector('.nav-links');
-        let menuOpen = false;
-        
-        menuBtn.addEventListener('click', () => {
-            if(!menuOpen) {
-                menuBtn.classList.add('open');
-                navLinks.classList.add('active'); 
-                menuOpen = true;
-            } else {
-                menuBtn.classList.remove('open');
-                navLinks.classList.remove('active');
-                menuOpen = false;
-            }
-        });
-    </script>
+    <!-- Liên kết mã JavaScript xử lý Lời chào thời gian thực & Tương tác giao diện -->
+    <script src="script.js"></script>
 </body>
 </html>
